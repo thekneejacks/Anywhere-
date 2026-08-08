@@ -134,7 +134,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     }
     setSupportActionBar(binding.bar)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    if (isEditMode) {
+    /*if (isEditMode) {
       binding.tvOpenUrl.apply {
         isVisible = true
         text = HtmlCompat.fromHtml(
@@ -155,7 +155,9 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       }
     } else {
       binding.tvOpenUrl.isGone = true
-    }
+    }*/
+
+    binding.tvOpenUrl.isGone = true
 
     editor = try {
       EditorFactory.produce(entity.type)

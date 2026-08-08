@@ -295,6 +295,7 @@
     <activity
       android:name=".ui.editor.EditorActivity"
       android:exported="true"
+      android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
       android:label="@string/card_editor_title">
       <intent-filter>
         <category android:name="android.intent.category.DEFAULT" />
