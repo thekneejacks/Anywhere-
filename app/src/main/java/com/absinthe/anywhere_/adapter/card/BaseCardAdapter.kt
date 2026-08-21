@@ -310,7 +310,7 @@ class BaseCardAdapter(
       val item = getItem(position)
 
       if (mode == ADAPTER_MODE_NORMAL) {
-        if (isAppFrozen(context, item)) {
+        /*if (isAppFrozen(context, item)) {
           v.postDelayed({ notifyItemChanged(position) }, 500)
         }
         Opener.with(context)
@@ -324,21 +324,40 @@ class BaseCardAdapter(
               }
             }
           })
-          .open()
+          .open()*/
+        val intent = Intent(context, EditorActivity::class.java).apply {
+          putExtra(EXTRA_ENTITY, item)
+          putExtra(EXTRA_EDIT_MODE, true)
+          putExtra(EXTRA_FROM_WORKFLOW, item.type == AnywhereType.Card.WORKFLOW)
+        }
+
+        /*if (GlobalValues.editorEntryAnim) {
+          val options = ActivityOptions.makeSceneTransitionAnimation(
+            context as BaseActivity<*>,
+            v,
+            context.getString(R.string.trans_item_container)
+          )
+
+          context.startActivity(intent, options.toBundle())
+        } else {*/
+          context.startActivity(intent)
+        //}
+        v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+
       } else if (mode == ADAPTER_MODE_SELECT) {
         if (selectedIndex.isNotEmpty() && selectedIndex.contains(position)) {
-          (v as MaterialCardView).apply {
+          /*(v as MaterialCardView).apply {
             scaleX = 1.0f
             scaleY = 1.0f
             isChecked = false
-          }
+          }*/
           selectedIndex.remove(position)
         } else {
-          (v as MaterialCardView).apply {
+          /*(v as MaterialCardView).apply {
             scaleX = 0.9f
             scaleY = 0.9f
             isChecked = true
-          }
+          }*/
           selectedIndex.add(position)
         }
       }
