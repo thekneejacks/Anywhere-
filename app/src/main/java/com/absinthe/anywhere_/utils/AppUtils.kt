@@ -31,7 +31,7 @@ import com.absinthe.anywhere_.utils.handler.URLSchemeHandler
 import com.absinthe.anywhere_.utils.manager.URLManager
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.Utils
-import com.catchingnow.icebox.sdk_client.IceBox
+
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
@@ -64,7 +64,7 @@ object AppUtils {
       .toString()
   }
 
-  fun openNewURLScheme(context: Context) {
+  /*fun openNewURLScheme(context: Context) {
     val url = Uri.Builder().scheme(URLManager.ANYWHERE_SCHEME_RAW)
       .authority(URLManager.URL_HOST)
       .appendQueryParameter("param1", "")
@@ -72,7 +72,7 @@ object AppUtils {
       .build()
       .toString()
     URLSchemeHandler.parse(context, url)
-  }
+  }*/
 
   /**
    * Update Anywhere- widget
@@ -133,7 +133,7 @@ object AppUtils {
    * @param showSystem     true if show system apps
    * @return apps list
    */
-  fun getAppList(packageManager: PackageManager, showSystem: Boolean): List<AppListBean> {
+  /*fun getAppList(packageManager: PackageManager, showSystem: Boolean): List<AppListBean> {
     val list: MutableList<AppListBean> = ArrayList()
     try {
       val packageInfos = packageManager.getInstalledPackages(0)
@@ -172,7 +172,7 @@ object AppUtils {
     list.sortBy { it.appName }
 
     return list
-  }
+  }*/
 
   /**
    * Take a persistable URI permission grant that has been offered. Once
@@ -229,7 +229,7 @@ object AppUtils {
    * @param context Context
    * @param file Log file
    */
-  fun sendLogcat(context: Context, file: File?) {
+  /*fun sendLogcat(context: Context, file: File?) {
     val emailIntent = Intent(Intent.ACTION_SEND)
 
     if (file != null) {
@@ -282,7 +282,7 @@ object AppUtils {
       }
       context.startActivity(chooser)
     }
-  }
+  }*/
 
   /**
    *

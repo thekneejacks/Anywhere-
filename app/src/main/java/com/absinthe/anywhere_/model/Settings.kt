@@ -8,8 +8,6 @@ import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.utils.UxUtils
-import com.absinthe.anywhere_.utils.manager.IconPackManager
-import com.absinthe.anywhere_.utils.manager.IconPackManager.IconPack
 import com.tencent.mmkv.MMKV
 import jonathanfinerty.once.Once
 import java.text.SimpleDateFormat
@@ -18,8 +16,8 @@ import java.util.Locale
 
 object Settings {
 
-  val iconPackManager by lazy { IconPackManager() }
-  var iconPack: IconPack? = null
+  //val iconPackManager by lazy { IconPackManager() }
+  //var iconPack: IconPack? = null
 
   val date: String by lazy {
     val dateFormat = SimpleDateFormat("MM-dd", Locale.CHINA)
@@ -28,7 +26,7 @@ object Settings {
 
   fun init() {
     setLogger()
-    initIconPackManager()
+    //initIconPackManager()
   }
 
   fun getTheme(): Int {
@@ -46,9 +44,9 @@ object Settings {
     GlobalValues.sIsDebugMode = BuildConfig.DEBUG or GlobalValues.sIsDebugMode
   }
 
-  fun initIconPackManager() {
+  /*fun initIconPackManager() {
     iconPack = iconPackManager.getAvailableIconPacks(true)[GlobalValues.iconPack]
-  }
+  }*/
 
   fun initMMKV(application: AnywhereApplication) {
     MMKV.initialize(application)

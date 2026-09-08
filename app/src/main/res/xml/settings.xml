@@ -154,7 +154,7 @@
       app:summary="%s"
       app:title="@string/settings_show_shell_result" />
 
-    <Preference
+    <!--<Preference
       app:icon="@drawable/ic_lab"
       app:key="lab"
       app:summary="@string/settings_lab_summary"
@@ -163,7 +163,7 @@
       <intent
         android:targetClass="com.absinthe.anywhere_.ui.settings.LabActivity"
         android:targetPackage="@string/application_id" />
-    </Preference>
+    </Preference>-->
 
   </PreferenceCategory>
 

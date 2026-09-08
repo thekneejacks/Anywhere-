@@ -29,10 +29,7 @@ import com.absinthe.anywhere_.ui.dialog.EXTRA_NEED_FINISH_ACTIVITY
 import com.absinthe.anywhere_.ui.dialog.ImageDialogFragment
 import com.absinthe.anywhere_.ui.dialog.RenameDialogFragment
 import com.absinthe.anywhere_.ui.dialog.ShellResultBottomSheetDialogFragment
-import com.absinthe.anywhere_.ui.list.CardListDialogFragment
-import com.absinthe.anywhere_.ui.settings.IconPackDialogFragment
 import com.absinthe.anywhere_.ui.settings.IntervalDialogFragment
-import com.absinthe.anywhere_.ui.settings.TimePickerDialogFragment
 import com.absinthe.anywhere_.ui.shortcuts.CreateShortcutDialogFragment
 import com.absinthe.anywhere_.ui.shortcuts.ShortcutsActivity
 import com.absinthe.anywhere_.utils.AppUtils
@@ -399,15 +396,15 @@ object DialogManager {
     }
   }
 
-  fun showIconPackChoosingDialog(activity: AppCompatActivity) {
+  /*fun showIconPackChoosingDialog(activity: AppCompatActivity) {
     val fragment = IconPackDialogFragment()
     fragment.show(activity.supportFragmentManager, fragment.tag)
-  }
+  }*/
 
-  fun showDarkModeTimePickerDialog(activity: AppCompatActivity) {
+  /*fun showDarkModeTimePickerDialog(activity: AppCompatActivity) {
     val fragment = TimePickerDialogFragment()
     fragment.show(activity.supportFragmentManager, fragment.tag)
-  }
+  }*/
 
   fun showIntervalSetupDialog(activity: AppCompatActivity) {
     val fragment = IntervalDialogFragment()
@@ -424,11 +421,11 @@ object DialogManager {
     fragment.show(activity.supportFragmentManager, fragment.tag)
   }
 
-  fun showCardListDialog(activity: AppCompatActivity): CardListDialogFragment {
+  /*fun showCardListDialog(activity: AppCompatActivity): CardListDialogFragment {
     val fragment = CardListDialogFragment()
     fragment.show(activity.supportFragmentManager, fragment.tag)
     return fragment
-  }
+  }*/
 
   fun showRenameDialog(activity: AppCompatActivity, title: String) {
     val dialog = RenameDialogFragment().apply {

@@ -99,14 +99,14 @@ object UxUtils {
 
   fun getAppIcon(context: Context, packageName: String): Drawable? {
     return try {
-      if (iconPack == Const.DEFAULT_ICON_PACK || iconPack.isEmpty()) {
+      //if (iconPack == Const.DEFAULT_ICON_PACK || iconPack.isEmpty()) {
         context.packageManager.getApplicationIcon(packageName)
-      } else {
+      /*} else {
         Settings.iconPack?.getDrawableIconForPackage(
           packageName,
           context.packageManager.getApplicationIcon(packageName)
         )
-      }
+      }*/
     } catch (e: PackageManager.NameNotFoundException) {
       null
     }

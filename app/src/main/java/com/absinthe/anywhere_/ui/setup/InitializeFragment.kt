@@ -1,6 +1,5 @@
 package com.absinthe.anywhere_.ui.setup
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
@@ -23,13 +22,10 @@ import com.absinthe.anywhere_.databinding.CardAcquireRootPermissionBinding
 import com.absinthe.anywhere_.databinding.CardAcquireShizukuPermissionBinding
 import com.absinthe.anywhere_.databinding.FragmentInitializeBinding
 import com.absinthe.anywhere_.ui.main.MainActivity
-import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.DialogManager
-import com.absinthe.anywhere_.utils.manager.ShellManager
 import com.absinthe.anywhere_.utils.manager.ShizukuHelper
 import com.absinthe.libraries.utils.utils.XiaomiUtilities
-import com.blankj.utilcode.util.PermissionUtils
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.button.MaterialButtonToggleGroup.OnButtonCheckedListener
 import jonathanfinerty.once.Once
@@ -237,7 +233,7 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
 
   private fun actCards(card: Int, isAdd: Boolean) {
     when (card) {
-      CARD_ROOT -> {
+      /*CARD_ROOT -> {
         rootBinding.btnAcquireRootPermission.setOnClickListener {
           isRoot.setValue(ShellManager.acquireRoot())
         }
@@ -250,7 +246,7 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
           mBinding.container.removeView(rootBinding.root)
           bRoot = false
         }
-      }
+      }*/
       CARD_SHIZUKU -> {
         shizukuBinding.btnAcquirePermission.setOnClickListener {
           hasCheckedShizuku = true
@@ -266,7 +262,7 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
           bShizuku = false
         }
       }
-      CARD_OVERLAY -> {
+      /*CARD_OVERLAY -> {
         overlayBinding.btnAcquireOverlayPermission.setOnClickListener {
           val isGrant = PermissionUtils.isGrantedDrawOverlays()
           isOverlay.value = isGrant
@@ -294,8 +290,8 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
           mBinding.container.removeView(overlayBinding.root)
           bOverlay = false
         }
-      }
-      CARD_POPUP -> {
+      }*/
+      /*CARD_POPUP -> {
         if (!XiaomiUtilities.isMIUI()) {
           return
         }
@@ -320,7 +316,7 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
           mBinding.container.removeView(popupBinding.root)
           bPopup = false
         }
-      }
+      }*/
       else -> return
     }
   }

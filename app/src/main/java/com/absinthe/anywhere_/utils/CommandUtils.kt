@@ -1,23 +1,11 @@
 package com.absinthe.anywhere_.utils
 
-import android.annotation.SuppressLint
-import android.content.ActivityNotFoundException
-import android.content.ComponentName
-import android.content.Intent
-import android.os.FileUriExposedException
-import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.CommandResult
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues.workingMode
 import com.absinthe.anywhere_.model.ShizukuProcess
-import com.absinthe.anywhere_.utils.handler.URLSchemeHandler
-import com.absinthe.anywhere_.utils.manager.ActivityStackManager
-import com.absinthe.anywhere_.utils.manager.ShellManager
-import com.absinthe.anywhere_.utils.manager.ShizukuHelper
-import com.blankj.utilcode.util.Utils
+
 import timber.log.Timber
-import java.net.URISyntaxException
 
 object CommandUtils {
   /**
@@ -29,8 +17,8 @@ object CommandUtils {
   fun execAdbCmd(cmd: String): String {
     return when (workingMode) {
       Const.WORKING_MODE_SHIZUKU -> execShizukuCmd(cmd)
-      Const.WORKING_MODE_ROOT -> execRootCmd(cmd)
-      Const.WORKING_MODE_URL_SCHEME -> CommandResult.RESULT_CHANGE_WORKING_MODE
+      //Const.WORKING_MODE_ROOT -> execRootCmd(cmd)
+      //Const.WORKING_MODE_URL_SCHEME -> CommandResult.RESULT_CHANGE_WORKING_MODE
       else -> CommandResult.RESULT_ERROR
     }
   }
@@ -40,7 +28,7 @@ object CommandUtils {
    *
    * @param cmd command
    */
-  @SuppressLint("NewApi")
+  /*@SuppressLint("NewApi")
   fun execCmd(cmd: String) {
     var newCmd = cmd
     var result: String
@@ -140,14 +128,14 @@ object CommandUtils {
       CommandResult.RESULT_ERROR -> ToastUtil.makeText(R.string.toast_runtime_error)
       CommandResult.RESULT_CHANGE_WORKING_MODE -> ToastUtil.makeText(R.string.toast_change_work_mode)
     }
-  }
+  }*/
 
   /**
    * execute adb or intent command by root
    *
    * @param cmd command
    */
-  private fun execRootCmd(cmd: String): String {
+  /*private fun execRootCmd(cmd: String): String {
     Timber.i(cmd)
 
     val result: String = try {
@@ -161,7 +149,7 @@ object CommandUtils {
       return CommandResult.RESULT_EMPTY
     }
     return result
-  }
+  }*/
 
   /**
    * execute adb or intent via shizuku manager

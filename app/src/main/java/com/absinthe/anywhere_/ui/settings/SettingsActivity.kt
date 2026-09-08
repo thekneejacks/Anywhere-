@@ -86,13 +86,13 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
       }
       findPreference<ListPreference>(Const.PREF_DARK_MODE)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
-          if (newValue.toString() == Const.DARK_MODE_AUTO) {
+          /*if (newValue.toString() == Const.DARK_MODE_AUTO) {
             DialogManager.showDarkModeTimePickerDialog(requireActivity() as SettingsActivity)
-          } else {
+          } else {*/
             GlobalValues.darkMode = newValue.toString()
             AppCompatDelegate.setDefaultNightMode(Settings.getTheme())
             requireActivity().recreate()
-          }
+          //}
           true
         }
       }
@@ -110,12 +110,12 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           true
         }
       }
-      findPreference<Preference>(Const.PREF_ICON_PACK)?.apply {
+      /*findPreference<Preference>(Const.PREF_ICON_PACK)?.apply {
         setOnPreferenceClickListener {
           DialogManager.showIconPackChoosingDialog(requireActivity() as SettingsActivity)
           true
         }
-      }
+      }*/
 
       //Advanced
       findPreference<TwoStatePreference>(Const.PREF_PAGES)?.apply {

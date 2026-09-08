@@ -319,11 +319,11 @@
       android:exported="false" />-->
 
 
-    <!--    Overlay view service    -->
+    <!--    Overlay view service
     <service
       android:name=".services.overlay.OverlayService"
       android:enabled="true"
-      android:exported="false" />
+      android:exported="false" /> -->
 
 
     <!--    Collector service    -->
@@ -331,13 +331,13 @@
       android:name=".services.overlay.CollectorService"
       android:enabled="true" />
 
-    <!--    Home launcher widget service    -->
+    <!--    Home launcher widget service
     <service
       android:name=".services.widget.AppRemoteViewsService"
       android:exported="true"
-      android:permission="android.permission.BIND_REMOTEVIEWS" />
+      android:permission="android.permission.BIND_REMOTEVIEWS" />-->
 
-    <!--    Accessibility service    -->
+    <!--    Accessibility service
     <service
       android:name=".services.IzukoService"
       android:exported="false"
@@ -349,7 +349,7 @@
       <meta-data
         android:name="android.accessibilityservice"
         android:resource="@xml/accessibility_service_config" />
-    </service>
+    </service>-->
 
     <!--    Workflow service    -->
     <service

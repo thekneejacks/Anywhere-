@@ -1,13 +1,9 @@
 package com.absinthe.anywhere_.ui.shortcuts
 
 import android.app.Activity
-import android.content.ComponentName
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.ServiceConnection
 import android.os.Bundle
-import android.os.IBinder
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.core.content.pm.ShortcutInfoCompat
@@ -21,12 +17,9 @@ import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.EventTag
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.ExtraBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.services.overlay.CollectorService
 import com.absinthe.anywhere_.services.overlay.ICollectorService
-import com.absinthe.anywhere_.utils.AppUtils.openNewURLScheme
 import com.absinthe.anywhere_.utils.CommandUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
@@ -69,7 +62,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
       Timber.d("action = %s", it)
 
       when (it) {
-        ACTION_START_COLLECTOR -> {
+        /*ACTION_START_COLLECTOR -> {
           if (GlobalValues.workingMode == Const.WORKING_MODE_URL_SCHEME) {
             openNewURLScheme(this)
           } else {
@@ -97,7 +90,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
             }
           }
           shouldFinishOnResume = true
-        }
+        }*/
         ACTION_START_ENTITY -> {
           intent.getStringExtra(Const.INTENT_EXTRA_SHORTCUTS_ID)?.let { id ->
             AnywhereApplication.sRepository.getEntityById(id)?.let { entity ->

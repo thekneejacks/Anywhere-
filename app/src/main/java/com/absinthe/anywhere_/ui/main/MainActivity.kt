@@ -54,7 +54,6 @@ import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
 import com.absinthe.anywhere_.services.BackupIntentService
-import com.absinthe.anywhere_.services.overlay.CollectorService
 import com.absinthe.anywhere_.services.overlay.ICollectorService
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
@@ -78,7 +77,6 @@ import com.absinthe.anywhere_.view.home.FabBuilder.build
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.absinthe.libraries.utils.extensions.dp
 import com.blankj.utilcode.util.ActivityUtils
-import com.blankj.utilcode.util.AppUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -636,7 +634,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       val param2 = uri.getQueryParameter(Const.INTENT_EXTRA_PARAM_2).orEmpty()
       val param3 = uri.getQueryParameter(Const.INTENT_EXTRA_PARAM_3).orEmpty()
       val type = uri.getQueryParameter(Const.INTENT_EXTRA_TYPE) ?: return
-      val fromCollector =
+      /*val fromCollector =
         runCatching { uri.getQueryParameter("fromCollector").toBoolean() }.getOrDefault(false)
 
       if (fromCollector) {
@@ -644,7 +642,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
           applicationContext.unbindService(CollectorService.serviceConnection!!)
           CollectorService.serviceConnection = null
         }
-      }
+      }*/
 
       when (type.toInt()) {
         /*AnywhereType.Card.URL_SCHEME -> {
