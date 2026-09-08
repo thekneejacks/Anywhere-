@@ -250,7 +250,7 @@
       </intent-filter>
     </activity>-->
 
-    <!--    Tile setting page    -->
+    <!--    Tile setting page    
     <activity
       android:name=".ui.settings.TileSettingsActivity"
       android:exported="true"
@@ -258,7 +258,7 @@
       <intent-filter>
         <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
       </intent-filter>
-    </activity>
+    </activity> -->
 
     <!--    QR code collection page
     <activity
@@ -267,11 +267,11 @@
       android:exported="false"
       android:label="@string/btn_qr_code_collection" />-->
 
-    <!--    Lab page    -->
+    <!--    Lab page
     <activity
       android:name=".ui.settings.LabActivity"
       android:exported="false"
-      android:label="@string/settings_lab" />
+      android:label="@string/settings_lab" /> -->
 
     <!--    Defrost mode page
     <activity
@@ -326,10 +326,10 @@
       android:exported="false" /> -->
 
 
-    <!--    Collector service    -->
+    <!--    Collector service
     <service
       android:name=".services.overlay.CollectorService"
-      android:enabled="true" />
+      android:enabled="true" /> -->
 
     <!--    Home launcher widget service
     <service
@@ -351,18 +351,18 @@
         android:resource="@xml/accessibility_service_config" />
     </service>-->
 
-    <!--    Workflow service    -->
+    <!--    Workflow service
     <service
       android:name=".services.WorkflowIntentService"
       android:exported="true"
-      android:permission="android.permission.BIND_JOB_SERVICE" />
+      android:permission="android.permission.BIND_JOB_SERVICE" /> -->
 
-    <!--    Backup service    -->
+    <!--    Backup service
     <service
       android:name=".services.BackupIntentService"
       android:exported="false"
-      android:permission="android.permission.BIND_JOB_SERVICE" />
-    <!--    Device Control    -->
+      android:permission="android.permission.BIND_JOB_SERVICE" />  -->
+    <!--    Device Control
     <service
       android:name=".services.widget.AwControlsProviderService"
       android:exported="true"
@@ -370,9 +370,9 @@
       <intent-filter>
         <action android:name="android.service.controls.ControlsProviderService" />
       </intent-filter>
-    </service>
+    </service>  -->
 
-    <!--    Home launcher widget click event receiver    -->
+    <!--    Home launcher widget click event receiver
     <receiver
       android:name=".receiver.HomeWidgetProvider"
       android:exported="true">
@@ -384,9 +384,9 @@
         <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         <action android:name="${applicationId}.action.CLICK" />
       </intent-filter>
-    </receiver>
+    </receiver> -->
 
-    <!--    DPM receiver    -->
+    <!--    DPM receiver
     <receiver
       android:name=".receiver.AdminReceiver"
       android:exported="true"
@@ -399,7 +399,7 @@
       <meta-data
         android:name="android.app.develop.delegation"
         android:resource="@xml/app_delegation" />
-    </receiver>
+    </receiver> -->
 
     <!--    Notification click event receiver
     <receiver

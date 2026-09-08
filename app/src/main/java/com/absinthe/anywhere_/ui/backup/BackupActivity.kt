@@ -2,7 +2,6 @@ package com.absinthe.anywhere_.ui.backup
 
 import android.content.Context
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -10,16 +9,13 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.TwoStatePreference
 import androidx.recyclerview.widget.RecyclerView
 import com.absinthe.anywhere_.AppBarActivity
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.ActivityBackupBinding
 import com.absinthe.anywhere_.utils.AppTextUtils
 import com.absinthe.anywhere_.utils.CipherUtils
@@ -27,7 +23,6 @@ import com.absinthe.anywhere_.utils.StorageUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.blankj.utilcode.util.Utils
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import rikka.recyclerview.fixEdgeEffect
@@ -103,7 +98,7 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
       setPreferencesFromResource(R.xml.settings_backup, rootKey)
 
-      findPreference<Preference>(Const.PREF_WEBDAV_HOST)?.apply {
+      /*findPreference<Preference>(Const.PREF_WEBDAV_HOST)?.apply {
         setOnPreferenceChangeListener { preference, newValue ->
           GlobalValues.webdavHost = newValue.toString()
           preference.summary = newValue.toString()
@@ -168,7 +163,7 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
           true
         }
         isIconSpaceReserved = true
-      }
+      }*/
       findPreference<Preference>(Const.PREF_BACKUP)?.apply {
         setOnPreferenceClickListener {
           if (StorageUtils.isExternalStorageWritable) {
@@ -260,7 +255,7 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
       )
     }
 
-    private fun getPWString(text: String): String {
+    /*private fun getPWString(text: String): String {
       val sb = StringBuilder().apply {
         for (char in text) {
           append("●")
@@ -268,6 +263,6 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
       }
 
       return sb.toString()
-    }
+    }*/
   }
 }

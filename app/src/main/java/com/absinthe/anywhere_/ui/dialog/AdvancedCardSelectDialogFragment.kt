@@ -18,7 +18,6 @@ import com.absinthe.anywhere_.ui.editor.EditorActivity
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 import com.absinthe.anywhere_.view.app.AnywhereDialogFragment
 import com.absinthe.anywhere_.viewbuilder.entity.AdvancedCardSelectDialogBuilder
-import com.microsoft.appcenter.analytics.Analytics
 import java.lang.ref.WeakReference
 
 const val EXTRA_FROM_WORKFLOW = "EXTRA_FROM_WORKFLOW"
@@ -71,7 +70,7 @@ class AdvancedCardSelectDialogFragment : AnywhereDialogFragment() {
                 putExtra(EXTRA_FROM_WORKFLOW, isFromWorkflow)
             }, Const.REQUEST_CODE_OPEN_EDITOR, options.toBundle())
 
-            Analytics.trackEvent("Fab ${ae.appName} clicked")
+            //Analytics.trackEvent("Fab ${ae.appName} clicked")
         }
     }
 

@@ -21,12 +21,10 @@ import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.backup.RestoreApplyFragmentDialog
-import com.absinthe.anywhere_.ui.backup.WebdavFilesListDialogFragment
 import com.absinthe.anywhere_.ui.dialog.AdvancedCardSelectDialogFragment
 import com.absinthe.anywhere_.ui.dialog.EXTRA_CONTENT
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.ui.dialog.EXTRA_NEED_FINISH_ACTIVITY
-import com.absinthe.anywhere_.ui.dialog.ImageDialogFragment
 import com.absinthe.anywhere_.ui.dialog.RenameDialogFragment
 import com.absinthe.anywhere_.ui.dialog.ShellResultBottomSheetDialogFragment
 import com.absinthe.anywhere_.ui.settings.IntervalDialogFragment
@@ -37,7 +35,6 @@ import com.absinthe.anywhere_.utils.ClipboardUtil
 import com.absinthe.anywhere_.utils.ShortcutsUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
-import com.absinthe.anywhere_.view.app.AnywhereDialogFragment
 import com.absinthe.anywhere_.view.home.ColorPickerDialogBuilder
 import com.flask.colorpicker.ColorPickerView
 
@@ -437,14 +434,14 @@ object DialogManager {
     dialog.show(activity.supportFragmentManager, dialog.tag)
   }
 
-  fun showImageDialog(
+  /*fun showImageDialog(
     activity: AppCompatActivity,
     uri: String,
     listener: AnywhereDialogFragment.OnDismissListener? = null
   ) {
     val dialog = ImageDialogFragment(uri, listener)
     dialog.show(activity.supportFragmentManager, dialog.tag)
-  }
+  }*/
 
   /*fun showGrantPrivilegedPermDialog(activity: AppCompatActivity) {
     val dialogFragment = IceBoxGrantDialogFragment()
@@ -483,10 +480,10 @@ object DialogManager {
     dialogFragment.show(activity.supportFragmentManager, dialogFragment.tag)
   }
 
-  fun showWebdavRestoreDialog(activity: AppCompatActivity) {
+  /*fun showWebdavRestoreDialog(activity: AppCompatActivity) {
     val dialog = WebdavFilesListDialogFragment()
     dialog.show(activity.supportFragmentManager, dialog.tag)
-  }
+  }*/
 
   /*fun showCloudRuleDialog(activity: AppCompatActivity, entity: RuleEntity) {
     val dialogFragment = CloudRuleDetailDialogFragment().apply {

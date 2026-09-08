@@ -16,7 +16,6 @@ import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.EventTag
 import com.absinthe.anywhere_.model.ExtraBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.services.overlay.ICollectorService
@@ -24,15 +23,12 @@ import com.absinthe.anywhere_.utils.CommandUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.handler.Opener
-import com.absinthe.anywhere_.utils.manager.DialogManager.showImageDialog
 import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
-import com.absinthe.anywhere_.view.app.AnywhereDialogFragment
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.absinthe.libraries.utils.extensions.dp
 import com.blankj.utilcode.util.Utils
 import com.google.gson.Gson
-import com.microsoft.appcenter.analytics.Analytics
 import timber.log.Timber
 
 class ShortcutsActivity : BaseActivity<ViewBinding>() {
@@ -48,7 +44,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
     super.onCreate(savedInstanceState)
 
     UxUtils.setActionBarTransparent(this)
-    Analytics.trackEvent(EventTag.SHORTCUT_OPEN)
+    //Analytics.trackEvent(EventTag.SHORTCUT_OPEN)
     handleIntent(intent)
   }
 
@@ -106,7 +102,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
             }
           }
         }
-        ACTION_START_FROM_WIDGET -> {
+        /*ACTION_START_FROM_WIDGET -> {
           intent.getParcelableExtra<AnywhereEntity>(Const.INTENT_EXTRA_WIDGET_ENTITY)
             ?.let { entity ->
               Opener.with(this@ShortcutsActivity)
@@ -118,7 +114,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
                 })
                 .open()
             } ?: let { shouldFinishOnResume = true }
-        }
+        }*/
         Intent.ACTION_CREATE_SHORTCUT -> {
           viewModel.allAnywhereEntities.observe(this) { anywhereEntities: List<AnywhereEntity>? ->
             val arrayAdapter = ArrayAdapter<String>(
@@ -176,7 +172,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
             }
           }
         }
-        ACTION_START_IMAGE -> {
+        /*ACTION_START_IMAGE -> {
           intent.getStringExtra(Const.INTENT_EXTRA_SHORTCUTS_CMD)?.let { uri ->
             showImageDialog(
               this,
@@ -188,7 +184,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
                 }
               })
           } ?: run { shouldFinishOnResume = true }
-        }
+        }*/
         ACTION_START_DEVICE_CONTROL -> {
           val type = intent.getIntExtra(Const.INTENT_EXTRA_TYPE, -1)
           val param1 = intent.getStringExtra(Const.INTENT_EXTRA_PARAM_1) ?: return@let

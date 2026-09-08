@@ -1,17 +1,14 @@
 package com.absinthe.anywhere_
 
+//import com.absinthe.anywhere_.utils.manager.PoliceMan
 import android.app.Application
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.absinthe.anywhere_.database.AnywhereRepository
 import com.absinthe.anywhere_.model.Settings
-//import com.absinthe.anywhere_.utils.manager.PoliceMan
 import com.absinthe.anywhere_.utils.timber.ReleaseTree
 import com.absinthe.anywhere_.utils.timber.ThreadAwareDebugTree
 import com.absinthe.libraries.utils.utils.Utility
-import com.microsoft.appcenter.AppCenter
-import com.microsoft.appcenter.analytics.Analytics
-import com.microsoft.appcenter.crashes.Crashes
 import jonathanfinerty.once.Once
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import rikka.sui.Sui
@@ -29,10 +26,10 @@ class AnywhereApplication : Application() {
       //PoliceMan.checkApplicationClass(this)
       //PoliceMan.checkPMProxy(this)
       Timber.plant(ReleaseTree())
-      AppCenter.start(
+      /*AppCenter.start(
         this, BuildConfig.APP_CENTER_SECRET,
         Analytics::class.java, Crashes::class.java
-      )
+      )*/
     }
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {

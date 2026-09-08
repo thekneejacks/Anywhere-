@@ -161,12 +161,12 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           true
         }
       }
-      findPreference<TwoStatePreference>(Const.PREF_LISTEN_CLIP_BOARD)?.apply {
+      /*indPreference<TwoStatePreference>(Const.PREF_LISTEN_CLIP_BOARD)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.shouldListenClipBoardPref = newValue as Boolean
           true
         }
-      }
+      }*/
 
       //Others
       findPreference<Preference>(Const.PREF_HELP)?.apply {

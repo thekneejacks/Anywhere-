@@ -1,42 +1,28 @@
 package com.absinthe.anywhere_.utils
 
 import android.annotation.SuppressLint
-import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.UriPermission
-import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.os.MessageQueue
-import android.os.Parcelable
 import androidx.annotation.ChecksSdkIntAtLeast
-import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
-import androidx.core.net.toUri
 import com.absinthe.anywhere_.BuildConfig
-import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.viewholder.AppListBean
 import com.absinthe.anywhere_.model.viewholder.FlowStepBean
-
 import com.absinthe.anywhere_.utils.handler.URLSchemeHandler
 import com.absinthe.anywhere_.utils.manager.URLManager
-import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.Utils
-
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import timber.log.Timber
-import java.io.File
 
 object AppUtils {
   /**

@@ -20,7 +20,7 @@ object GlobalValues {
     MMKV.mmkvWithID(spName) ?: throw IllegalStateException("mmkv instance is null")
 
   var sIsDebugMode = false
-  var shouldListenClipBoard = true
+  //var shouldListenClipBoard = true
 
   var cardModeLiveData = MutableLiveData<Any>()
 
@@ -211,11 +211,11 @@ object GlobalValues {
       mmkv.encode(Const.PREF_SHOW_DEFREEZING_TOAST, value)
     }
 
-  var shouldListenClipBoardPref
+  /*var shouldListenClipBoardPref
     get() = mmkv.decodeBool(Const.PREF_LISTEN_CLIP_BOARD, true)
     set(value) {
       mmkv.encode(Const.PREF_LISTEN_CLIP_BOARD, value)
-    }
+    }*/
 
   val info: CharSequence
     get() {

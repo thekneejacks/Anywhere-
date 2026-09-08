@@ -36,7 +36,6 @@ import com.absinthe.anywhere_.constants.GlobalValues.actionBarType
 import com.absinthe.anywhere_.constants.GlobalValues.autoDarkModeEnd
 import com.absinthe.anywhere_.constants.GlobalValues.autoDarkModeStart
 import com.absinthe.anywhere_.constants.GlobalValues.backgroundUri
-import com.absinthe.anywhere_.constants.GlobalValues.iconPack
 import com.absinthe.anywhere_.constants.GlobalValues.isPages
 import com.absinthe.anywhere_.constants.GlobalValues.workingMode
 import com.absinthe.anywhere_.model.Settings

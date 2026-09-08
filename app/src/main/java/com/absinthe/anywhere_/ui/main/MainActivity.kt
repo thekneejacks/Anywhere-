@@ -2,16 +2,13 @@ package com.absinthe.anywhere_.ui.main
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.ComponentName
 import android.content.Intent
-import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.IBinder
 import android.view.HapticFeedbackConstants
 import android.view.Menu
 import android.view.MenuItem
@@ -25,7 +22,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
@@ -53,7 +49,6 @@ import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
-import com.absinthe.anywhere_.services.BackupIntentService
 import com.absinthe.anywhere_.services.overlay.ICollectorService
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
@@ -63,9 +58,6 @@ import com.absinthe.anywhere_.ui.setup.SetupActivity
 import com.absinthe.anywhere_.ui.shortcuts.ShortcutsActivity
 import com.absinthe.anywhere_.utils.AppTextUtils
 import com.absinthe.anywhere_.utils.CipherUtils.decrypt
-import com.absinthe.anywhere_.utils.ClipboardUtil
-import com.absinthe.anywhere_.utils.ClipboardUtil.clearClipboard
-import com.absinthe.anywhere_.utils.ClipboardUtil.getClipBoardText
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
@@ -76,7 +68,6 @@ import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.anywhere_.view.home.FabBuilder.build
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.absinthe.libraries.utils.extensions.dp
-import com.blankj.utilcode.util.ActivityUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -108,7 +99,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
   private var collectorService: ICollectorService? = null
   private var mToggle: ActionBarDrawerToggle? = null
 
-  private val conn = object : ServiceConnection {
+  /*private val conn = object : ServiceConnection {
     override fun onServiceDisconnected(name: ComponentName?) {
       isBound = false
       collectorService = null
@@ -120,7 +111,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       collectorService?.startCollector()
       ActivityUtils.startHomeActivity()
     }
-  }
+  }*/
   private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
 
   override fun setViewBinding() = ActivityMainBinding.inflate(layoutInflater)
@@ -140,7 +131,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     super.onCreate(savedInstanceState)
     initObserver()
     getAnywhereIntent(intent)
-    backupIfNeeded()
+    //backupIfNeeded()
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
       requestPermissionLauncher =
@@ -160,7 +151,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
     hasResumed = true
 
-    if (GlobalValues.shouldListenClipBoardPref && GlobalValues.shouldListenClipBoard) {
+    /*if (GlobalValues.shouldListenClipBoardPref && GlobalValues.shouldListenClipBoard) {
       getClipBoardText(this, object : ClipboardUtil.Function {
         override fun invoke(text: String) {
           if (text.contains(URLManager.ANYWHERE_SCHEME)) {
@@ -171,7 +162,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       })
     } else {
       GlobalValues.shouldListenClipBoard = true
-    }
+    }*/
   }
 
   override fun onNewIntent(intent: Intent) {
@@ -273,7 +264,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.fab.close()
       }
       else -> {
-        backupIfNeeded()
+        //backupIfNeeded()
         finish()
       }
     }
@@ -716,7 +707,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
   }
 
-  private fun backupIfNeeded() {
+  /*private fun backupIfNeeded() {
     if (GlobalValues.webdavHost.isEmpty() ||
       GlobalValues.webdavUsername.isEmpty() ||
       GlobalValues.webdavPassword.isEmpty()
@@ -727,7 +718,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       BackupIntentService.enqueueWork(this, Intent())
       GlobalValues.needBackup = false
     }
-  }
+  }*/
 
   private fun checkNotificationPermission() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
