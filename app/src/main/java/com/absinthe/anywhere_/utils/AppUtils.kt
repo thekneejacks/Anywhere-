@@ -9,7 +9,11 @@ import android.content.UriPermission
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Handler
+import android.os.Looper
+import android.os.MessageQueue
+import android.os.Parcelable
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -25,7 +29,6 @@ import com.absinthe.anywhere_.model.viewholder.FlowStepBean
 import com.absinthe.anywhere_.receiver.HomeWidgetProvider
 import com.absinthe.anywhere_.utils.handler.URLSchemeHandler
 import com.absinthe.anywhere_.utils.manager.URLManager
-import com.absinthe.libraries.me.Absinthe
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.Utils
 import com.catchingnow.icebox.sdk_client.IceBox
@@ -288,7 +291,7 @@ object AppUtils {
    * @param context Context
    * @param entity Card entity
    */
-  fun sendEntityToMailBox(context: Context, entity: AnywhereEntity) {
+  /*fun sendEntityToMailBox(context: Context, entity: AnywhereEntity) {
     val emailIntent = Intent(Intent.ACTION_SEND)
 
     val clearEntity = AnywhereEntity.getClearedEntity(entity)
@@ -341,7 +344,7 @@ object AppUtils {
       }
       context.startActivity(chooser)
     }
-  }
+  }*/
 
   @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
   fun atLeastS(): Boolean {
@@ -451,9 +454,9 @@ object AppUtils {
       AnywhereType.Card.SHELL -> {
         true
       }
-      AnywhereType.Card.SWITCH_SHELL -> {
+      /*AnywhereType.Card.SWITCH_SHELL -> {
         true
-      }
+      }*/
       AnywhereType.Card.WORKFLOW -> {
         val flowStepList: List<FlowStepBean>? = try {
           Gson().fromJson(ae.param1, object : TypeToken<List<FlowStepBean>>() {}.type)

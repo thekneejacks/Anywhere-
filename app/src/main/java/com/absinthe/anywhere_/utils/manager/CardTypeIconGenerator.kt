@@ -47,17 +47,17 @@ object CardTypeIconGenerator {
 
   private fun getIconRes(type: Int): Int {
     return when (type) {
-      AnywhereType.Card.NOT_CARD -> R.drawable.ic_card_no
+      /*AnywhereType.Card.NOT_CARD -> R.drawable.ic_card_no
       AnywhereType.Card.URL_SCHEME -> R.drawable.ic_url_scheme
       AnywhereType.Card.ACTIVITY -> R.drawable.ic_card_activity
       AnywhereType.Card.QR_CODE -> R.drawable.ic_qr_code
-      AnywhereType.Card.IMAGE -> R.drawable.ic_card_image
+      AnywhereType.Card.IMAGE -> R.drawable.ic_card_image*/
       AnywhereType.Card.SHELL -> R.drawable.ic_card_shell
-      AnywhereType.Card.SWITCH_SHELL -> R.drawable.ic_card_switch
+      /*AnywhereType.Card.SWITCH_SHELL -> R.drawable.ic_card_switch
       AnywhereType.Card.FILE -> R.drawable.ic_card_file
       AnywhereType.Card.BROADCAST -> R.drawable.ic_card_broadcast
       AnywhereType.Card.WORKFLOW -> R.drawable.ic_card_workflow
-      AnywhereType.Card.ACCESSIBILITY -> R.drawable.ic_card_accessibility
+      AnywhereType.Card.ACCESSIBILITY -> R.drawable.ic_card_accessibility*/
       else -> 0
     }
   }

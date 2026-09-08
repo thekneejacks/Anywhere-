@@ -4,10 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.Fragment
-import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.listener.OnAppDefrostListener
-import com.absinthe.anywhere_.utils.ToastUtil
-import com.catchingnow.icebox.sdk_client.IceBox
 import java.net.URISyntaxException
 
 object URLSchemeHandler {

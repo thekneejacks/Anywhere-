@@ -27,12 +27,14 @@ import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_OFF
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_ON
 import com.absinthe.anywhere_.utils.AppUtils.atLeastO
 import com.absinthe.anywhere_.utils.ShortcutsUtils
 import com.absinthe.anywhere_.utils.UxUtils
-import com.absinthe.anywhere_.view.card.*
+import com.absinthe.anywhere_.view.card.CardItemView
+import com.absinthe.anywhere_.view.card.MinimumItemView
+import com.absinthe.anywhere_.view.card.NormalItemView
+import com.absinthe.anywhere_.view.card.StreamItemView
+import com.absinthe.anywhere_.view.card.StreamSingleLineItemView
 import com.absinthe.libraries.utils.extensions.dp
 import com.blankj.utilcode.util.Utils
 import com.bumptech.glide.Glide
@@ -271,16 +273,16 @@ class BaseCardAdapter(
       }
     }
     itemView.indicator.apply {
-      if (item.type == AnywhereType.Card.SWITCH_SHELL) {
+      /*if (item.type == AnywhereType.Card.SWITCH_SHELL) {
         isVisible = true
         if (item.param3 == SWITCH_OFF) {
           setImageResource(R.drawable.ic_red_dot)
         } else if (item.param3 == SWITCH_ON) {
           setImageResource(R.drawable.ic_green_dot)
         }
-      } else {
+      } else {*/
         isGone = true
-      }
+      //}
     }
 
     if (!selectedIndex.contains(holder.layoutPosition)) {

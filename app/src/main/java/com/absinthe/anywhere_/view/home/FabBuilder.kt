@@ -2,7 +2,6 @@ package com.absinthe.anywhere_.view.home
 
 import android.content.Context
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.libraries.utils.extensions.getColorByAttr
 import com.leinardi.android.speeddial.SpeedDialActionItem
 import com.leinardi.android.speeddial.SpeedDialView
@@ -19,7 +18,7 @@ object FabBuilder {
         context.getString(R.string.btn_add_advanced_card)
       )
     )
-    fab.addActionItem(
+    /*fab.addActionItem(
       create(
         context,
         R.id.fab_collector,
@@ -58,7 +57,7 @@ object FabBuilder {
         R.drawable.ic_add_shortcut,
         context.getString(R.string.btn_third_apps_shortcut)
       )
-    )
+    )*/
   }
 
   private fun create(context: Context, id: Int, iconRes: Int, label: String): SpeedDialActionItem {

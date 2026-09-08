@@ -9,14 +9,12 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_OFF
 import com.absinthe.anywhere_.ui.shortcuts.ShortcutsActivity
 import com.absinthe.libraries.utils.extensions.dp
 import com.blankj.utilcode.util.Utils
@@ -73,15 +71,15 @@ object ShortcutsUtils {
       }
     }
 
-    val icon = if (ae.type == AnywhereType.Card.SWITCH_SHELL) {
+    val icon = /*if (ae.type == AnywhereType.Card.SWITCH_SHELL) {
       if (ae.param3 == SWITCH_OFF) {
         ContextCompat.getDrawable(Utils.getApp(), R.drawable.ic_red_dot)!!.toBitmap()
       } else {
         ContextCompat.getDrawable(Utils.getApp(), R.drawable.ic_green_dot)!!.toBitmap()
       }
-    } else {
+    } else {*/
       UxUtils.getAppIcon(Utils.getApp(), ae, 45.dp).toBitmap()
-    }
+    //}
     val info = ShortcutInfo.Builder(Utils.getApp(), ae.id)
       .setShortLabel(ae.appName.ifEmpty { " " })
       .setIcon(Icon.createWithBitmap(icon))

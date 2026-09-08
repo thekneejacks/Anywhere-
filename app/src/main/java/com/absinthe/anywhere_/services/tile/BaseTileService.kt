@@ -8,10 +8,8 @@ import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import androidx.annotation.RequiresApi
 import com.absinthe.anywhere_.AnywhereApplication
-import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_OFF
 import com.absinthe.anywhere_.ui.shortcuts.ShortcutsActivity
 import java.io.File
 
@@ -35,11 +33,11 @@ abstract class BaseTileService : TileService() {
 
       val id = GlobalValues.mmkv.decodeString(prefTile, "0")
       AnywhereApplication.sRepository.getEntityById(id.orEmpty())?.let { entity ->
-        if (entity.type == AnywhereType.Card.SWITCH_SHELL) {
+        /*if (entity.type == AnywhereType.Card.SWITCH_SHELL) {
           it.state = if (entity.param3 == SWITCH_OFF) Tile.STATE_INACTIVE else Tile.STATE_ACTIVE
-        } else {
+        } else {*/
           it.state = Tile.STATE_INACTIVE
-        }
+        //}
       }
 
       val iconFile = File(

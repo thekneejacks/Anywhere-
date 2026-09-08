@@ -14,7 +14,10 @@ import com.absinthe.anywhere_.viewbuilder.entity.RenameDialogBuilder
 
 class RenameDialogFragment : AnywhereDialogFragment() {
 
-  private val title by lazy { arguments?.getString(EXTRA_SHARING_TEXT).orEmpty() }
+  private val title by lazy {
+    val EXTRA_SHARING_TEXT = "EXTRA_SHARING_TEXT"
+    arguments?.getString(EXTRA_SHARING_TEXT).orEmpty()
+  }
   private lateinit var mBuilder: RenameDialogBuilder
 
   override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

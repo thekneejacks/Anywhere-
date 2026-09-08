@@ -13,11 +13,9 @@ import android.service.controls.DeviceTypes
 import android.service.controls.actions.BooleanAction
 import android.service.controls.actions.ControlAction
 import androidx.annotation.RequiresApi
-import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.provider.CoreProvider.Companion.URI_ANYWHERE_ENTITY
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_OFF
 import com.absinthe.anywhere_.ui.main.MainActivity
 import com.absinthe.anywhere_.ui.shortcuts.ShortcutsActivity
 import com.absinthe.anywhere_.utils.FlagDelegate
@@ -109,14 +107,14 @@ class AwControlsProviderService : ControlsProviderService() {
           i,
           PendingIntent.FLAG_UPDATE_CURRENT or FlagDelegate.PENDING_INTENT_FLAG_MUTABLE
         )
-        val status = if (type == AnywhereType.Card.SWITCH_SHELL && cursor.getString(
+        val status = /*if (type == AnywhereType.Card.SWITCH_SHELL && cursor.getString(
             cursor.getColumnIndex(AnywhereEntity.PARAM_3)
           ) == SWITCH_OFF
         ) {
           Control.STATUS_DISABLED
-        } else {
+        } else {*/
           Control.STATUS_OK
-        }
+        //}
         val control =
           Control.StatefulBuilder(id, pi)
             // Required: The name of the control

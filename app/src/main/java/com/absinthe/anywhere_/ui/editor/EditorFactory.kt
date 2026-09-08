@@ -1,7 +1,7 @@
 package com.absinthe.anywhere_.ui.editor
 
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.ui.editor.impl.*
+import com.absinthe.anywhere_.ui.editor.impl.ShellEditorFragment
 
 object EditorFactory {
 

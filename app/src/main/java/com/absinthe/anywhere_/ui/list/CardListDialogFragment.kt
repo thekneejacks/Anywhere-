@@ -1,12 +1,12 @@
 package com.absinthe.anywhere_.ui.list
 
+//import com.absinthe.anywhere_.adapter.applist.AppListAdapter
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.ViewFlipper
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.adapter.applist.AppListAdapter
-//import com.absinthe.anywhere_.adapter.applist.AppListAdapter
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.model.viewholder.AppListBean
 import com.absinthe.anywhere_.utils.UxUtils
@@ -15,7 +15,6 @@ import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 import com.absinthe.anywhere_.view.app.AnywhereDialogFragment
 import com.absinthe.anywhere_.viewbuilder.entity.CardListDialogBuilder
 import com.absinthe.libraries.utils.extensions.dp
-import java.util.*
 
 class CardListDialogFragment : AnywhereDialogFragment() {
 

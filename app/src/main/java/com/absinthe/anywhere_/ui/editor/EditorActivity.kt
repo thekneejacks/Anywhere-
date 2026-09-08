@@ -1,17 +1,19 @@
 package com.absinthe.anywhere_.ui.editor
 
 import android.app.Activity
-import android.content.*
+import android.content.ActivityNotFoundException
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.view.Menu
 import android.view.View
 import android.view.Window
 import android.widget.FrameLayout
-import androidx.annotation.RequiresApi
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
@@ -27,15 +29,12 @@ import com.absinthe.anywhere_.model.database.isExecWithRoot
 import com.absinthe.anywhere_.services.overlay.IOverlayService
 import com.absinthe.anywhere_.services.overlay.OverlayService
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
-import com.absinthe.anywhere_.utils.*
 import com.absinthe.anywhere_.utils.AppUtils.atLeastNMR1
 import com.absinthe.anywhere_.utils.AppUtils.atLeastR
+import com.absinthe.anywhere_.utils.ToastUtil
+import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.manager.DialogManager
-import com.absinthe.anywhere_.utils.manager.DialogManager.showAddShortcutDialog
-import com.absinthe.anywhere_.utils.manager.DialogManager.showCannotAddShortcutDialog
 import com.absinthe.anywhere_.utils.manager.DialogManager.showCreatePinnedShortcutDialog
-import com.absinthe.anywhere_.utils.manager.DialogManager.showRemoveShortcutDialog
-import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 import com.absinthe.libraries.utils.extensions.getColorByAttr
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.PermissionUtils
@@ -268,7 +267,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     binding.navigationView.apply {
       setNavigationItemSelectedListener {
         when (it.itemId) {
-          R.id.add_shortcuts -> {
+          /*R.id.add_shortcuts -> {
             if (atLeastNMR1()) {
               if (!GlobalValues.shortcutsList.contains(entity.id)) {
                 addShortcut(this@EditorActivity, entity)
@@ -276,7 +275,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
                 removeShortcut(this@EditorActivity, entity)
               }
             }
-          }
+          }*/
           R.id.add_home_shortcuts -> {
             showCreatePinnedShortcutDialog(this@EditorActivity, entity)
           }
@@ -289,12 +288,12 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
           R.id.custom_color -> {
             DialogManager.showColorPickerDialog(this@EditorActivity, entity)
           }
-          R.id.share_card -> {
+          /*R.id.share_card -> {
             DialogManager.showCardSharingDialog(
               this@EditorActivity,
               AppTextUtils.genCardSharingUrl(entity)
             )
-          }
+          }*/
           R.id.custom_icon -> {
             try {
               setDocumentResult("image/*") {
@@ -316,9 +315,9 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
             AnywhereApplication.sRepository.update(ae)
             onBackPressed()
           }
-          R.id.share_to_cloud -> {
+          /*R.id.share_to_cloud -> {
             AppUtils.sendEntityToMailBox(this@EditorActivity, entity)
-          }
+          }*/
         }
         bottomDrawerBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         true
@@ -382,7 +381,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     finish()
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.N_MR1)
+  /*@RequiresApi(api = Build.VERSION_CODES.N_MR1)
   private fun addShortcut(context: Context, ae: AnywhereEntity) {
     if (ShortcutsUtils.SHORTCUT_MANAGER!!.dynamicShortcuts.size < 3) {
       val builder = AnywhereDialogBuilder(context)
@@ -396,19 +395,19 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
         onBackPressed()
       }
     }
-  }
+  }*/
 
-  @RequiresApi(api = Build.VERSION_CODES.N_MR1)
+  /*@RequiresApi(api = Build.VERSION_CODES.N_MR1)
   private fun removeShortcut(context: Context, ae: AnywhereEntity) {
     showRemoveShortcutDialog(context, ae) {
       ShortcutsUtils.removeShortcut(ae)
       onBackPressed()
     }
-  }
+  }*/
 
   private fun shouldShowMenu(): Boolean {
     return entity.type != AnywhereType.Card.IMAGE &&
-      entity.type != AnywhereType.Card.SWITCH_SHELL &&
+      //entity.type != AnywhereType.Card.SWITCH_SHELL &&
       entity.type != AnywhereType.Card.FILE
   }
 

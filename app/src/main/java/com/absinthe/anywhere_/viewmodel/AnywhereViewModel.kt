@@ -1,6 +1,5 @@
 package com.absinthe.anywhere_.viewmodel
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
@@ -8,11 +7,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.absinthe.anywhere_.AnywhereApplication
-import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.adapter.page.PageNode
 import com.absinthe.anywhere_.adapter.page.PageTitleNode
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.database.AnywhereRepository
 import com.absinthe.anywhere_.model.database.AnywhereEntity
@@ -20,14 +17,7 @@ import com.absinthe.anywhere_.model.database.PageEntity
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.absinthe.anywhere_.utils.AppUtils
-import com.absinthe.anywhere_.utils.ToastUtil
-import com.absinthe.anywhere_.utils.manager.ShellManager
-import com.absinthe.anywhere_.utils.manager.ShizukuHelper
-import com.blankj.utilcode.util.PermissionUtils
 import com.chad.library.adapter.base.entity.node.BaseNode
-import com.topjohnwu.superuser.Shell
-import timber.log.Timber
 
 class AnywhereViewModel(application: Application) : AndroidViewModel(application) {
 

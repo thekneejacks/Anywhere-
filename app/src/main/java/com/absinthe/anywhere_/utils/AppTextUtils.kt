@@ -7,8 +7,6 @@ import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues.workingMode
 import com.absinthe.anywhere_.model.ExtraBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_OFF
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_ON
 import com.absinthe.anywhere_.utils.CipherUtils.encrypt
 import com.absinthe.anywhere_.utils.handler.URLSchemeHandler.handleIntent
 import com.absinthe.anywhere_.utils.manager.URLManager
@@ -17,7 +15,8 @@ import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import timber.log.Timber
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 object AppTextUtils {
 
@@ -67,7 +66,7 @@ object AppTextUtils {
       AnywhereType.Card.SHELL -> {
         cmd.append(AnywhereType.Prefix.SHELL_PREFIX).append(item.param1)
       }
-      AnywhereType.Card.SWITCH_SHELL -> {
+      /*AnywhereType.Card.SWITCH_SHELL -> {
         cmd.append(AnywhereType.Prefix.SHELL_PREFIX)
 
         if (item.param3 == SWITCH_OFF) {
@@ -75,7 +74,7 @@ object AppTextUtils {
         } else if (item.param3 == SWITCH_ON) {
           cmd.append(item.param2)
         }
-      }
+      }*/
       AnywhereType.Card.IMAGE -> {
         cmd.append(AnywhereType.Prefix.IMAGE_PREFIX)
           .append(item.param1)
