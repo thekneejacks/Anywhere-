@@ -32,7 +32,6 @@ import com.absinthe.anywhere_.ui.dialog.DynamicParamsDialogFragment.OnParamsInpu
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.impl.SWITCH_OFF
 import com.absinthe.anywhere_.ui.editor.impl.SWITCH_ON
-import com.absinthe.anywhere_.ui.qrcode.QRCodeCollectionActivity
 import com.absinthe.anywhere_.utils.AppTextUtils.getItemCommand
 import com.absinthe.anywhere_.utils.AppTextUtils.getPkgNameByCommand
 import com.absinthe.anywhere_.utils.AppUtils
@@ -427,11 +426,11 @@ object Opener {
   }
 
   private fun openQrCodeEntity(context: Context, item: AnywhereEntity) {
-    val qrId = if (context is QRCodeCollectionActivity) {
+    val qrId = /*if (context is QRCodeCollectionActivity) {
       item.id
-    } else {
+    } else {*/
       item.param2.orEmpty()
-    }
+    //}
     QRCollection.getQREntity(qrId)?.launch()
     listener?.onOpened()
   }

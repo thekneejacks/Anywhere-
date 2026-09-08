@@ -224,7 +224,7 @@
       android:exported="false"
       android:label="@string/settings_backup" />
 
-    <!--    App list page    -->
+    <!--    App list page
     <activity
       android:name=".ui.list.AppListActivity"
       android:exported="false"
@@ -237,9 +237,9 @@
       <meta-data
         android:name="android.app.searchable"
         android:resource="@xml/searchable" />
-    </activity>
+    </activity>-->
 
-    <!--    App detail page    -->
+    <!--    App detail page
     <activity
       android:name=".ui.list.AppDetailActivity"
       android:exported="true"
@@ -248,7 +248,7 @@
         <action android:name="android.intent.action.SHOW_APP_INFO" />
         <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
-    </activity>
+    </activity>-->
 
     <!--    Tile setting page    -->
     <activity
@@ -260,12 +260,12 @@
       </intent-filter>
     </activity>
 
-    <!--    QR code collection page    -->
+    <!--    QR code collection page
     <activity
       android:name=".ui.qrcode.QRCodeCollectionActivity"
       android:configChanges="orientation"
       android:exported="false"
-      android:label="@string/btn_qr_code_collection" />
+      android:label="@string/btn_qr_code_collection" />-->
 
     <!--    Lab page    -->
     <activity
@@ -273,11 +273,11 @@
       android:exported="false"
       android:label="@string/settings_lab" />
 
-    <!--    Defrost mode page    -->
+    <!--    Defrost mode page
     <activity
       android:name=".ui.settings.DefrostActivity"
       android:exported="false"
-      android:label="@string/title_activity_defrost" />
+      android:label="@string/title_activity_defrost" />-->
 
     <!--    Logcat page
     <activity
@@ -285,11 +285,11 @@
       android:exported="false"
       android:label="@string/logcat" />-->
 
-    <!--    Cloud rules page    -->
+    <!--    Cloud rules page
     <activity
       android:name=".ui.cloud.CloudRulesActivity"
       android:exported="false"
-      android:label="@string/btn_cloud_rules" />
+      android:label="@string/btn_cloud_rules" />-->
 
     <!--    Editor container    -->
     <activity
@@ -314,9 +314,9 @@
       android:exported="false"
       tools:replace="exported" />
 
-    <activity
+    <!--<activity
       android:name=".ui.shortcuts.ThirdAppsShortcutActivity"
-      android:exported="false" />
+      android:exported="false" />-->
 
     <!--    Collector tile service    -->
     <service

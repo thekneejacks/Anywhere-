@@ -12,7 +12,6 @@ import android.view.View
 import android.view.Window
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
-import androidx.core.text.HtmlCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
@@ -25,11 +24,9 @@ import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.databinding.ActivityEditorBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.isExecWithRoot
-import com.absinthe.anywhere_.model.viewholder.FlowStepBean
 import com.absinthe.anywhere_.services.overlay.IOverlayService
 import com.absinthe.anywhere_.services.overlay.OverlayService
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
-import com.absinthe.anywhere_.ui.editor.impl.WorkflowEditorFragment
 import com.absinthe.anywhere_.utils.*
 import com.absinthe.anywhere_.utils.AppUtils.atLeastNMR1
 import com.absinthe.anywhere_.utils.AppUtils.atLeastR
@@ -180,7 +177,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       .replace(binding.fragmentContainerView.id, fragment)
       .commitNow()
 
-    if (editor is WorkflowEditorFragment) {
+    /*if (editor is WorkflowEditorFragment) {
       workflowResultItem.observe(this) {
         (editor as WorkflowEditorFragment).apply {
           if (adapter.data.isNotEmpty() && currentIndex != -1) {
@@ -188,7 +185,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
           }
         }
       }
-    }
+    }*/
 
     when (entity.type) {
       AnywhereType.Card.ACTIVITY, AnywhereType.Card.URL_SCHEME,

@@ -73,7 +73,7 @@ class AnywhereViewModel(application: Application) : AndroidViewModel(application
     })
   }
 
-  fun startCollector(activity: Activity, listener: OnStartCollectorListener) {
+  /*fun startCollector(activity: Activity, listener: OnStartCollectorListener) {
     when (GlobalValues.workingMode) {
       Const.WORKING_MODE_URL_SCHEME -> {
         ToastUtil.makeText(R.string.toast_works_on_root_or_shizuku)
@@ -127,7 +127,7 @@ class AnywhereViewModel(application: Application) : AndroidViewModel(application
         }
       }
     }
-  }
+  }*/
 
   fun addPage() {
     mRepository.allPageEntities.value?.let { pages ->

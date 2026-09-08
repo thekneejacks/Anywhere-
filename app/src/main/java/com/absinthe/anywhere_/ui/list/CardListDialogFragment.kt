@@ -6,6 +6,7 @@ import android.widget.ViewFlipper
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.adapter.applist.AppListAdapter
+//import com.absinthe.anywhere_.adapter.applist.AppListAdapter
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.model.viewholder.AppListBean
 import com.absinthe.anywhere_.utils.UxUtils

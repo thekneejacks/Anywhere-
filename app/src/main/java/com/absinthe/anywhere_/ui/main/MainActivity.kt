@@ -3,7 +3,6 @@ package com.absinthe.anywhere_.ui.main
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
@@ -13,7 +12,11 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
-import android.view.*
+import android.view.HapticFeedbackConstants
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.Window
 import android.widget.ImageButton
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -42,28 +45,31 @@ import com.absinthe.anywhere_.adapter.manager.WrapContentLinearLayoutManager
 import com.absinthe.anywhere_.adapter.page.PageListAdapter
 import com.absinthe.anywhere_.adapter.page.PageTitleNode
 import com.absinthe.anywhere_.adapter.page.PageTitleProvider
-import com.absinthe.anywhere_.constants.*
+import com.absinthe.anywhere_.constants.AnywhereType
+import com.absinthe.anywhere_.constants.Const
+import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.constants.GlobalValues.setsCategory
+import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
 import com.absinthe.anywhere_.services.BackupIntentService
 import com.absinthe.anywhere_.services.overlay.CollectorService
 import com.absinthe.anywhere_.services.overlay.ICollectorService
-import com.absinthe.anywhere_.ui.cloud.CloudRulesActivity
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.absinthe.anywhere_.ui.list.AppListActivity
-import com.absinthe.anywhere_.ui.qrcode.QRCodeCollectionActivity
 import com.absinthe.anywhere_.ui.settings.SettingsActivity
 import com.absinthe.anywhere_.ui.setup.SetupActivity
 import com.absinthe.anywhere_.ui.shortcuts.ShortcutsActivity
-import com.absinthe.anywhere_.ui.shortcuts.ThirdAppsShortcutActivity
-import com.absinthe.anywhere_.utils.*
+import com.absinthe.anywhere_.utils.AppTextUtils
 import com.absinthe.anywhere_.utils.CipherUtils.decrypt
+import com.absinthe.anywhere_.utils.ClipboardUtil
 import com.absinthe.anywhere_.utils.ClipboardUtil.clearClipboard
 import com.absinthe.anywhere_.utils.ClipboardUtil.getClipBoardText
+import com.absinthe.anywhere_.utils.ToastUtil
+import com.absinthe.anywhere_.utils.UxUtils
+import com.absinthe.anywhere_.utils.doOnMainThreadIdle
 import com.absinthe.anywhere_.utils.handler.Opener
 import com.absinthe.anywhere_.utils.manager.CardTypeIconGenerator
 import com.absinthe.anywhere_.utils.manager.DialogManager.showAdvancedCardSelectDialog
@@ -82,7 +88,6 @@ import com.google.android.material.transition.platform.MaterialContainerTransfor
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.leinardi.android.speeddial.SpeedDialActionItem
-import com.microsoft.appcenter.analytics.Analytics
 import it.sephiroth.android.library.xtooltip.ClosePolicy.Companion.TOUCH_ANYWHERE_CONSUME
 import it.sephiroth.android.library.xtooltip.Tooltip
 import jonathanfinerty.once.Once
@@ -535,11 +540,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       setOnActionSelectedListener { actionItem: SpeedDialActionItem ->
         when (actionItem.id) {
           R.id.fab_advanced -> showAdvancedCardSelectDialog(this@MainActivity)
-          R.id.fab_activity_list -> {
+          /*R.id.fab_activity_list -> {
             startActivity(Intent(this@MainActivity, AppListActivity::class.java))
             Analytics.trackEvent(EventTag.FAB_ACTIVITY_LIST_CLICK)
-          }
-          R.id.fab_collector -> {
+          }*/
+          /*R.id.fab_collector -> {
             viewModel.startCollector(
               this@MainActivity,
               object : AnywhereViewModel.OnStartCollectorListener {
@@ -557,19 +562,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
               })
             Analytics.trackEvent(EventTag.FAB_COLLECTOR_CLICK)
-          }
-          R.id.fab_qr_code_collection -> {
+          }*/
+          /*R.id.fab_qr_code_collection -> {
             startActivity(Intent(this@MainActivity, QRCodeCollectionActivity::class.java))
             Analytics.trackEvent(EventTag.FAB_QR_CODE_COLLECTION_CLICK)
-          }
-          R.id.fab_cloud_rules -> {
+          }*/
+          /*R.id.fab_cloud_rules -> {
             startActivity(Intent(this@MainActivity, CloudRulesActivity::class.java))
             Analytics.trackEvent(EventTag.FAB_CLOUD_RULES_CLICK)
-          }
-          R.id.fab_third_apps_shortcut -> {
+          }*/
+          /*R.id.fab_third_apps_shortcut -> {
             startActivity(Intent(this@MainActivity, ThirdAppsShortcutActivity::class.java))
             Analytics.trackEvent(EventTag.FAB_THIRD_APPS_SHORTCUT_CLICK)
-          }
+          }*/
           else -> return@setOnActionSelectedListener false
         }
         close()
