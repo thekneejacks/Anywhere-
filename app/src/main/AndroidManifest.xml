@@ -182,12 +182,12 @@
       </intent-filter>
     </activity>
 
-    <!--    About page    -->
+    <!--    About page
     <activity
       android:name=".ui.about.AboutActivity"
       android:exported="false"
       android:label="@string/about_title"
-      android:theme="@style/AppTheme.About" />
+      android:theme="@style/AppTheme.About" />-->
 
     <!--    Shortcut bridge    -->
     <activity

@@ -177,7 +177,7 @@
       app:summary="@string/settings_help_summary"
       app:title="@string/settings_help" />
 
-    <Preference
+    <!--<Preference
       app:icon="@drawable/ic_logo_24dp"
       app:key="about"
       app:summary="@string/settings_about_summary"
@@ -187,7 +187,7 @@
         android:targetClass="com.absinthe.anywhere_.ui.about.AboutActivity"
         android:targetPackage="@string/application_id" />
 
-    </Preference>
+    </Preference>-->
 
   </PreferenceCategory>
 

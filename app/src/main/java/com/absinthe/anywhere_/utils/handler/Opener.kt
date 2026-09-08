@@ -1,5 +1,6 @@
 package com.absinthe.anywhere_.utils.handler
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.ComponentName
@@ -9,45 +10,28 @@ import android.content.pm.PackageManager
 import android.os.FileUriExposedException
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
-import cn.vove7.andro_accessibility_api.AppScope
-import cn.vove7.andro_accessibility_api.api.*
-import cn.vove7.andro_accessibility_api.utils.NeedAccessibilityException
-import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.a11y.A11yEntity
-import com.absinthe.anywhere_.a11y.A11yType
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
-import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.listener.OnAppDefrostListener
 import com.absinthe.anywhere_.model.*
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.database.isBrightWhenShowImage
 import com.absinthe.anywhere_.model.database.isExecWithRoot
-import com.absinthe.anywhere_.model.manager.QRCollection
-import com.absinthe.anywhere_.services.WorkflowIntentService
 import com.absinthe.anywhere_.ui.dialog.DynamicParamsDialogFragment.OnParamsInputListener
-import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_OFF
-import com.absinthe.anywhere_.ui.editor.impl.SWITCH_ON
 import com.absinthe.anywhere_.utils.AppTextUtils.getItemCommand
 import com.absinthe.anywhere_.utils.AppTextUtils.getPkgNameByCommand
 import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.utils.AppUtils.isActivityExported
 import com.absinthe.anywhere_.utils.CommandUtils
-import com.absinthe.anywhere_.utils.ShortcutsUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.ActivityStackManager
 import com.absinthe.anywhere_.utils.manager.DialogManager
-import com.absinthe.anywhere_.view.app.AnywhereDialogFragment
 import com.blankj.utilcode.util.IntentUtils
 import com.catchingnow.icebox.sdk_client.IceBox
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
-import jonathanfinerty.once.Once
-import kotlinx.coroutines.*
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
@@ -55,6 +39,7 @@ private const val TYPE_NONE = -1
 private const val TYPE_ENTITY = 0
 private const val TYPE_CMD = 1
 
+@SuppressLint("WrongCommentType")
 object Opener {
 
   private var context: WeakReference<Context>? = null
@@ -124,14 +109,14 @@ object Opener {
     }
   }
 
-  @Throws(NullPointerException::class)
+  /*@Throws(NullPointerException::class)
   fun openWithPackageName(packageName: String) {
     context?.get()?.let {
       openByCommand(it, command ?: throw NullPointerException("null package name."), packageName)
     } ?: let {
       throw NullPointerException("Got a null context instance from Opener.")
     }
-  }
+  }*/
 
   private fun openFromEntity(context: Context) {
     Timber.d("openFromEntity")
@@ -144,35 +129,35 @@ object Opener {
     Timber.d("openFromCommand")
     command?.let {
       when {
-        it.startsWith(AnywhereType.Prefix.DYNAMIC_PARAMS_PREFIX) -> {
+        /*it.startsWith(AnywhereType.Prefix.DYNAMIC_PARAMS_PREFIX) -> {
           openDynamicParamCommand(context, it)
-        }
+        }*/
         it.startsWith(AnywhereType.Prefix.SHELL_PREFIX) -> {
           openShellCommand(context, it)
         }
-        else -> {
+        /*else -> {
           openByCommand(context, it, getPkgNameByCommand(it))
-        }
+        }*/
       }
     }
   }
 
   private fun openAnywhereEntity(context: Context, item: AnywhereEntity) {
     when (item.type) {
-      AnywhereType.Card.URL_SCHEME -> openUrlSchemeEntity(context, item)
-      AnywhereType.Card.ACTIVITY -> openActivityEntity(context, item)
-      AnywhereType.Card.QR_CODE -> openQrCodeEntity(context, item)
-      AnywhereType.Card.IMAGE -> openImageEntity(context, item)
+      //AnywhereType.Card.URL_SCHEME -> openUrlSchemeEntity(context, item)
+      //AnywhereType.Card.ACTIVITY -> openActivityEntity(context, item)
+      //AnywhereType.Card.QR_CODE -> openQrCodeEntity(context, item)
+      //AnywhereType.Card.IMAGE -> openImageEntity(context, item)
       AnywhereType.Card.SHELL -> openShellEntity(context, item)
-      AnywhereType.Card.SWITCH_SHELL -> openSwitchShellEntity(context, item)
-      AnywhereType.Card.FILE -> openFileEntity(context, item)
-      AnywhereType.Card.BROADCAST -> openBroadcastEntity(context, item)
-      AnywhereType.Card.WORKFLOW -> openWorkflowEntity(context, item)
-      AnywhereType.Card.ACCESSIBILITY -> openA11yEntity(context, item)
+      //AnywhereType.Card.SWITCH_SHELL -> openSwitchShellEntity(context, item)
+      //AnywhereType.Card.FILE -> openFileEntity(context, item)
+      //AnywhereType.Card.BROADCAST -> openBroadcastEntity(context, item)
+      //AnywhereType.Card.WORKFLOW -> openWorkflowEntity(context, item)
+      //AnywhereType.Card.ACCESSIBILITY -> openA11yEntity(context, item)
     }
   }
 
-  private fun openByCommand(context: Context, cmd: String, packageName: String?) {
+  /*private fun openByCommand(context: Context, cmd: String, packageName: String?) {
     if (cmd.isEmpty()) {
       return
     }
@@ -202,9 +187,9 @@ object Opener {
       }
     }
     listener?.onOpened()
-  }
+  }*/
 
-  private fun openDynamicParamCommand(context: Context, command: String) {
+  /*private fun openDynamicParamCommand(context: Context, command: String) {
     var newCommand = command.removePrefix(AnywhereType.Prefix.DYNAMIC_PARAMS_PREFIX)
     val splitIndex = newCommand.indexOf(']')
     val param = newCommand.substring(0, splitIndex)
@@ -223,7 +208,7 @@ object Opener {
           listener?.onOpened()
         }
       })
-  }
+  }*/
 
   private fun openShellCommand(context: Context, command: String) {
     val newCommand = command.removePrefix(AnywhereType.Prefix.SHELL_PREFIX)
@@ -246,7 +231,7 @@ object Opener {
     }
   }
 
-  private fun openUrlSchemeEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openUrlSchemeEntity(context: Context, item: AnywhereEntity) {
     if (!item.param3.isNullOrEmpty()) {
       val ctx = if (context is AppCompatActivity) {
         context
@@ -296,9 +281,9 @@ object Opener {
         listener?.onOpened()
       }
     }
-  }
+  }*/
 
-  private fun openActivityEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openActivityEntity(context: Context, item: AnywhereEntity) {
     val className = if (item.param2.orEmpty().startsWith(".")) {
       item.param1 + item.param2
     } else {
@@ -423,9 +408,9 @@ object Opener {
     } else {
       openByCommand(context, getItemCommand(item), item.packageName)
     }
-  }
+  }*/
 
-  private fun openQrCodeEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openQrCodeEntity(context: Context, item: AnywhereEntity) {
     val qrId = /*if (context is QRCodeCollectionActivity) {
       item.id
     } else {*/
@@ -433,9 +418,9 @@ object Opener {
     //}
     QRCollection.getQREntity(qrId)?.launch()
     listener?.onOpened()
-  }
+  }*/
 
-  private fun openImageEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openImageEntity(context: Context, item: AnywhereEntity) {
     val ctx = if (context is AppCompatActivity) {
       context
     } else {
@@ -460,7 +445,7 @@ object Opener {
         it.screenBrightness = 1.0f
       }
     }
-  }
+  }*/
 
   private fun openShellEntity(context: Context, item: AnywhereEntity) {
     val result = CommandUtils.execAdbCmd(item.param1)
@@ -471,7 +456,7 @@ object Opener {
       { listener?.onOpened() })
   }
 
-  private fun openSwitchShellEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openSwitchShellEntity(context: Context, item: AnywhereEntity) {
     openByCommand(context, getItemCommand(item), item.packageName)
     val ae = item.copy().apply {
       param3 = if (param3 == SWITCH_OFF) SWITCH_ON else SWITCH_OFF
@@ -481,9 +466,9 @@ object Opener {
     if (AppUtils.atLeastNMR1()) {
       ShortcutsUtils.updateShortcut(ae)
     }
-  }
+  }*/
 
-  private fun openFileEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openFileEntity(context: Context, item: AnywhereEntity) {
     val intent = Intent().apply {
       action = Intent.ACTION_VIEW
       data = item.param1.toUri()
@@ -499,9 +484,9 @@ object Opener {
       ToastUtil.makeText(R.string.toast_no_react_url)
     }
     listener?.onOpened()
-  }
+  }*/
 
-  private fun openBroadcastEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openBroadcastEntity(context: Context, item: AnywhereEntity) {
     val extraBean: ExtraBean? = try {
       Gson().fromJson(item.param1, ExtraBean::class.java)
     } catch (e: JsonSyntaxException) {
@@ -567,9 +552,9 @@ object Opener {
       ToastUtil.makeText(R.string.toast_json_error)
     }
     listener?.onOpened()
-  }
+  }*/
 
-  private fun openWorkflowEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openWorkflowEntity(context: Context, item: AnywhereEntity) {
     if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.A11Y_ANNOUNCEMENT)) {
       if (context is Activity) {
         DialogManager.showA11yAnnouncementDialog(context)
@@ -580,9 +565,9 @@ object Opener {
       putExtra(EXTRA_ENTITY, item)
     })
     listener?.onOpened()
-  }
+  }*/
 
-  private fun openA11yEntity(context: Context, item: AnywhereEntity) {
+  /*private fun openA11yEntity(context: Context, item: AnywhereEntity) {
     if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.A11Y_ANNOUNCEMENT)) {
       if (context is Activity) {
         DialogManager.showA11yAnnouncementDialog(context)
@@ -713,7 +698,7 @@ object Opener {
       Timber.e(e)
       listener?.onOpened()
     }
-  }
+  }*/
 
   interface OnOpenListener {
     fun onOpened()

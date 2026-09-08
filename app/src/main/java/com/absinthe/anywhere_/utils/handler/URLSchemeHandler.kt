@@ -14,7 +14,7 @@ object URLSchemeHandler {
 
   @Throws(Exception::class)
   fun parse(context: Context, url: String, packageName: String? = null, action: () -> Unit = {}) {
-    if (!packageName.isNullOrEmpty() && IceBox.getAppEnabledSetting(context, packageName) != 0) {
+    /*if (!packageName.isNullOrEmpty() && IceBox.getAppEnabledSetting(context, packageName) != 0) {
       val result = DefrostHandler.defrost(context, packageName, object : OnAppDefrostListener {
         override fun onAppDefrost() {
           try {
@@ -28,7 +28,7 @@ object URLSchemeHandler {
       if (!result) {
         ToastUtil.makeText(context, R.string.toast_not_choose_defrost_mode)
       }
-    } else {
+    } else {*/
       try {
         context.startActivity(handleIntent(url))
         action()
@@ -36,7 +36,7 @@ object URLSchemeHandler {
         action()
         throw e
       }
-    }
+
   }
 
   @Throws(Exception::class)
