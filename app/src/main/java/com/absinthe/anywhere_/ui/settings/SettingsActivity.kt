@@ -169,7 +169,7 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
       }*/
 
       //Others
-      findPreference<Preference>(Const.PREF_HELP)?.apply {
+      /*findPreference<Preference>(Const.PREF_HELP)?.apply {
         setOnPreferenceClickListener {
           try {
             CustomTabsIntent.Builder().build().apply {
@@ -188,7 +188,7 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           }
           true
         }
-      }
+      }*/
     }
 
     override fun onCreateRecyclerView(

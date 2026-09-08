@@ -214,20 +214,20 @@ dependencies {
   implementation("com.blankj:utilcodex:1.31.1")
   implementation("com.tencent:mmkv-static:1.3.1")
   implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11")
-  implementation("com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT")
-  implementation("com.github.topjohnwu.libsu:core:5.2.1")
-  implementation("com.github.thegrizzlylabs:sardine-android:0.8")
+  //implementation("com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT")
+  //implementation("com.github.topjohnwu.libsu:core:5.2.1")
+  //implementation("com.github.thegrizzlylabs:sardine-android:0.8")
   implementation("com.jonathanfinerty.once:once:1.3.1")
   implementation("org.lsposed.hiddenapibypass:hiddenapibypass:4.3")
   implementation("com.jakewharton.timber:timber:5.0.1")
 
   //UX
-  implementation("com.drakeet.about:about:2.5.2")
-  implementation("com.drakeet.multitype:multitype:4.3.0")
+  //implementation("com.drakeet.about:about:2.5.2")
+  //implementation("com.drakeet.multitype:multitype:4.3.0")
   implementation("com.drakeet.drawer:drawer:1.0.3")
   implementation("com.github.sephiroth74:android-target-tooltip:2.0.4")
   implementation("com.leinardi.android:speed-dial:3.3.0")
-  implementation("me.zhanghai.android.fastscroll:library:1.3.0")
+  //implementation("me.zhanghai.android.fastscroll:library:1.3.0")
 
   val shizukuVersion = "12.2.0"
   // required by Shizuku and Sui
@@ -241,20 +241,20 @@ dependencies {
   implementation("dev.rikka.rikkax.recyclerview:recyclerview-ktx:1.3.2")
   implementation("dev.rikka.rikkax.widget:borderview:1.1.0")
   implementation("dev.rikka.rikkax.preference:simplemenu-preference:1.0.3")
-  implementation("dev.rikka.rikkax.insets:insets:1.3.0")
-  implementation("dev.rikka.rikkax.layoutinflater:layoutinflater:1.3.0")
+  //implementation("dev.rikka.rikkax.insets:insets:1.3.0")
+  //implementation("dev.rikka.rikkax.layoutinflater:layoutinflater:1.3.0")
   implementation("dev.rikka.rikkax.material:material-preference:2.0.0")
 
   //Network
-  implementation("com.squareup.okhttp3:okhttp:4.11.0")
-  implementation("com.squareup.retrofit2:retrofit:2.9.0")
-  implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-  implementation("com.squareup.okio:okio:3.5.0")
+  //implementation("com.squareup.okhttp3:okhttp:4.11.0")
+  //implementation("com.squareup.retrofit2:retrofit:2.9.0")
+  //implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+  //implementation("com.squareup.okio:okio:3.5.0")
 
   //Rx
-  implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-  implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-  implementation("org.reactivestreams:reactive-streams:1.0.4")
+  //implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+  //implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+  //implementation("org.reactivestreams:reactive-streams:1.0.4")
 
   //Debug
   testImplementation("junit:junit:4.13.2")

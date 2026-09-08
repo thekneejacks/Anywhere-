@@ -12,7 +12,6 @@ import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
 import com.absinthe.anywhere_.utils.manager.URLManager
 import com.google.gson.Gson
-import com.thegrizzlylabs.sardineandroid.impl.OkHttpSardine
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -116,7 +115,7 @@ object StorageUtils {
     }
   }
 
-  fun webdavBackup() {
+  /*fun webdavBackup() {
     GlobalScope.launch(Dispatchers.IO) {
       val sardine = OkHttpSardine()
       sardine.setCredentials(GlobalValues.webdavUsername, GlobalValues.webdavPassword)
@@ -150,5 +149,5 @@ object StorageUtils {
         }
       }
     }
-  }
+  }*/
 }
