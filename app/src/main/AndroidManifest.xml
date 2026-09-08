@@ -279,11 +279,11 @@
       android:exported="false"
       android:label="@string/title_activity_defrost" />
 
-    <!--    Logcat page    -->
+    <!--    Logcat page
     <activity
       android:name=".ui.settings.LogcatActivity"
       android:exported="false"
-      android:label="@string/logcat" />
+      android:label="@string/logcat" />-->
 
     <!--    Cloud rules page    -->
     <activity
@@ -503,10 +503,10 @@
         android:resource="@xml/app_delegation" />
     </receiver>
 
-    <!--    Notification click event receiver    -->
+    <!--    Notification click event receiver
     <receiver
       android:name=".receiver.NotificationClickReceiver"
-      android:exported="false" />
+      android:exported="false" />-->
 
     <!--    Shizuku provider    -->
     <provider

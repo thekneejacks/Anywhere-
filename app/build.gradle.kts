@@ -20,16 +20,17 @@ android {
   defaultConfig {
     applicationId = "com.absinthe.anywhere_"
     namespace = "com.absinthe.anywhere_"
-    minSdk = 23
+    minSdk = 27
     targetSdk = 33
     versionCode = verCode
     versionName = verName
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     manifestPlaceholders["appName"] = "Anywhere-"
     ndk {
-      abiFilters += arrayOf("armeabi-v7a", "arm64-v8a")
+      //noinspection ChromeOsAbiSupport
+      abiFilters += "arm64-v8a"
     }
-    resourceConfigurations += arrayOf("en", "zh-rCN", "zh-rTW", "zh-rHK")
+    resourceConfigurations += "en"
   }
 
   ksp {

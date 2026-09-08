@@ -23,9 +23,7 @@ import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.viewholder.AppListBean
 import com.absinthe.anywhere_.model.viewholder.FlowStepBean
 import com.absinthe.anywhere_.receiver.HomeWidgetProvider
-import com.absinthe.anywhere_.ui.settings.LogcatActivity
 import com.absinthe.anywhere_.utils.handler.URLSchemeHandler
-import com.absinthe.anywhere_.utils.manager.LogRecorder
 import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.libraries.me.Absinthe
 import com.blankj.utilcode.util.AppUtils
@@ -207,7 +205,7 @@ object AppUtils {
    *
    * @param context Context
    */
-  fun startLogcat(context: Context) {
+  /*fun startLogcat(context: Context) {
     GlobalValues.sIsDebugMode = true
     val logRecorder = LogRecorder.Builder(context)
       .setLogFolderName(context.getString(R.string.logcat))
@@ -219,7 +217,7 @@ object AppUtils {
     LogRecorder.setInstance(logRecorder)
     NotifyUtils.createLogcatNotification(context)
     LogcatActivity.isStartCatching = true
-  }
+  }*/
 
   /**
    *

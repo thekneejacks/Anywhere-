@@ -107,7 +107,7 @@ object DialogManager {
       .setPositiveButton(R.string.dialog_delete_positive_button, null)
       .setNeutralButton(R.string.logcat) { _, _ ->
         Settings.setLogger()
-        AppUtils.startLogcat(activity)
+        //pUtils.startLogcat(activity)
       }
       .setCancelable(false)
       .show()

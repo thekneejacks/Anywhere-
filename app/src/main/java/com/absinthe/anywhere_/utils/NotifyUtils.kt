@@ -3,7 +3,6 @@ package com.absinthe.anywhere_.utils
 import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -15,8 +14,6 @@ import androidx.core.content.ContextCompat
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.AwContextWrapper
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.receiver.NotificationClickReceiver
-import com.absinthe.anywhere_.utils.manager.LogRecorder
 import com.blankj.utilcode.util.NotificationUtils
 import com.blankj.utilcode.util.NotificationUtils.ChannelConfig
 import com.blankj.utilcode.util.Utils
@@ -104,7 +101,7 @@ object NotifyUtils {
     context.stopForeground(true)
   }
 
-  fun createLogcatNotification(context: Context) {
+  /*fun createLogcatNotification(context: Context) {
     val areNotificationsEnabled = notificationManager.areNotificationsEnabled()
     if (!areNotificationsEnabled) {
       Timber.d("Notifications are disabled")
@@ -133,7 +130,7 @@ object NotifyUtils {
         .build()
     }
     LogRecorder.getInstance().start()
-  }
+  }*/
 
   fun createBackupNotification(context: Service) {
     val areNotificationsEnabled = notificationManager.areNotificationsEnabled()
