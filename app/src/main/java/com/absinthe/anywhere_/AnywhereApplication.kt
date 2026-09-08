@@ -3,10 +3,8 @@ package com.absinthe.anywhere_
 import android.app.Application
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
-import cn.vove7.andro_accessibility_api.AccessibilityApi
 import com.absinthe.anywhere_.database.AnywhereRepository
 import com.absinthe.anywhere_.model.Settings
-import com.absinthe.anywhere_.services.IzukoService
 //import com.absinthe.anywhere_.utils.manager.PoliceMan
 import com.absinthe.anywhere_.utils.timber.ReleaseTree
 import com.absinthe.anywhere_.utils.timber.ThreadAwareDebugTree
@@ -51,10 +49,10 @@ class AnywhereApplication : Application() {
     Global.start()
     sRepository = AnywhereRepository(this)
 
-    AccessibilityApi.apply {
+    /*AccessibilityApi.apply {
       BASE_SERVICE_CLS = IzukoService::class.java
       GESTURE_SERVICE_CLS = IzukoService::class.java
-    }
+    }*/
   }
 
   companion object {

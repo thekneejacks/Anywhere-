@@ -33,7 +33,7 @@ import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.FragmentCategoryCardBinding
 import com.absinthe.anywhere_.extension.addSystemBarPaddingAsync
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.utils.AppUtils.updateWidget
+//import com.absinthe.anywhere_.utils.AppUtils.updateWidget
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.libraries.utils.extensions.paddingEndCompat
@@ -257,7 +257,7 @@ class CategoryCardFragment : Fragment() {
         list.toMutableList()
       }
     )
-    updateWidget(Utils.getApp())
+    //updateWidget(Utils.getApp())
   }
 
   private fun resetSelectState() {

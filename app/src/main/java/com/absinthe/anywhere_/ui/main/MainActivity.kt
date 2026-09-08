@@ -647,7 +647,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       }
 
       when (type.toInt()) {
-        AnywhereType.Card.URL_SCHEME -> {
+        /*AnywhereType.Card.URL_SCHEME -> {
           viewModel.setUpUrlScheme(this, param1)
         }
         AnywhereType.Card.ACTIVITY -> {
@@ -663,7 +663,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             putExtra(EXTRA_ENTITY, ae)
             putExtra(EXTRA_EDIT_MODE, false)
           })
-        }
+        }*/
         AnywhereType.Card.SHELL -> {
           val ae = AnywhereEntity().apply {
             this.appName = AnywhereType.Card.NEW_TITLE_MAP[AnywhereType.Card.SHELL]!!

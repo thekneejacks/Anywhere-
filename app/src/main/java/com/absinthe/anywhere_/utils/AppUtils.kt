@@ -26,7 +26,7 @@ import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.viewholder.AppListBean
 import com.absinthe.anywhere_.model.viewholder.FlowStepBean
-import com.absinthe.anywhere_.receiver.HomeWidgetProvider
+
 import com.absinthe.anywhere_.utils.handler.URLSchemeHandler
 import com.absinthe.anywhere_.utils.manager.URLManager
 import com.blankj.utilcode.util.AppUtils
@@ -79,7 +79,7 @@ object AppUtils {
    *
    * @param context context
    */
-  fun updateWidget(context: Context) {
+  /*fun updateWidget(context: Context) {
     val intent = Intent(context, HomeWidgetProvider::class.java).apply {
       action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
       // Use an array and EXTRA_APPWIDGET_IDS instead of AppWidgetManager.EXTRA_APPWIDGET_ID,
@@ -90,7 +90,7 @@ object AppUtils {
     }
 
     context.sendBroadcast(intent)
-  }
+  }*/
 
   /**
    * Judge that whether an app is frost
@@ -99,7 +99,7 @@ object AppUtils {
    * @param item    Anywhere- entity
    * @return true if the app is frost
    */
-  fun isAppFrozen(context: Context, item: AnywhereEntity): Boolean {
+  /*fun isAppFrozen(context: Context, item: AnywhereEntity): Boolean {
     val type = item.type
     val apkTempPackageName: String
 
@@ -124,7 +124,7 @@ object AppUtils {
       }
     }
     return false
-  }
+  }*/
 
   /**
    * Get apps list

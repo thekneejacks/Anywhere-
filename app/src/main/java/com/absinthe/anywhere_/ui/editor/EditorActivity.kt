@@ -3,8 +3,6 @@ package com.absinthe.anywhere_.ui.editor
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.ComponentName
-import android.content.Context
-import android.content.Intent
 import android.content.ServiceConnection
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -22,26 +20,21 @@ import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.GlobalValues
-import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.databinding.ActivityEditorBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.isExecWithRoot
 import com.absinthe.anywhere_.services.overlay.IOverlayService
-import com.absinthe.anywhere_.services.overlay.OverlayService
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.utils.AppUtils.atLeastNMR1
-import com.absinthe.anywhere_.utils.AppUtils.atLeastR
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.anywhere_.utils.manager.DialogManager.showCreatePinnedShortcutDialog
 import com.absinthe.libraries.utils.extensions.getColorByAttr
 import com.blankj.utilcode.util.ActivityUtils
-import com.blankj.utilcode.util.PermissionUtils
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
-import jonathanfinerty.once.Once
 import timber.log.Timber
 
 const val EXTRA_ENTITY = "EXTRA_ENTITY"
@@ -235,9 +228,9 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
           R.id.trying_run -> {
             editor.tryRunning()
           }
-          R.id.overlay -> {
+          /*R.id.overlay -> {
             startOverlay()
-          }
+          }*/
         }
         true
       }
@@ -344,7 +337,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     }
   }
 
-  private fun startOverlay() {
+  /*private fun startOverlay() {
     if (PermissionUtils.isGrantedDrawOverlays()) {
       startOverlayImpl()
 
@@ -360,9 +353,9 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
         override fun onDenied() {}
       })
     }
-  }
+  }*/
 
-  private fun startOverlayImpl() {
+  /*private fun startOverlayImpl() {
     if (!Once.beenDone(OnceTag.OVERLAY_TIP)) {
       ToastUtil.makeText(R.string.toast_overlay_tip)
       Once.markDone(OnceTag.OVERLAY_TIP)
@@ -379,7 +372,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       )
     }
     finish()
-  }
+  }*/
 
   /*@RequiresApi(api = Build.VERSION_CODES.N_MR1)
   private fun addShortcut(context: Context, ae: AnywhereEntity) {

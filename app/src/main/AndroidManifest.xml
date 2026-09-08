@@ -318,18 +318,6 @@
       android:name=".ui.shortcuts.ThirdAppsShortcutActivity"
       android:exported="false" />-->
 
-    <!--    Collector tile service    -->
-    <service
-      android:name=".services.tile.CollectorTileService"
-      android:enabled="true"
-      android:exported="true"
-      android:icon="@drawable/ic_logo"
-      android:label="@string/tile_collector_on"
-      android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-      </intent-filter>
-    </service>
 
     <!--    Overlay view service    -->
     <service
@@ -337,96 +325,6 @@
       android:enabled="true"
       android:exported="false" />
 
-    <!--    Custom tile one service    -->
-    <service
-      android:name=".services.tile.TileService1"
-      android:enabled="false"
-      android:exported="true"
-      android:icon="@drawable/ic_android"
-      android:label="Tile1"
-      android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-      </intent-filter>
-    </service>
-
-    <!--    Custom tile two service    -->
-    <service
-      android:name=".services.tile.TileService2"
-      android:enabled="false"
-      android:exported="true"
-      android:icon="@drawable/ic_android"
-      android:label="Tile2"
-      android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-      </intent-filter>
-    </service>
-
-    <!--    Custom tile three service    -->
-    <service
-      android:name=".services.tile.TileService3"
-      android:enabled="false"
-      android:exported="true"
-      android:icon="@drawable/ic_android"
-      android:label="Tile3"
-      android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-      </intent-filter>
-    </service>
-
-    <!--    Custom tile three service    -->
-    <service
-      android:name=".services.tile.TileService4"
-      android:enabled="false"
-      android:exported="true"
-      android:icon="@drawable/ic_android"
-      android:label="Tile4"
-      android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-      </intent-filter>
-    </service>
-
-    <!--    Custom tile three service    -->
-    <service
-      android:name=".services.tile.TileService5"
-      android:enabled="false"
-      android:exported="true"
-      android:icon="@drawable/ic_android"
-      android:label="Tile5"
-      android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-      </intent-filter>
-    </service>
-
-    <!--    Custom tile three service    -->
-    <service
-      android:name=".services.tile.TileService6"
-      android:enabled="false"
-      android:exported="true"
-      android:icon="@drawable/ic_android"
-      android:label="Tile6"
-      android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-      </intent-filter>
-    </service>
-
-    <!--    Custom tile three service    -->
-    <service
-      android:name=".services.tile.TileService7"
-      android:enabled="false"
-      android:exported="true"
-      android:icon="@drawable/ic_android"
-      android:label="Tile7"
-      android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-      </intent-filter>
-    </service>
 
     <!--    Collector service    -->
     <service
