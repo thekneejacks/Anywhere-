@@ -103,6 +103,10 @@ class AnywhereRepository(application: Application) {
     return mAnywhereDao.getEntityById(id)
   }
 
+  fun getParamById(id: String): String? {
+    return mAnywhereDao.getParamById(id)
+  }
+
   fun getPageEntityByTitle(title: String?): PageEntity? {
     if (title == null) {
       return null

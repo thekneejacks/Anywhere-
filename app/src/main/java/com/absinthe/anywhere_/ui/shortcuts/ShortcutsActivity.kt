@@ -89,9 +89,9 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
         }*/
         ACTION_START_ENTITY -> {
           intent.getStringExtra(Const.INTENT_EXTRA_SHORTCUTS_ID)?.let { id ->
-            AnywhereApplication.sRepository.getEntityById(id)?.let { entity ->
+            AnywhereApplication.sRepository.getParamById(id)?.let { param ->
               Opener.with(this@ShortcutsActivity)
-                .load(entity)
+                .load(param)
                 /*.setOpenedListener(object : Opener.OnOpenListener {
                   override fun onOpened() {
                     shouldFinishOnResume = true
@@ -185,7 +185,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
               })
           } ?: run { shouldFinishOnResume = true }
         }*/
-        ACTION_START_DEVICE_CONTROL -> {
+        /*ACTION_START_DEVICE_CONTROL -> {
           val type = intent.getIntExtra(Const.INTENT_EXTRA_TYPE, -1)
           val param1 = intent.getStringExtra(Const.INTENT_EXTRA_PARAM_1) ?: return@let
           val param2 = intent.getStringExtra(Const.INTENT_EXTRA_PARAM_2) ?: return@let
@@ -204,8 +204,8 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
               }
             })
             .open()
-        }
-        Intent.ACTION_VIEW -> {
+        }*/
+        /*Intent.ACTION_VIEW -> {
           intent.data?.let { uri ->
             if (uri.host == URLManager.OPEN_HOST) {
               var dynamicParam: ExtraBean.ExtraItem? = null
@@ -253,7 +253,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
               } ?: run { shouldFinishOnResume = true }
             }
           }
-        }
+        }*/
         else -> shouldFinishOnResume = true
       }
     }

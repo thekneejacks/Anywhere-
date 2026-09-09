@@ -66,7 +66,7 @@ object Opener {
 
   @Throws(NullPointerException::class)
   fun open() {
-    context?.get()?.let {
+    /*context?.get()?.let {
       /*when (type) {
         TYPE_CMD -> {
           openFromCommand(it)
@@ -76,9 +76,11 @@ object Opener {
         }
       }*/
       openShellEntity(it, item!!)
+
     } ?: let {
       throw NullPointerException("Got a null context instance from Opener.")
-    }
+    }*/
+    openShellSimple()
   }
 
   /*@Throws(NullPointerException::class)
@@ -98,7 +100,7 @@ object Opener {
     }
   }*/
 
-  private fun openFromCommand(context: Context) {
+  /*private fun openFromCommand(context: Context) {
     Timber.d("openFromCommand")
     command?.let {
       /*when {
@@ -113,7 +115,7 @@ object Opener {
         }*/
       //}
     }
-  }
+  }*/
 
   /*private fun openAnywhereEntity(context: Context, item: AnywhereEntity) {
 
@@ -425,6 +427,15 @@ object Opener {
 
   private fun openShellEntity(context: Context, item: AnywhereEntity) {
     /*val result = */CommandUtils.execAdbCmd(item.param1)
+    /*DialogManager.showShellResultDialog(
+      context,
+      result,
+      { _, _ -> listener?.onOpened() },
+      { listener?.onOpened() })*/
+  }
+
+  private fun openShellSimple() {
+    /*val result = */CommandUtils.execAdbCmd(command!!)
     /*DialogManager.showShellResultDialog(
       context,
       result,

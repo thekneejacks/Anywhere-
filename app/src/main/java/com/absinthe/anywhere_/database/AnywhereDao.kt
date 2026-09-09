@@ -49,6 +49,9 @@ interface AnywhereDao {
   @Query("SELECT * from anywhere_table WHERE _id LIKE :id")
   fun getEntityById(id: String): AnywhereEntity?
 
+  @Query("SELECT param_1 from anywhere_table WHERE _id LIKE :id")
+  fun getParamById(id: String): String?
+
   @Query("SELECT * FROM anywhere_table")
   fun selectAll(): Cursor?
 
