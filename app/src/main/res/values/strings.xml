@@ -443,13 +443,13 @@
   <string name="drawer_title">Pages</string>
   <string name="drawer_tool_add">Add Page</string>
 
-  <!--  Log Report  -->
+  <!--  Log Report
   <string name="report_title">Anywhere- Issue Report</string>
   <string name="report_describe">* Please describe the issue:</string>
   <string name="report_select_mail_app">Please select the mail app</string>
   <string name="title_activity_defrost">Defrost mode</string>
 
-  <!--  Defrost Mode  -->
+  <!-  Defrost Mode
   <string name="defrost_mode_dsm">Delegated Scopes Manager Mode</string>
   <string name="defrost_mode_dpm">Device Policy Manager Mode</string>
   <string name="defrost_mode_icebox_sdk">IceBox SDK Mode</string>
@@ -465,9 +465,9 @@
   <string name="defrost_mode_dpm_desc">Active Anywhere- as a Device Policy Manager to gain the ability to defrost apps.</string>
   <string name="defrost_mode_dpm_addition"><![CDATA[<b>Connect to PC and enter adb command:</b><br><i>adb shell dpm set-device-owner com.absinthe.anywhere_/.receiver.AdminReceiver</i>]]></string>
 
-  <!--  Cloud  -->
+  <!-  Cloud
   <string name="cloud_rules_email_title" translatable="false">New Cloud Rule</string>
   <string name="cloud_rules_email_header">Contributor:\nDescription:\n\n** DO NOT MODIFY CONTENT BELOW ** Card will be uploaded after reviewing</string>
-  <string name="cloud_rules_need_root">Need root</string>
+  <string name="cloud_rules_need_root">Need root</string>-->
 
 </resources>

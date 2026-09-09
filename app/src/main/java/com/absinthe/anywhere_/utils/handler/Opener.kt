@@ -107,22 +107,23 @@ object Opener {
   private fun openFromCommand(context: Context) {
     Timber.d("openFromCommand")
     command?.let {
-      when {
+      /*when {
         /*it.startsWith(AnywhereType.Prefix.DYNAMIC_PARAMS_PREFIX) -> {
           openDynamicParamCommand(context, it)
         }*/
-        it.startsWith(AnywhereType.Prefix.SHELL_PREFIX) -> {
+        it.startsWith(AnywhereType.Prefix.SHELL_PREFIX) -> {*/
           openShellCommand(context, it)
-        }
+        //}
         /*else -> {
           openByCommand(context, it, getPkgNameByCommand(it))
         }*/
-      }
+      //}
     }
   }
 
   private fun openAnywhereEntity(context: Context, item: AnywhereEntity) {
-    when (item.type) {
+    openShellEntity(context, item)
+    /*when (item.type) {
       //AnywhereType.Card.URL_SCHEME -> openUrlSchemeEntity(context, item)
       //AnywhereType.Card.ACTIVITY -> openActivityEntity(context, item)
       //AnywhereType.Card.QR_CODE -> openQrCodeEntity(context, item)
@@ -133,7 +134,7 @@ object Opener {
       //AnywhereType.Card.BROADCAST -> openBroadcastEntity(context, item)
       //AnywhereType.Card.WORKFLOW -> openWorkflowEntity(context, item)
       //AnywhereType.Card.ACCESSIBILITY -> openA11yEntity(context, item)
-    }
+    }*/
   }
 
   /*private fun openByCommand(context: Context, cmd: String, packageName: String?) {
@@ -191,9 +192,9 @@ object Opener {
 
   private fun openShellCommand(context: Context, command: String) {
     val newCommand = command.removePrefix(AnywhereType.Prefix.SHELL_PREFIX)
-    val result = CommandUtils.execAdbCmd(newCommand)
+    /*val result = */CommandUtils.execAdbCmd(newCommand)
 
-    when (GlobalValues.showShellResultMode) {
+    /*when (GlobalValues.showShellResultMode) {
       Const.SHELL_RESULT_TOAST -> {
         listener?.onOpened()
       }
@@ -207,7 +208,9 @@ object Opener {
       else -> {
         listener?.onOpened()
       }
-    }
+    }*/
+
+    listener?.onOpened()
   }
 
   /*private fun openUrlSchemeEntity(context: Context, item: AnywhereEntity) {
@@ -427,12 +430,12 @@ object Opener {
   }*/
 
   private fun openShellEntity(context: Context, item: AnywhereEntity) {
-    val result = CommandUtils.execAdbCmd(item.param1)
-    DialogManager.showShellResultDialog(
+    /*val result = */CommandUtils.execAdbCmd(item.param1)
+    /*DialogManager.showShellResultDialog(
       context,
       result,
       { _, _ -> listener?.onOpened() },
-      { listener?.onOpened() })
+      { listener?.onOpened() })*/
   }
 
   /*private fun openSwitchShellEntity(context: Context, item: AnywhereEntity) {

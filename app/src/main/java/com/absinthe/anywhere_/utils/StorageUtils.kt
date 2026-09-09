@@ -3,19 +3,14 @@ package com.absinthe.anywhere_.utils
 import android.content.Context
 import android.os.Environment
 import com.absinthe.anywhere_.AnywhereApplication
-import com.absinthe.anywhere_.BuildConfig
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.BackupBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
-import com.absinthe.anywhere_.utils.manager.URLManager
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 

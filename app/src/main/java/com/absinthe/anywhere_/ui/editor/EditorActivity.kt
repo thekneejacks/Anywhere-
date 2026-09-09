@@ -275,12 +275,12 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
           R.id.delete -> {
             DialogManager.showDeleteAnywhereDialog(this@EditorActivity, entity)
           }
-          R.id.move_to_page -> {
+          /*R.id.move_to_page -> {
             DialogManager.showPageListDialog(this@EditorActivity, entity)
-          }
-          R.id.custom_color -> {
+          }*/
+          /*R.id.custom_color -> {
             DialogManager.showColorPickerDialog(this@EditorActivity, entity)
-          }
+          }*/
           /*R.id.share_card -> {
             DialogManager.showCardSharingDialog(
               this@EditorActivity,

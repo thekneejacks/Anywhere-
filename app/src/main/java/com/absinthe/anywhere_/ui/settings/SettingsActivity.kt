@@ -1,15 +1,12 @@
 package com.absinthe.anywhere_.ui.settings
 
 import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.net.toUri
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -24,11 +21,9 @@ import com.absinthe.anywhere_.model.Settings
 import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.DialogManager
-import com.absinthe.anywhere_.utils.manager.URLManager
 import rikka.recyclerview.fixEdgeEffect
 import rikka.widget.borderview.BorderRecyclerView
 import rikka.widget.borderview.BorderView
-import timber.log.Timber
 
 class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
 

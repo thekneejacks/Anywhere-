@@ -35,8 +35,6 @@ import com.absinthe.anywhere_.utils.ClipboardUtil
 import com.absinthe.anywhere_.utils.ShortcutsUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
-import com.absinthe.anywhere_.view.home.ColorPickerDialogBuilder
-import com.flask.colorpicker.ColorPickerView
 
 /**
  * Dialog Manager
@@ -256,7 +254,7 @@ object DialogManager {
     }
   }
 
-  fun showPageListDialog(context: Context, ae: AnywhereEntity) {
+  /*fun showPageListDialog(context: Context, ae: AnywhereEntity) {
     val items = mutableListOf<String>()
 
     AnywhereApplication.sRepository.allPageEntities.value?.let { list ->
@@ -271,9 +269,9 @@ object DialogManager {
         show()
       }
     }
-  }
+  }*/
 
-  fun showColorPickerDialog(context: Context, item: AnywhereEntity) {
+  /*fun showColorPickerDialog(context: Context, item: AnywhereEntity) {
     val builder = ColorPickerDialogBuilder.with(context)
     builder.setTitle(context.getString(R.string.dialog_choose_color_title))
       .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
@@ -294,9 +292,9 @@ object DialogManager {
       }
       .setNegativeButton(context.getString(android.R.string.cancel), null)
     builder.build().show()
-  }
+  }*/
 
-  fun showShellResultDialog(
+  /*fun showShellResultDialog(
     context: Context,
     result: String?,
     posListener: DialogInterface.OnClickListener? = null,
@@ -360,7 +358,7 @@ object DialogManager {
         return
       }
     }
-  }
+  }*/
 
   /*fun showA11yAnnouncementDialog(context: Context) {
     AnywhereDialogBuilder(context)

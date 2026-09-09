@@ -3,7 +3,6 @@ package com.absinthe.anywhere_.adapter.card
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -39,7 +38,6 @@ import com.absinthe.libraries.utils.extensions.dp
 import com.blankj.utilcode.util.Utils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.catchingnow.icebox.sdk_client.IceBox
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.card.MaterialCardView
@@ -57,7 +55,6 @@ const val LAYOUT_MODE_MEDIUM = 1
 const val LAYOUT_MODE_SMALL = 2
 const val LAYOUT_MODE_MINIMUM = 3
 
-const val SNOW_FLAKE_EMOJI = "\u2744"
 
 class BaseCardAdapter(
   private val layoutMode: Int,
@@ -87,15 +84,15 @@ class BaseCardAdapter(
 
     val itemView = holder.itemView as CardItemView<*>
 
-    itemView.appName.text = try {
+    /*itemView.appName.text = try {
       if (IceBox.getAppEnabledSetting(context, item.packageName) != 0) {
         SNOW_FLAKE_EMOJI + item.appName
       } else {
         item.appName
       }
-    } catch (e: PackageManager.NameNotFoundException) {
-      item.appName
-    }
+    } catch (e: PackageManager.NameNotFoundException) {*/
+     itemView.appName.text = item.appName
+    //}
 
     when (layoutMode) {
       LAYOUT_MODE_LARGE -> {

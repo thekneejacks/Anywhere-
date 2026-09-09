@@ -163,8 +163,8 @@ configurations.all {
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-  implementation(project(":color-picker"))
-  implementation(files("libs/IceBox-SDK-1.0.6.aar"))
+  //implementation(project(":color-picker"))
+  //implementation(files("libs/IceBox-SDK-1.0.6.aar"))
 
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
@@ -187,7 +187,7 @@ dependencies {
   implementation("androidx.lifecycle:lifecycle-common-java8:${lifecycleVersion}")
   implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleVersion}")
 
-  implementation("androidx.browser:browser:1.6.0")
+  //implementation("androidx.browser:browser:1.6.0")
   implementation("androidx.constraintlayout:constraintlayout:2.1.4")
   implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
   implementation("androidx.viewpager2:viewpager2:1.1.0-beta02")

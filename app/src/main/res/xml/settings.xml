@@ -15,7 +15,7 @@
       app:summary="%s"
       app:title="@string/settings_working_mode" />
 
-    <Preference
+    <!--<Preference
       app:icon="@drawable/ic_snowflake"
       app:key="defrostMode"
       app:summary="@string/settings_defrost_mode_summary"
@@ -24,7 +24,7 @@
       <intent
         android:targetClass="com.absinthe.anywhere_.ui.settings.DefrostActivity"
         android:targetPackage="@string/application_id" />
-    </Preference>
+    </Preference>-->
 
     <Preference
       app:icon="@drawable/ic_backup_and_restore"
