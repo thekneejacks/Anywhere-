@@ -17,7 +17,6 @@ import androidx.core.view.children
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.model.Settings
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.viewholder.AppListBean
 import com.absinthe.anywhere_.utils.AppUtils.getPackageNameByScheme
@@ -103,9 +102,9 @@ object UxUtils {
     }*/
     title.append(AnywhereType.WhereMode.ANYWHERE)
 
-    if (Settings.date == "12-25") {
+    /*if (Settings.date == "12-25") {
       title.append(" \uD83C\uDF84")
-    }
+    }*/
     return title.toString()
   }
 

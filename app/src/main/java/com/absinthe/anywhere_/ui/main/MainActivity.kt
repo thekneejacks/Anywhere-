@@ -42,16 +42,13 @@ import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.constants.GlobalValues.setsCategory
-import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
-import com.absinthe.anywhere_.services.overlay.ICollectorService
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
 import com.absinthe.anywhere_.ui.settings.SettingsActivity
-import com.absinthe.anywhere_.ui.setup.SetupActivity
 import com.absinthe.anywhere_.utils.CipherUtils.decrypt
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
@@ -70,7 +67,6 @@ import com.google.gson.JsonSyntaxException
 import com.leinardi.android.speeddial.SpeedDialActionItem
 import it.sephiroth.android.library.xtooltip.ClosePolicy.Companion.TOUCH_ANYWHERE_CONSUME
 import it.sephiroth.android.library.xtooltip.Tooltip
-import jonathanfinerty.once.Once
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -81,11 +77,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
   private lateinit var mItemTouchHelper: ItemTouchHelper
   private lateinit var mObserver: Observer<List<PageEntity>?>
 
-  private var isBound = false
+  //private var isBound = false
   private var isTitleShown = false
   private var shouldFinish = false
   private var hasResumed = false
-  private var collectorService: ICollectorService? = null
+  //private var collectorService: ICollectorService? = null
   private var mToggle: ActionBarDrawerToggle? = null
 
   /*private val conn = object : ServiceConnection {
@@ -106,10 +102,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
   override fun setViewBinding() = ActivityMainBinding.inflate(layoutInflater)
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.FIRST_GUIDE)) {
+    /*if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.FIRST_GUIDE)) {
       finish()
       startActivity(Intent(this, SetupActivity::class.java))
-    }
+    }*/
 
     window.apply {
       requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
@@ -565,7 +561,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       }
     }
 
-    if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.FAB_TIP)) {
+    /*if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.FAB_TIP)) {
       showFirstTip(binding.fab)
 
       viewModel.insert(AnywhereEntity().apply {
@@ -575,7 +571,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       })
 
       Once.markDone(OnceTag.FAB_TIP)
-    }
+    }*/
   }
 
   private fun getAnywhereIntent(intent: Intent) {

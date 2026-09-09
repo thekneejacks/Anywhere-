@@ -17,7 +17,7 @@ object GlobalValues {
   val mmkv: MMKV =
     MMKV.mmkvWithID(spName) ?: throw IllegalStateException("mmkv instance is null")
 
-  var sIsDebugMode = false
+  //var sIsDebugMode = false
   //var shouldListenClipBoard = true
 
   //var cardModeLiveData = MutableLiveData<Any>()

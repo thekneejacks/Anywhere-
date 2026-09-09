@@ -1,33 +1,24 @@
 package com.absinthe.anywhere_.model
 
-import android.content.Context.MODE_PRIVATE
-import androidx.appcompat.app.AppCompatDelegate
 import com.absinthe.anywhere_.AnywhereApplication
-import com.absinthe.anywhere_.BuildConfig
-import com.absinthe.anywhere_.constants.GlobalValues
-import com.absinthe.anywhere_.constants.OnceTag
 import com.tencent.mmkv.MMKV
-import jonathanfinerty.once.Once
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 object Settings {
 
   //val iconPackManager by lazy { IconPackManager() }
   //var iconPack: IconPack? = null
 
-  val date: String by lazy {
+  /*val date: String by lazy {
     val dateFormat = SimpleDateFormat("MM-dd", Locale.CHINA)
     dateFormat.format(Date())
-  }
+  }*/
 
-  fun init() {
-    setLogger()
+  /*fun init() {
+    //setLogger()
     //initIconPackManager()
-  }
+  }*/
 
-  fun getTheme(): Int {
+  /*fun getTheme(): Int {
     /*return when (GlobalValues.darkMode) {
       Const.DARK_MODE_OFF, "" -> AppCompatDelegate.MODE_NIGHT_NO
       Const.DARK_MODE_ON -> AppCompatDelegate.MODE_NIGHT_YES
@@ -37,11 +28,11 @@ object Settings {
       else -> AppCompatDelegate.MODE_NIGHT_NO
     }*/
     return AppCompatDelegate.MODE_NIGHT_YES
-  }
+  }*/
 
-  fun setLogger() {
+  /*fun setLogger() {
     GlobalValues.sIsDebugMode = BuildConfig.DEBUG or GlobalValues.sIsDebugMode
-  }
+  }*/
 
   /*fun initIconPackManager() {
     iconPack = iconPackManager.getAvailableIconPacks(true)[GlobalValues.iconPack]
@@ -50,10 +41,10 @@ object Settings {
   fun initMMKV(application: AnywhereApplication) {
     MMKV.initialize(application)
 
-    if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.MMKV_MIGRATE)) {
+    /*if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.MMKV_MIGRATE)) {
       val sp = application.getSharedPreferences(GlobalValues.spName, MODE_PRIVATE)
       MMKV.mmkvWithID(GlobalValues.spName)?.importFromSharedPreferences(sp)
       Once.markDone(OnceTag.MMKV_MIGRATE)
-    }
+    }*/
   }
 }

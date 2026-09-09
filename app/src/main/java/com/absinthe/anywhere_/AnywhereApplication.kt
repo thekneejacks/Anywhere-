@@ -1,13 +1,9 @@
 package com.absinthe.anywhere_
 
-//import com.absinthe.anywhere_.utils.manager.PoliceMan
 import android.app.Application
-import androidx.appcompat.app.AppCompatDelegate
 import com.absinthe.anywhere_.database.AnywhereRepository
 import com.absinthe.anywhere_.model.Settings
 import com.absinthe.libraries.utils.utils.Utility
-import jonathanfinerty.once.Once
-import rikka.sui.Sui
 
 class AnywhereApplication : Application() {
 
@@ -31,14 +27,14 @@ class AnywhereApplication : Application() {
       HiddenApiBypass.addHiddenApiExemptions("")
     }*/
 
-    app = this
-    Once.initialise(this)
+    //app = this
+    //Once.initialise(this)
     Settings.initMMKV(this)
-    Settings.init()
+    //Settings.init()
     Utility.init(this)
-    Sui.init(BuildConfig.APPLICATION_ID)
-    AppCompatDelegate.setDefaultNightMode(Settings.getTheme())
-    Global.start()
+    //Sui.init(BuildConfig.APPLICATION_ID)
+    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    //Global.start()
     sRepository = AnywhereRepository(this)
 
     /*AccessibilityApi.apply {
@@ -49,6 +45,6 @@ class AnywhereApplication : Application() {
 
   companion object {
     lateinit var sRepository: AnywhereRepository
-    lateinit var app: AnywhereApplication
+    //lateinit var app: AnywhereApplication
   }
 }
