@@ -17,7 +17,6 @@ import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.services.overlay.ICollectorService
 import com.absinthe.anywhere_.utils.CommandUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
@@ -29,8 +28,8 @@ import com.blankj.utilcode.util.Utils
 
 class ShortcutsActivity : BaseActivity<ViewBinding>() {
 
-  private var isBound = false
-  private var collectorService: ICollectorService? = null
+  //private var isBound = false
+  //private var collectorService: ICollectorService? = null
 
   private val viewModel by viewModels<AnywhereViewModel>()
 
@@ -39,7 +38,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    UxUtils.setActionBarTransparent(this)
+    //UxUtils.setActionBarTransparent(this)
     //Analytics.trackEvent(EventTag.SHORTCUT_OPEN)
     handleIntent(intent)
   }
@@ -253,15 +252,15 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
         else -> shouldFinishOnResume = true
       }
     }
-    if (intent.getBooleanExtra(Const.INTENT_EXTRA_EMULATE_BACK_PRESS, false)) {
+    /*if (intent.getBooleanExtra(Const.INTENT_EXTRA_EMULATE_BACK_PRESS, false)) {
       CommandUtils.execAdbCmd(Const.CMD_BACK_PRESS)
-    }
+    }*/
   }
 
   companion object {
-    const val ACTION_START_COLLECTOR = "START_COLLECTOR"
+    //const val ACTION_START_COLLECTOR = "START_COLLECTOR"
     const val ACTION_START_ENTITY = "START_ENTITY"
-    const val ACTION_START_FROM_WIDGET = "START_FROM_WIDGET"
+    //const val ACTION_START_FROM_WIDGET = "START_FROM_WIDGET"
     const val ACTION_START_IMAGE = "START_IMAGE" //Old Scheme
     const val ACTION_START_DEVICE_CONTROL = "ACTION_START_DEVICE_CONTROL"
   }

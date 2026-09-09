@@ -219,7 +219,7 @@ dependencies {
   //implementation("com.github.topjohnwu.libsu:core:5.2.1")
   //implementation("com.github.thegrizzlylabs:sardine-android:0.8")
   implementation("com.jonathanfinerty.once:once:1.3.1")
-  implementation("org.lsposed.hiddenapibypass:hiddenapibypass:4.3")
+  //implementation("org.lsposed.hiddenapibypass:hiddenapibypass:4.3")
   //implementation("com.jakewharton.timber:timber:5.0.1")
 
   //UX
