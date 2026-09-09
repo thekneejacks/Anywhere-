@@ -5,15 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.absinthe.anywhere_.AppBarActivity
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.databinding.ActivitySettingsBinding
-import com.absinthe.anywhere_.utils.AppUtils
-import com.absinthe.anywhere_.utils.manager.DialogManager
 import rikka.recyclerview.fixEdgeEffect
 import rikka.widget.borderview.BorderRecyclerView
 import rikka.widget.borderview.BorderView
@@ -113,7 +109,7 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           true
         }
       }*/
-      findPreference<Preference>(Const.PREF_CLEAR_SHORTCUTS)?.apply {
+      /*findPreference<Preference>(Const.PREF_CLEAR_SHORTCUTS)?.apply {
         if (!AppUtils.atLeastNMR1()) {
           isVisible = false
         } else {
@@ -127,7 +123,7 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
         if (!AppUtils.atLeastN()) {
           isVisible = false
         }
-      }
+      }*/
       /*findPreference<TwoStatePreference>(Const.PREF_COLLECTOR_PLUS)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.isCollectorPlus = newValue as Boolean

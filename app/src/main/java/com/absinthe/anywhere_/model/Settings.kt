@@ -1,12 +1,14 @@
 package com.absinthe.anywhere_.model
 
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import com.absinthe.anywhere_.AnywhereApplication
-import com.tencent.mmkv.MMKV
 
 object Settings {
 
   //val iconPackManager by lazy { IconPackManager() }
   //var iconPack: IconPack? = null
+  var prefs : SharedPreferences? = null
 
   /*val date: String by lazy {
     val dateFormat = SimpleDateFormat("MM-dd", Locale.CHINA)
@@ -38,8 +40,9 @@ object Settings {
     iconPack = iconPackManager.getAvailableIconPacks(true)[GlobalValues.iconPack]
   }*/
 
-  fun initMMKV(application: AnywhereApplication) {
-    MMKV.initialize(application)
+  fun initPrefs(application: AnywhereApplication) {
+    prefs = PreferenceManager.getDefaultSharedPreferences(application)
+    //MMKV.initialize(application)
 
     /*if (!Once.beenDone(Once.THIS_APP_INSTALL, OnceTag.MMKV_MIGRATE)) {
       val sp = application.getSharedPreferences(GlobalValues.spName, MODE_PRIVATE)

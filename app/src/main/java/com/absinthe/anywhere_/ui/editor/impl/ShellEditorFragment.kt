@@ -5,12 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.EditorShellBinding
 import com.absinthe.anywhere_.model.database.setExecWithRoot
 import com.absinthe.anywhere_.ui.editor.BaseEditorFragment
-import com.absinthe.anywhere_.utils.AppUtils
-import com.absinthe.anywhere_.utils.ShortcutsUtils
 import com.absinthe.anywhere_.utils.handler.Opener
 
 class ShellEditorFragment : BaseEditorFragment() {
@@ -61,13 +58,13 @@ class ShellEditorFragment : BaseEditorFragment() {
     if (isEditMode && doneItem == item) return true
 
     if (isEditMode) {
-      if (doneItem.appName != item.appName) {
+      /*if (doneItem.appName != item.appName) {
         if (GlobalValues.shortcutsList.contains(doneItem.id)) {
           if (AppUtils.atLeastNMR1()) {
             ShortcutsUtils.updateShortcut(doneItem)
           }
         }
-      }
+      }*/
       AnywhereApplication.sRepository.update(doneItem)
     } else {
       doneItem.id = System.currentTimeMillis().toString()

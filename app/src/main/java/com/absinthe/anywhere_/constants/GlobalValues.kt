@@ -1,28 +1,27 @@
 package com.absinthe.anywhere_.constants
 
-import com.absinthe.anywhere_.BuildConfig
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
-import com.google.gson.reflect.TypeToken
-import com.tencent.mmkv.MMKV
+import androidx.core.content.edit
+import com.absinthe.anywhere_.model.Settings
 
 object GlobalValues {
 
-  var spName = if (BuildConfig.DEBUG) {
+  /*var spName = if (BuildConfig.DEBUG) {
     Const.SP_NAME_DEBUG
   } else {
     Const.SP_NAME
-  }
+  }*/
 
-  val mmkv: MMKV =
-    MMKV.mmkvWithID(spName) ?: throw IllegalStateException("mmkv instance is null")
+  /*val mmkv: MMKV =
+    MMKV.mmkvWithID(spName) ?: throw IllegalStateException("mmkv instance is null")*/
+
+
 
   //var sIsDebugMode = false
   //var shouldListenClipBoard = true
 
   //var cardModeLiveData = MutableLiveData<Any>()
 
-  var shortcutsList = listOf<String>()
+  /*var shortcutsList = listOf<String>()
     get() = try {
       Gson().fromJson<List<String>>(
         mmkv.decodeString(Const.SHORTCUTS_LIST),
@@ -36,7 +35,7 @@ object GlobalValues {
       field = value
       mmkv.encode(Const.SHORTCUTS_LIST, Gson().toJson(value))
       shortcutListChanged = true
-    }
+    }*/
   var shortcutListChanged = false
 
   /*var cardMode
@@ -125,11 +124,17 @@ object GlobalValues {
     }*/
 
   var category
-    get() = mmkv.decodeString(Const.PREF_CURR_CATEGORY, AnywhereType.Category.DEFAULT_CATEGORY)
+    get() = //mmkv.decodeString(Const.PREF_CURR_CATEGORY, AnywhereType.Category.DEFAULT_CATEGORY)
+      Settings.prefs!!.getString(Const.PREF_CURR_CATEGORY,AnywhereType.Category.DEFAULT_CATEGORY)
       ?: AnywhereType.Category.DEFAULT_CATEGORY
     set(value) {
-      mmkv.encode(Const.PREF_CURR_CATEGORY, value)
+      //mmkv.encode(Const.PREF_CURR_CATEGORY, value)
+      Settings.prefs!!.edit(commit = true){
+        putString(Const.PREF_CURR_CATEGORY, value)
+      }
     }
+
+
 
   /*var defrostMode
     get() = mmkv.decodeString(Const.PREF_DEFROST_MODE, "").orEmpty()
@@ -156,9 +161,13 @@ object GlobalValues {
     }*/
 
   var currentPage
-    get() = mmkv.decodeInt(Const.PREF_CURR_PAGE_NUM, 0)
+    get() = // mmkv.decodeInt(Const.PREF_CURR_PAGE_NUM, 0)
+      Settings.prefs!!.getInt(Const.PREF_CURR_PAGE_NUM,0)
     set(value) {
-      mmkv.encode(Const.PREF_CURR_PAGE_NUM, value)
+      //mmkv.encode(Const.PREF_CURR_PAGE_NUM, value)
+      Settings.prefs!!.edit(commit = true){
+        putInt(Const.PREF_CURR_PAGE_NUM, value)
+      }
     }
 
   /*var dumpInterval

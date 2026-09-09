@@ -29,7 +29,7 @@ class AnywhereApplication : Application() {
 
     //app = this
     //Once.initialise(this)
-    Settings.initMMKV(this)
+    Settings.initPrefs(this)
     //Settings.init()
     Utility.init(this)
     //Sui.init(BuildConfig.APPLICATION_ID)

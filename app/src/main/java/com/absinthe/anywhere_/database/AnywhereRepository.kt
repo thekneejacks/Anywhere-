@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
-import com.absinthe.anywhere_.utils.AppUtils
-import com.absinthe.anywhere_.utils.ShortcutsUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -63,9 +61,9 @@ class AnywhereRepository(application: Application) {
   fun delete(ae: AnywhereEntity, delayTime: Long = 0L) = GlobalScope.launch(Dispatchers.IO) {
     delay(delayTime)
     mAnywhereDao.delete(ae)
-    if (AppUtils.atLeastNMR1()) {
+    /*if (AppUtils.atLeastNMR1()) {
       ShortcutsUtils.removeShortcut(ae)
-    }
+    }*/
 
   }
 
@@ -73,9 +71,9 @@ class AnywhereRepository(application: Application) {
     GlobalScope.launch(Dispatchers.IO) {
       delay(delayTime)
       mAnywhereDao.delete(list)
-      if (AppUtils.atLeastNMR1()) {
+      /*if (AppUtils.atLeastNMR1()) {
         list.forEach { ShortcutsUtils.removeShortcut(it) }
-      }
+      }*/
 
     }
 

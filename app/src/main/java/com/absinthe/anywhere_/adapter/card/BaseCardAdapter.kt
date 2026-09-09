@@ -15,7 +15,6 @@ import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.absinthe.anywhere_.utils.AppUtils.atLeastO
 import com.absinthe.anywhere_.utils.ShortcutsUtils
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.view.card.CardItemView
@@ -422,19 +421,19 @@ class BaseCardAdapter(
       if (index < data.size) {
         entity = data[index]
         withContext(Dispatchers.Main) {
-          if (atLeastO()) {
+          //if (atLeastO()) {
             ShortcutsUtils.addPinnedShortcut(
               entity,
               UxUtils.getAppIcon(Utils.getApp(), entity, 45.dp),
               entity.appName
             )
-          } else {
+          /*} else {
             ShortcutsUtils.addHomeShortcutPreO(
               entity,
               UxUtils.getAppIcon(Utils.getApp(), entity, 45.dp),
               entity.appName
             )
-          }
+          }*/
         }
 
         delay(200)

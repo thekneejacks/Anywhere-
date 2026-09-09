@@ -17,8 +17,6 @@ import com.absinthe.anywhere_.ui.dialog.AdvancedCardSelectDialogFragment
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.ui.dialog.RenameDialogFragment
 import com.absinthe.anywhere_.ui.shortcuts.CreateShortcutDialogFragment
-import com.absinthe.anywhere_.utils.AppUtils
-import com.absinthe.anywhere_.utils.ShortcutsUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 
@@ -43,7 +41,7 @@ object DialogManager {
       .show()
   }*/
 
-  fun showClearShortcutsDialog(activity: Activity) {
+  /*fun showClearShortcutsDialog(activity: Activity) {
     AnywhereDialogBuilder(activity)
       .setTitle(R.string.dialog_reset_background_confirm_title)
       .setMessage(R.string.dialog_reset_shortcuts_confirm_message)
@@ -54,7 +52,7 @@ object DialogManager {
       }
       .setNegativeButton(android.R.string.cancel, null)
       .show()
-  }
+  }*/
 
   fun showBackupShareDialog(activity: Activity, dig: String, encrypted: String) {
     AnywhereDialogBuilder(activity)

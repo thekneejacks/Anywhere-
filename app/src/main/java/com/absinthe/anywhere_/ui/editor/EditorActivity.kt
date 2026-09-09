@@ -19,13 +19,11 @@ import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.ActivityEditorBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.isExecWithRoot
 import com.absinthe.anywhere_.services.overlay.IOverlayService
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
-import com.absinthe.anywhere_.utils.AppUtils.atLeastNMR1
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.manager.DialogManager
@@ -315,7 +313,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
         true
       }
 
-      menu.findItem(R.id.add_shortcuts)?.let {
+      /*menu.findItem(R.id.add_shortcuts)?.let {
         if (atLeastNMR1()) {
           if (GlobalValues.shortcutsList.contains(entity.id)) {
             binding.navigationView.apply {
@@ -326,7 +324,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
         } else {
           it.isVisible = false
         }
-      }
+      }*/
 
       menu.findItem(R.id.restore_icon)?.isVisible = !entity.iconUri.isNullOrEmpty()
       menu.findItem(R.id.share_card)?.isVisible =
