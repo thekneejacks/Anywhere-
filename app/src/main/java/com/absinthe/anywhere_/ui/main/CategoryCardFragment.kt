@@ -23,13 +23,9 @@ import com.absinthe.anywhere_.adapter.card.ADAPTER_MODE_SELECT
 import com.absinthe.anywhere_.adapter.card.ADAPTER_MODE_SORT
 import com.absinthe.anywhere_.adapter.card.BaseCardAdapter
 import com.absinthe.anywhere_.adapter.card.DiffListCallback
-import com.absinthe.anywhere_.adapter.card.LAYOUT_MODE_LARGE
 import com.absinthe.anywhere_.adapter.card.LAYOUT_MODE_MEDIUM
-import com.absinthe.anywhere_.adapter.card.LAYOUT_MODE_MINIMUM
-import com.absinthe.anywhere_.adapter.card.LAYOUT_MODE_SMALL
 import com.absinthe.anywhere_.adapter.manager.WrapContentStaggeredGridLayoutManager
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.FragmentCategoryCardBinding
 import com.absinthe.anywhere_.extension.addSystemBarPaddingAsync
@@ -138,7 +134,7 @@ class CategoryCardFragment : Fragment() {
       requireActivity().invalidateOptionsMenu()
 
       adapter.updateSortedList()
-      GlobalValues.sortMode = Const.SORT_MODE_TIME_DESC
+      //GlobalValues.sortMode = Const.SORT_MODE_TIME_DESC
     } else if (adapter.mode == ADAPTER_MODE_SELECT) {
       resetSelectState()
       adapter.clearSelect()
@@ -182,7 +178,7 @@ class CategoryCardFragment : Fragment() {
   private fun setupRecyclerView() {
     decoration = SpacesItemDecoration(resources.getDimension(R.dimen.cardview_item_margin).toInt())
 
-    when (GlobalValues.cardMode) {
+    /*when (GlobalValues.cardMode) {
       Const.PREF_CARD_MODE_LARGE -> {
         decoration = SpacesItemDecoration(
           resources.getDimension(R.dimen.cardview_margin_parent_horizontal).toInt() / 2
@@ -204,7 +200,9 @@ class CategoryCardFragment : Fragment() {
       else -> {
         adapter = BaseCardAdapter(LAYOUT_MODE_MEDIUM, lifecycleScope)
       }
-    }
+    }*/
+
+    adapter = BaseCardAdapter(LAYOUT_MODE_MEDIUM, lifecycleScope)
 
     adapter.apply {
       setDiffCallback(DiffListCallback())
@@ -234,18 +232,18 @@ class CategoryCardFragment : Fragment() {
   }
 
   private fun initObservers() {
-    GlobalValues.cardModeLiveData.observe(viewLifecycleOwner, cardObserver)
+    //GlobalValues.cardModeLiveData.observe(viewLifecycleOwner, cardObserver)
     observeEntitiesList()
   }
 
   private fun unregisterObservers() {
-    GlobalValues.cardModeLiveData.removeObserver(cardObserver)
+    //GlobalValues.cardModeLiveData.removeObserver(cardObserver)
     AnywhereApplication.sRepository.allAnywhereEntities.removeObserver(listObserver)
   }
 
   private fun updateItems(list: List<AnywhereEntity>) {
     adapter.setDiffNewData(
-      if (GlobalValues.isPages) {
+      /*if (GlobalValues.isPages) {
         if (category == AnywhereType.Category.DEFAULT_CATEGORY) {
           list.filter { it.category.isNullOrEmpty() || it.category == this.category }
             .toMutableList()
@@ -254,7 +252,8 @@ class CategoryCardFragment : Fragment() {
         }
       } else {
         list.toMutableList()
-      }
+      }*/
+        list.toMutableList()
     )
     //updateWidget(Utils.getApp())
   }
@@ -291,20 +290,22 @@ class CategoryCardFragment : Fragment() {
   ) {
     recyclerView.layoutManager =
       if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-        val spanCount = when (GlobalValues.cardMode) {
+        /*val spanCount = when (GlobalValues.cardMode) {
           Const.PREF_CARD_MODE_LARGE -> 2
           Const.PREF_CARD_MODE_MEDIUM, Const.PREF_CARD_MODE_SMALL -> 4
           Const.PREF_CARD_MODE_MINIMUM -> 8
           else -> 4
-        }
+        }*/
+        val spanCount = 4
         WrapContentStaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
       } else {
-        val spanCount = when (GlobalValues.cardMode) {
+        /*val spanCount = when (GlobalValues.cardMode) {
           Const.PREF_CARD_MODE_LARGE -> 1
           Const.PREF_CARD_MODE_MEDIUM, Const.PREF_CARD_MODE_SMALL -> 2
           Const.PREF_CARD_MODE_MINIMUM -> 4
           else -> 2
-        }
+        }*/
+        val spanCount =2
         WrapContentStaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
       }
   }

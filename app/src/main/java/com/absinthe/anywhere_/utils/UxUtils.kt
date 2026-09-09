@@ -5,42 +5,23 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.text.Spannable
-import android.text.SpannableString
 import android.text.TextUtils
-import android.text.style.ForegroundColorSpan
 import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.children
-import androidx.palette.graphics.Palette
-import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues.actionBarType
-import com.absinthe.anywhere_.constants.GlobalValues.autoDarkModeEnd
-import com.absinthe.anywhere_.constants.GlobalValues.autoDarkModeStart
-import com.absinthe.anywhere_.constants.GlobalValues.backgroundUri
-import com.absinthe.anywhere_.constants.GlobalValues.isPages
-import com.absinthe.anywhere_.constants.GlobalValues.workingMode
 import com.absinthe.anywhere_.model.Settings
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.viewholder.AppListBean
 import com.absinthe.anywhere_.utils.AppUtils.getPackageNameByScheme
 import com.absinthe.anywhere_.utils.manager.CardTypeIconGenerator
-import com.absinthe.anywhere_.view.home.TextSwitcherView
-import com.blankj.utilcode.util.ConvertUtils
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.withContext
-import java.util.Calendar
 
 object UxUtils {
 
@@ -115,11 +96,12 @@ object UxUtils {
   fun getToolbarTitle(): String {
     val title = StringBuilder()
 
-    when (workingMode) {
+    /*when (workingMode) {
       Const.WORKING_MODE_URL_SCHEME -> title.append(AnywhereType.WhereMode.SOMEWHERE)
       Const.WORKING_MODE_ROOT, Const.WORKING_MODE_SHIZUKU -> title.append(AnywhereType.WhereMode.ANYWHERE)
       else -> title.append(AnywhereType.WhereMode.NOWHERE)
-    }
+    }*/
+    title.append(AnywhereType.WhereMode.ANYWHERE)
 
     if (Settings.date == "12-25") {
       title.append(" \uD83C\uDF84")
@@ -204,7 +186,7 @@ object UxUtils {
    * @param type      dark or light
    * @param title     action bar title
    */
-  private fun setTopWidgetColor(
+  /*private fun setTopWidgetColor(
     activity: BaseActivity<*>,
     textSwitcher: TextSwitcherView,
     type: String,
@@ -255,7 +237,7 @@ object UxUtils {
       activity.invalidateOptionsMenu()
       wic.isAppearanceLightStatusBars = false
     }
-  }
+  }*/
 
   /**
    * Make the card use icon's color
@@ -263,7 +245,7 @@ object UxUtils {
    * @param drawable icon drawable
    * @param action notify when Palette finished
    */
-  suspend fun setCardUseIconColor(drawable: Drawable, action: (color: Int) -> Unit) {
+ /* suspend fun setCardUseIconColor(drawable: Drawable, action: (color: Int) -> Unit) {
     coroutineScope {
       val bitmap = ConvertUtils.drawable2Bitmap(drawable) ?: return@coroutineScope
       val palette = Palette.from(bitmap).generate()
@@ -276,14 +258,14 @@ object UxUtils {
         action(color)
       }
     }
-  }
+  }*/
 
   /**
    * Judge that whether open the dark mode
    *
    * @return MODE_NIGHT_YES or MODE_NIGHT_NO
    */
-  fun getAutoDarkMode(): Int {
+  /*fun getAutoDarkMode(): Int {
     val hour = Calendar.getInstance()[Calendar.HOUR_OF_DAY]
     val minute = Calendar.getInstance()[Calendar.MINUTE]
 
@@ -331,7 +313,7 @@ object UxUtils {
         }
       }
     }
-  }
+  }*/
 
   /**
    * Create a linear gradient bitmap picture

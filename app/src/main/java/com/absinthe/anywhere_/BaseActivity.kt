@@ -18,7 +18,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.absinthe.anywhere_.constants.GlobalValues
+import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.ActivityStackManager
@@ -98,7 +98,7 @@ abstract class BaseActivity<T : ViewBinding> : MaterialActivity() {
   }
 
   override fun computeUserThemeKey(): String {
-    return GlobalValues.darkMode
+    return Const.DARK_MODE_ON
   }
 
   override fun onApplyUserThemeResource(theme: Resources.Theme, isDecorView: Boolean) {
@@ -136,11 +136,12 @@ abstract class BaseActivity<T : ViewBinding> : MaterialActivity() {
   }
 
   override fun finish() {
-    if (GlobalValues.isExcludeFromRecent) {
+    /*if (GlobalValues.isExcludeFromRecent) {
       finishAndRemoveTask()
     } else {
       super.finish()
-    }
+    }*/
+    finishAndRemoveTask()
   }
 
   protected open fun initView() {}

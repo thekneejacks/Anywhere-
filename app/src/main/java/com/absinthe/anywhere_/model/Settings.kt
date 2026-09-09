@@ -4,10 +4,8 @@ import android.content.Context.MODE_PRIVATE
 import androidx.appcompat.app.AppCompatDelegate
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BuildConfig
-import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.constants.OnceTag
-import com.absinthe.anywhere_.utils.UxUtils
 import com.tencent.mmkv.MMKV
 import jonathanfinerty.once.Once
 import java.text.SimpleDateFormat
@@ -30,14 +28,15 @@ object Settings {
   }
 
   fun getTheme(): Int {
-    return when (GlobalValues.darkMode) {
+    /*return when (GlobalValues.darkMode) {
       Const.DARK_MODE_OFF, "" -> AppCompatDelegate.MODE_NIGHT_NO
       Const.DARK_MODE_ON -> AppCompatDelegate.MODE_NIGHT_YES
       Const.DARK_MODE_SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
       Const.DARK_MODE_BATTERY -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
       Const.DARK_MODE_AUTO -> UxUtils.getAutoDarkMode()
       else -> AppCompatDelegate.MODE_NIGHT_NO
-    }
+    }*/
+    return AppCompatDelegate.MODE_NIGHT_YES
   }
 
   fun setLogger() {

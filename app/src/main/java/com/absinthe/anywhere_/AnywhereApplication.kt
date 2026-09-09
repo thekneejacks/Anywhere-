@@ -2,7 +2,6 @@ package com.absinthe.anywhere_
 
 //import com.absinthe.anywhere_.utils.manager.PoliceMan
 import android.app.Application
-import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.absinthe.anywhere_.database.AnywhereRepository
 import com.absinthe.anywhere_.model.Settings

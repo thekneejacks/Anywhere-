@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -19,8 +18,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
@@ -55,13 +52,10 @@ import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
 import com.absinthe.anywhere_.ui.settings.SettingsActivity
 import com.absinthe.anywhere_.ui.setup.SetupActivity
-import com.absinthe.anywhere_.ui.shortcuts.ShortcutsActivity
-import com.absinthe.anywhere_.utils.AppTextUtils
 import com.absinthe.anywhere_.utils.CipherUtils.decrypt
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
-import com.absinthe.anywhere_.utils.handler.Opener
 import com.absinthe.anywhere_.utils.manager.CardTypeIconGenerator
 import com.absinthe.anywhere_.utils.manager.DialogManager.showAdvancedCardSelectDialog
 import com.absinthe.anywhere_.utils.manager.URLManager
@@ -78,7 +72,6 @@ import it.sephiroth.android.library.xtooltip.ClosePolicy.Companion.TOUCH_ANYWHER
 import it.sephiroth.android.library.xtooltip.Tooltip
 import jonathanfinerty.once.Once
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -173,13 +166,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
   }
 
   override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-    if (GlobalValues.actionBarType == Const.ACTION_BAR_TYPE_LIGHT
+    /*if (GlobalValues.actionBarType == Const.ACTION_BAR_TYPE_LIGHT
       || (isNightMode() && GlobalValues.backgroundUri.isEmpty())
     ) {
-      UxUtils.tintToolbarIcon(this, menu, mToggle, Const.ACTION_BAR_TYPE_LIGHT)
+
     } else {
       UxUtils.tintToolbarIcon(this, menu, mToggle, Const.ACTION_BAR_TYPE_DARK)
-    }
+    }*/
+    UxUtils.tintToolbarIcon(this, menu, mToggle, Const.ACTION_BAR_TYPE_LIGHT)
     return super.onPrepareOptionsMenu(menu)
   }
 
@@ -189,7 +183,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       R.id.toolbar_settings -> {
         startActivity(Intent(this, SettingsActivity::class.java))
       }
-      R.id.toolbar_sort -> {
+      /*R.id.toolbar_sort -> {
         val popup = PopupMenu(this, findViewById(R.id.toolbar_sort))
         popup.menuInflater.inflate(R.menu.sort_menu, popup.menu)
 
@@ -197,15 +191,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
           (popup.menu as MenuBuilder).setOptionalIconsVisible(true)
         }
 
-        when (GlobalValues.sortMode) {
+        /*when (GlobalValues.sortMode) {
           Const.SORT_MODE_TIME_DESC -> popup.menu.getItem(0).isChecked = true
           Const.SORT_MODE_TIME_ASC -> popup.menu.getItem(1).isChecked = true
           Const.SORT_MODE_NAME_DESC -> popup.menu.getItem(2).isChecked = true
           Const.SORT_MODE_NAME_ASC -> popup.menu.getItem(3).isChecked = true
           else -> popup.menu.getItem(0).isChecked = true
-        }
+        }*/
+        popup.menu.getItem(0).isChecked = true
 
-        popup.setOnMenuItemClickListener { popupItem: MenuItem ->
+        /*popup.setOnMenuItemClickListener { popupItem: MenuItem ->
           when (popupItem.itemId) {
             R.id.sort_by_time_desc -> GlobalValues.sortMode = Const.SORT_MODE_TIME_DESC
             R.id.sort_by_time_asc -> GlobalValues.sortMode = Const.SORT_MODE_TIME_ASC
@@ -229,8 +224,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
           }
           true
         }
-        popup.show()
-      }
+        popup.show()*/
+      }*/
       R.id.toolbar_done -> {
         CategoryCardFragment.currentReference?.get()?.editDone()
         binding.viewPager.isUserInputEnabled = true
@@ -283,7 +278,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       }
     }*/
     binding.tsTitle.setText(UxUtils.getToolbarTitle())
-    binding.fullDraggableContainer.setEnableDrawer(GlobalValues.isPages)
+    //binding.fullDraggableContainer.setEnableDrawer(GlobalValues.isPages)
+    binding.fullDraggableContainer.setEnableDrawer(false)
 
     initFab()
     CardTypeIconGenerator
@@ -325,27 +321,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
           getChildAt(0)?.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
-          isUserInputEnabled = GlobalValues.isPages
-          if (GlobalValues.isPages) {
+          //isUserInputEnabled = GlobalValues.isPages
+          isUserInputEnabled = false
+          /*if (GlobalValues.isPages) {
             setCurrentItem(GlobalValues.currentPage, false)
-          } else {
+          } else {*/
             setCurrentItem(0, false)
-          }
+          //}
         }
       }
     }
 
     supportActionBar?.let {
-      if (GlobalValues.isPages) {
+      /*if (GlobalValues.isPages) {
         mToggle = ActionBarDrawerToggle(
           this, binding.drawer, binding.toolbar,
           R.string.drawer_open, R.string.drawer_close
         ).also { toggle ->
-          if (GlobalValues.actionBarType == Const.ACTION_BAR_TYPE_DARK) {
+          /*if (GlobalValues.actionBarType == Const.ACTION_BAR_TYPE_DARK) {
             toggle.drawerArrowDrawable.color = Color.BLACK
           } else {
-            toggle.drawerArrowDrawable.color = Color.WHITE
-          }
+
+          }*/
+          toggle.drawerArrowDrawable.color = Color.WHITE
 
           it.setDisplayHomeAsUpEnabled(true)
           binding.drawer.addDrawerListener(toggle)
@@ -354,14 +352,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             initDrawer(binding.drawer)
           }
         }
-      } else {
+      } else {*/
         it.setHomeButtonEnabled(false)
         it.setDisplayHomeAsUpEnabled(false)
         binding.drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-      }
+      //}
     }
 
-    if (GlobalValues.isPages) {
+    /*if (GlobalValues.isPages) {
       lifecycleScope.launchWhenResumed {
         delay(2000)
 
@@ -370,7 +368,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
           isTitleShown = true
         }
       }
-    }
+    }*/
   }
 
   private fun initDrawer(drawer: DrawerLayout) {
@@ -590,7 +588,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         //Timber.d("Received path = %s", it.path)
         processUri(it)
       }
-    } else if (action == Intent.ACTION_SEND) {
+    } /*else if (action == Intent.ACTION_SEND) {
       val sharing = intent.getStringExtra(Intent.EXTRA_TEXT)
       viewModel.setUpUrlScheme(this, AppTextUtils.parseUrlFromSharingText(sharing))
     } else if (action == ShortcutsActivity.ACTION_START_DEVICE_CONTROL) {
@@ -612,7 +610,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
           }
         })
         .open()
-    }
+    }*/
   }
 
   private fun processUri(uri: Uri) {

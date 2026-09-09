@@ -1,25 +1,18 @@
 package com.absinthe.anywhere_.ui.settings
 
-import android.content.ActivityNotFoundException
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.TwoStatePreference
 import androidx.recyclerview.widget.RecyclerView
 import com.absinthe.anywhere_.AppBarActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.ActivitySettingsBinding
-import com.absinthe.anywhere_.model.Settings
 import com.absinthe.anywhere_.utils.AppUtils
-import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import rikka.recyclerview.fixEdgeEffect
 import rikka.widget.borderview.BorderRecyclerView
@@ -44,7 +37,7 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
       setPreferencesFromResource(R.xml.settings, null)
 
       //Normal
-      findPreference<ListPreference>(Const.PREF_WORKING_MODE)?.apply {
+      /*findPreference<ListPreference>(Const.PREF_WORKING_MODE)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.workingMode = newValue as String
           true
@@ -55,13 +48,13 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           GlobalValues.closeAfterLaunch = newValue as Boolean
           true
         }
-      }
+      }*/
 
       //View
-      findPreference<Preference>(Const.PREF_CHANGE_BACKGROUND)?.apply {
+      /*findPreference<Preference>(Const.PREF_CHANGE_BACKGROUND)?.apply {
         setOnPreferenceClickListener {
           try {
-            (requireActivity() as SettingsActivity).setDocumentResult("image/*") {
+            (requireActivity() as SettingsActivity).setDocumentResult("image") {
               GlobalValues.backgroundUri = it.toString()
               GlobalValues.clearActionBarType()
               AppUtils.restart()
@@ -72,14 +65,14 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           }
           true
         }
-      }
-      findPreference<Preference>(Const.PREF_RESET_BACKGROUND)?.apply {
+      }*/
+      /*findPreference<Preference>(Const.PREF_RESET_BACKGROUND)?.apply {
         setOnPreferenceClickListener {
           DialogManager.showResetBackgroundDialog(requireActivity())
           true
         }
-      }
-      findPreference<ListPreference>(Const.PREF_DARK_MODE)?.apply {
+      }*/
+      /*findPreference<ListPreference>(Const.PREF_DARK_MODE)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           /*if (newValue.toString() == Const.DARK_MODE_AUTO) {
             DialogManager.showDarkModeTimePickerDialog(requireActivity() as SettingsActivity)
@@ -90,21 +83,21 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           //}
           true
         }
-      }
-      findPreference<ListPreference>(Const.PREF_CARD_MODE)?.apply {
+      }*/
+      /*findPreference<ListPreference>(Const.PREF_CARD_MODE)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.cardMode = newValue.toString()
           GlobalValues.cardModeLiveData.value = newValue
           true
         }
-      }
-      findPreference<ListPreference>(Const.PREF_CARD_BACKGROUND)?.apply {
+      }*/
+      /*findPreference<ListPreference>(Const.PREF_CARD_BACKGROUND)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.sCardBackgroundMode = newValue.toString()
           GlobalValues.cardModeLiveData.value = newValue
           true
         }
-      }
+      }*/
       /*findPreference<Preference>(Const.PREF_ICON_PACK)?.apply {
         setOnPreferenceClickListener {
           DialogManager.showIconPackChoosingDialog(requireActivity() as SettingsActivity)
@@ -113,13 +106,13 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
       }*/
 
       //Advanced
-      findPreference<TwoStatePreference>(Const.PREF_PAGES)?.apply {
+      /*findPreference<TwoStatePreference>(Const.PREF_PAGES)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.isPages = newValue as Boolean
           AppUtils.restart()
           true
         }
-      }
+      }*/
       findPreference<Preference>(Const.PREF_CLEAR_SHORTCUTS)?.apply {
         if (!AppUtils.atLeastNMR1()) {
           isVisible = false
@@ -135,7 +128,7 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           isVisible = false
         }
       }
-      findPreference<TwoStatePreference>(Const.PREF_COLLECTOR_PLUS)?.apply {
+      /*findPreference<TwoStatePreference>(Const.PREF_COLLECTOR_PLUS)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.isCollectorPlus = newValue as Boolean
           if (newValue) {
@@ -143,19 +136,19 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
           }
           true
         }
-      }
-      findPreference<TwoStatePreference>(Const.PREF_EXCLUDE_FROM_RECENT)?.apply {
+      */
+      /*findPreference<TwoStatePreference>(Const.PREF_EXCLUDE_FROM_RECENT)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.isExcludeFromRecent = newValue as Boolean
           true
         }
-      }
-      findPreference<ListPreference>(Const.PREF_SHOW_SHELL_RESULT_MODE)?.apply {
+      }*/
+      /*findPreference<ListPreference>(Const.PREF_SHOW_SHELL_RESULT_MODE)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.showShellResultMode = newValue as String
           true
         }
-      }
+      }*/
       /*indPreference<TwoStatePreference>(Const.PREF_LISTEN_CLIP_BOARD)?.apply {
         setOnPreferenceChangeListener { _, newValue ->
           GlobalValues.shouldListenClipBoardPref = newValue as Boolean

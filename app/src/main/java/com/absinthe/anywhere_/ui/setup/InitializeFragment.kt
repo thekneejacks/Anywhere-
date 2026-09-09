@@ -14,7 +14,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.databinding.CardAcquireOverlayPermissionBinding
 import com.absinthe.anywhere_.databinding.CardAcquirePopupPermissionBinding
@@ -144,12 +143,12 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     if (item.itemId == R.id.toolbar_initialize_done) {
-      GlobalValues.workingMode = mWorkingMode
+      //GlobalValues.workingMode = mWorkingMode
 
       var flag = false
       val allPerm = allPerm.value ?: 0
 
-      when (mWorkingMode) {
+      /*when (mWorkingMode) {
         Const.WORKING_MODE_URL_SCHEME -> flag = true
         Const.WORKING_MODE_ROOT -> flag = if (XiaomiUtilities.isMIUI()) {
           allPerm == (ROOT_PERM or OVERLAY_PERM or POPUP_PERM)
@@ -161,7 +160,9 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
         } else {
           allPerm == (SHIZUKU_GROUP_PERM or OVERLAY_PERM)
         }
-      }
+      }*/
+
+      allPerm == (SHIZUKU_GROUP_PERM or OVERLAY_PERM)
 
       if (flag) {
         enterHomePage()

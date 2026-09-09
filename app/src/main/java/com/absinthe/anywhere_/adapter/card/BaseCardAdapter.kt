@@ -1,6 +1,5 @@
 package com.absinthe.anywhere_.adapter.card
 
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.view.HapticFeedbackConstants
@@ -9,11 +8,8 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.absinthe.anywhere_.AnywhereApplication
-import com.absinthe.anywhere_.BaseActivity
-import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.adapter.ItemTouchCallBack
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
@@ -366,17 +362,8 @@ class BaseCardAdapter(
           putExtra(EXTRA_FROM_WORKFLOW, item.type == AnywhereType.Card.WORKFLOW)
         }
 
-        if (GlobalValues.editorEntryAnim) {
-          val options = ActivityOptions.makeSceneTransitionAnimation(
-            context as BaseActivity<*>,
-            v,
-            context.getString(R.string.trans_item_container)
-          )
-
-          context.startActivity(intent, options.toBundle())
-        } else {
           context.startActivity(intent)
-        }
+
         v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
       }
 

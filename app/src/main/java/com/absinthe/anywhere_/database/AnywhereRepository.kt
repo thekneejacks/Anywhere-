@@ -2,8 +2,6 @@ package com.absinthe.anywhere_.database
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
 import com.absinthe.anywhere_.utils.AppUtils
@@ -23,13 +21,15 @@ class AnywhereRepository(application: Application) {
     AnywhereRoomDatabase.getDatabase(application).anywhereDao()
 
   private val sortedEntities: LiveData<List<AnywhereEntity>>
-    get() = when (GlobalValues.sortMode) {
+    get() = mAnywhereDao.allAnywhereEntitiesOrderByTimeDesc
+      /*when (GlobalValues.sortMode) {
       Const.SORT_MODE_TIME_ASC -> mAnywhereDao.allAnywhereEntitiesOrderByTimeAsc
       Const.SORT_MODE_NAME_ASC -> mAnywhereDao.allAnywhereEntitiesOrderByNameAsc
       Const.SORT_MODE_NAME_DESC -> mAnywhereDao.allAnywhereEntitiesOrderByNameDesc
       Const.SORT_MODE_TIME_DESC -> mAnywhereDao.allAnywhereEntitiesOrderByTimeDesc
       else -> mAnywhereDao.allAnywhereEntitiesOrderByTimeDesc
-    }
+    }*/
+
 
   init {
     allPageEntities = mAnywhereDao.allPageEntities
@@ -42,22 +42,22 @@ class AnywhereRepository(application: Application) {
 
   fun insert(ae: AnywhereEntity) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.insert(ae)
-    GlobalValues.needBackup = true
+
   }
 
   fun insert(list: List<AnywhereEntity>) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.insert(list)
-    GlobalValues.needBackup = true
+
   }
 
   fun update(ae: AnywhereEntity) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.update(ae)
-    GlobalValues.needBackup = true
+
   }
 
   fun update(list: List<AnywhereEntity>) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.update(list)
-    GlobalValues.needBackup = true
+
   }
 
   fun delete(ae: AnywhereEntity, delayTime: Long = 0L) = GlobalScope.launch(Dispatchers.IO) {
@@ -66,7 +66,7 @@ class AnywhereRepository(application: Application) {
     if (AppUtils.atLeastNMR1()) {
       ShortcutsUtils.removeShortcut(ae)
     }
-    GlobalValues.needBackup = true
+
   }
 
   fun delete(list: List<AnywhereEntity>, delayTime: Long = 0L) =
@@ -76,27 +76,27 @@ class AnywhereRepository(application: Application) {
       if (AppUtils.atLeastNMR1()) {
         list.forEach { ShortcutsUtils.removeShortcut(it) }
       }
-      GlobalValues.needBackup = true
+
     }
 
   fun insertPage(pe: PageEntity) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.insertPage(pe)
-    GlobalValues.needBackup = true
+
   }
 
   fun insertPage(pageList: List<PageEntity>) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.insertPage(pageList)
-    GlobalValues.needBackup = true
+
   }
 
   fun updatePage(pe: PageEntity) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.updatePage(pe)
-    GlobalValues.needBackup = true
+
   }
 
   fun deletePage(pe: PageEntity) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.deletePage(pe)
-    GlobalValues.needBackup = true
+
   }
 
   fun getEntityById(id: String): AnywhereEntity? {

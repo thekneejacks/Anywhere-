@@ -11,14 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.backup.RestoreApplyFragmentDialog
 import com.absinthe.anywhere_.ui.dialog.AdvancedCardSelectDialogFragment
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.ui.dialog.RenameDialogFragment
-import com.absinthe.anywhere_.ui.settings.IntervalDialogFragment
 import com.absinthe.anywhere_.ui.shortcuts.CreateShortcutDialogFragment
 import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.utils.ShortcutsUtils
@@ -33,7 +30,7 @@ import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
  */
 object DialogManager {
 
-  fun showResetBackgroundDialog(activity: Activity) {
+  /*fun showResetBackgroundDialog(activity: Activity) {
     AnywhereDialogBuilder(activity)
       .setTitle(R.string.dialog_reset_background_confirm_title)
       .setMessage(R.string.dialog_reset_background_confirm_message)
@@ -44,7 +41,7 @@ object DialogManager {
       }
       .setNegativeButton(android.R.string.cancel, null)
       .show()
-  }
+  }*/
 
   fun showClearShortcutsDialog(activity: Activity) {
     AnywhereDialogBuilder(activity)
@@ -390,10 +387,10 @@ object DialogManager {
     fragment.show(activity.supportFragmentManager, fragment.tag)
   }*/
 
-  fun showIntervalSetupDialog(activity: AppCompatActivity) {
+  /*fun showIntervalSetupDialog(activity: AppCompatActivity) {
     val fragment = IntervalDialogFragment()
     fragment.show(activity.supportFragmentManager, fragment.tag)
-  }
+  }*/
 
   fun showRestoreApplyDialog(activity: AppCompatActivity) {
     val dialog = RestoreApplyFragmentDialog()

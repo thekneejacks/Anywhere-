@@ -1,8 +1,6 @@
 package com.absinthe.anywhere_.utils
 
 import com.absinthe.anywhere_.constants.CommandResult
-import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues.workingMode
 import com.absinthe.anywhere_.model.ShizukuProcess
 
 object CommandUtils {
@@ -13,12 +11,7 @@ object CommandUtils {
    */
   @JvmStatic
   fun execAdbCmd(cmd: String): String {
-    return when (workingMode) {
-      Const.WORKING_MODE_SHIZUKU -> execShizukuCmd(cmd)
-      //Const.WORKING_MODE_ROOT -> execRootCmd(cmd)
-      //Const.WORKING_MODE_URL_SCHEME -> CommandResult.RESULT_CHANGE_WORKING_MODE
-      else -> CommandResult.RESULT_ERROR
-    }
+    return execShizukuCmd(cmd)
   }
 
   /**

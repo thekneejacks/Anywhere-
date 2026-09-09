@@ -2,7 +2,6 @@ package com.absinthe.anywhere_.utils.handler
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.model.ExtraBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.CommandUtils
@@ -183,7 +182,7 @@ object Opener {
       })
   }*/
 
-  private fun openShellCommand(context: Context, command: String) {
+  /*private fun openShellCommand(context: Context, command: String) {
     val newCommand = command.removePrefix(AnywhereType.Prefix.SHELL_PREFIX)
     /*val result = */CommandUtils.execAdbCmd(newCommand)
 
@@ -204,7 +203,7 @@ object Opener {
     }*/
 
     listener?.onOpened()
-  }
+  }*/
 
   /*private fun openUrlSchemeEntity(context: Context, item: AnywhereEntity) {
     if (!item.param3.isNullOrEmpty()) {

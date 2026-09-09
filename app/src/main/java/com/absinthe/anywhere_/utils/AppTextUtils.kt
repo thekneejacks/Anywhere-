@@ -1,18 +1,6 @@
 package com.absinthe.anywhere_.utils
 
-import android.content.pm.PackageManager
 import android.util.Patterns
-import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues.workingMode
-import com.absinthe.anywhere_.model.ExtraBean
-import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.utils.CipherUtils.encrypt
-import com.absinthe.anywhere_.utils.handler.URLSchemeHandler.handleIntent
-import com.absinthe.anywhere_.utils.manager.URLManager
-import com.blankj.utilcode.util.Utils
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -24,7 +12,7 @@ object AppTextUtils {
    *
    * @param item the item
    */
-  fun getItemCommand(item: AnywhereEntity): String {
+  /*fun getItemCommand(item: AnywhereEntity): String {
     val cmd = StringBuilder()
 
     when (item.type) {
@@ -47,7 +35,7 @@ object AppTextUtils {
           cmd.append(" ").append(it.toString())
         }
       }
-      AnywhereType.Card.URL_SCHEME -> {
+      /*AnywhereType.Card.URL_SCHEME -> {
         val urlScheme = item.param1
 
         if (!item.param3.isNullOrBlank()) {
@@ -61,7 +49,7 @@ object AppTextUtils {
       }
       AnywhereType.Card.QR_CODE -> {
         cmd.append(AnywhereType.Prefix.QRCODE_PREFIX).append(item.param2)
-      }
+      }*/
       AnywhereType.Card.SHELL -> {
         cmd.append(AnywhereType.Prefix.SHELL_PREFIX).append(item.param1)
       }
@@ -105,7 +93,7 @@ object AppTextUtils {
 
     //Timber.d(cmd.toString())
     return cmd.toString()
-  }
+  }*/
 
   /**
    * Get current date
@@ -119,12 +107,12 @@ object AppTextUtils {
       return simpleDateFormat.format(date)
     }
 
-  val webDavFormatDate: String
+  /*val webDavFormatDate: String
     get() {
       val simpleDateFormat = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault())
       val date = Date(System.currentTimeMillis())
       return simpleDateFormat.format(date)
-    }
+    }*/
 
   /**
    * Get package name by adb command
@@ -132,7 +120,7 @@ object AppTextUtils {
    * @param cmd adb command
    * @return package name
    */
-  fun getPkgNameByCommand(cmd: String): String? {
+  /*fun getPkgNameByCommand(cmd: String): String? {
     return if (cmd.startsWith("am start -n ")) {
       cmd.removePrefix("am start -n ")
 
@@ -144,7 +132,7 @@ object AppTextUtils {
     } else {
       null
     }
-  }
+  }*/
 
   /**
    * Get package name by URL Scheme
@@ -152,7 +140,7 @@ object AppTextUtils {
    * @param url URL Scheme
    * @return package name
    */
-  private fun getPkgNameByUrlScheme(url: String): String? {
+  /*private fun getPkgNameByUrlScheme(url: String): String? {
     return runCatching {
       Utils.getApp().packageManager
         .queryIntentActivities(
@@ -160,7 +148,7 @@ object AppTextUtils {
           PackageManager.MATCH_DEFAULT_ONLY
         )[0].activityInfo.packageName
     }.getOrNull()
-  }
+  }*/
 
   /**
    * Parse URL from a sharing text
@@ -189,7 +177,7 @@ object AppTextUtils {
    * @param s url
    * @return true if is an image url
    */
-  fun isImageUrl(s: String): Boolean {
+  /*fun isImageUrl(s: String): Boolean {
     val list = mutableListOf(
       ".jpg", "jpeg", ".png", ".webp", ".gif", ".bmp", ",tif", ".tiff"
     )
@@ -199,7 +187,7 @@ object AppTextUtils {
       }
     }
     return false
-  }
+  }*/
 
   /**
    * Get card sharing URL
@@ -207,7 +195,7 @@ object AppTextUtils {
    * @param ae Card entity
    * @return URL
    */
-  fun genCardSharingUrl(ae: AnywhereEntity): String {
+  /*fun genCardSharingUrl(ae: AnywhereEntity): String {
     ae.category = ""
     ae.iconUri = ""
     val json = Gson().toJson(ae, AnywhereEntity::class.java)
@@ -217,5 +205,5 @@ object AppTextUtils {
       encrypted = encrypted.replace("\n".toRegex(), "")
     }
     return URLManager.ANYWHERE_SCHEME + URLManager.CARD_SHARING_HOST + "/" + encrypted
-  }
+  }*/
 }
