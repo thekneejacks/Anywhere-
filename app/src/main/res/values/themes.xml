@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <style name="Platform.V23.Theme.Anywhere" parent="Theme.Material3.Light.Anywhere" />
+  <style name="Platform.V23.Theme.Anywhere" parent="Theme.MaterialComponents.DayNight" />
 
   <style name="Platform.Theme.Anywhere" parent="Platform.V23.Theme.Anywhere" />
 

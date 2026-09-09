@@ -3,13 +3,13 @@
   <!-- Base application theme. -->
   <style name="AppTheme" parent="Theme" />
 
-  <style name="Animation.Material.Dialog" parent="Animation.AppCompat.Dialog">
+  <!--<style name="Animation.Material.Dialog" parent="Animation.AppCompat.Dialog">
     <item name="android:windowEnterAnimation">@anim/rd_dialog_enter</item>
     <item name="android:windowExitAnimation">@anim/rd_dialog_exit</item>
-  </style>
+  </style>-->
 
   <style name="ThemeOverlay.Material.Dialog" parent="ThemeOverlay.MaterialComponents.Dialog">
-    <item name="android:windowAnimationStyle">@style/Animation.Material.Dialog</item>
+    <!--<item name="android:windowAnimationStyle">@style/Animation.Material.Dialog</item>-->
     <item name="android:windowElevation">@dimen/rd_material_dialog_default_elevation</item>
     <item name="android:backgroundDimAmount">@dimen/rd_material_dialog_default_dim_amount</item>
   </style>

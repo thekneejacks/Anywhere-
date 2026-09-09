@@ -102,7 +102,7 @@ android {
   }
 }
 
-materialThemeBuilder {
+/*materialThemeBuilder {
   themes {
     create("anywhere") {
       primaryColor = "#8BC34A"
@@ -113,7 +113,7 @@ materialThemeBuilder {
     }
   }
   generatePalette = true
-}
+}*/
 
 repositories {
   mavenCentral()
@@ -211,7 +211,7 @@ dependencies {
   //implementation("io.coil-kt.coil3:coil-compose:3.0.4")
 
   implementation("com.google.code.gson:gson:2.9.0")
-  implementation("com.google.zxing:core:3.5.2")
+  //implementation("com.google.zxing:core:3.5.2")
   implementation("com.blankj:utilcodex:1.31.1")
   //implementation("com.tencent:mmkv-static:1.3.1")
   implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11")

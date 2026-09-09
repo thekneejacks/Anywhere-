@@ -32,8 +32,8 @@ class TextSwitcherView : TextSwitcher, ViewSwitcher.ViewFactory {
 
   private fun init() {
     setFactory(this)
-    this.setInAnimation(context, R.anim.anim_text_switcher_in)
-    this.setOutAnimation(context, R.anim.anim_text_switcher_out)
+    //this.setInAnimation(context, R.anim.anim_text_switcher_in)
+    //this.setOutAnimation(context, R.anim.anim_text_switcher_out)
     textColor = context.getColor(R.color.textColorNormal)
   }
 
