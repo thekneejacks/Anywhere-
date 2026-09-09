@@ -226,7 +226,7 @@ dependencies {
   //implementation("com.drakeet.about:about:2.5.2")
   //implementation("com.drakeet.multitype:multitype:4.3.0")
   implementation("com.drakeet.drawer:drawer:1.0.3")
-  implementation("com.github.sephiroth74:android-target-tooltip:2.0.4")
+  //implementation("com.github.sephiroth74:android-target-tooltip:2.0.4")
   implementation("com.leinardi.android:speed-dial:3.3.0")
   //implementation("me.zhanghai.android.fastscroll:library:1.3.0")
 
@@ -241,10 +241,10 @@ dependencies {
   implementation("dev.rikka.rikkax.material:material:2.7.0")
   implementation("dev.rikka.rikkax.recyclerview:recyclerview-ktx:1.3.2")
   implementation("dev.rikka.rikkax.widget:borderview:1.1.0")
-  implementation("dev.rikka.rikkax.preference:simplemenu-preference:1.0.3")
+    //implementation("dev.rikka.rikkax.preference:simplemenu-preference:1.0.3")
   //implementation("dev.rikka.rikkax.insets:insets:1.3.0")
   //implementation("dev.rikka.rikkax.layoutinflater:layoutinflater:1.3.0")
-  implementation("dev.rikka.rikkax.material:material-preference:2.0.0")
+    implementation("dev.rikka.rikkax.material:material-preference:2.0.0")
 
   //Network
   //implementation("com.squareup.okhttp3:okhttp:4.11.0")
@@ -258,8 +258,8 @@ dependencies {
   //implementation("org.reactivestreams:reactive-streams:1.0.4")
 
   //Debug
-  testImplementation("junit:junit:4.13.2")
-  debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
-  androidTestImplementation("androidx.test:runner:1.5.2")
-  androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+  //testImplementation("junit:junit:4.13.2")
+  //debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
+  //androidTestImplementation("androidx.test:runner:1.5.2")
+  //androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

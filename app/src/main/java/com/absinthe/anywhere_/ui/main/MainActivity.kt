@@ -65,8 +65,6 @@ import com.google.android.material.transition.platform.MaterialContainerTransfor
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.leinardi.android.speeddial.SpeedDialActionItem
-import it.sephiroth.android.library.xtooltip.ClosePolicy.Companion.TOUCH_ANYWHERE_CONSUME
-import it.sephiroth.android.library.xtooltip.Tooltip
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -685,7 +683,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       .into(binding.ivBack)
   }*/
 
-  private fun showFirstTip(target: View) {
+  /*private fun showFirstTip(target: View) {
     target.post {
       Tooltip.Builder(this@MainActivity)
         .anchor(target, 0, 0, false)
@@ -695,7 +693,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         .create()
         .show(target, Tooltip.Gravity.LEFT, true)
     }
-  }
+  }*/
 
   /*private fun backupIfNeeded() {
     if (GlobalValues.webdavHost.isEmpty() ||

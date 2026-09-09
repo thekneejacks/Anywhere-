@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <PreferenceCategory
+  <!--<PreferenceCategory
     app:key="cloudBackupCategory"
     app:title="@string/settings_backup_cloud_category">
 
@@ -32,7 +32,7 @@
       app:key="webdavRestore"
       app:title="@string/settings_backup_webdav_restore_title" />
 
-  </PreferenceCategory>
+  </PreferenceCategory>-->
 
   <PreferenceCategory
     app:key="backupCategory"
