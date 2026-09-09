@@ -8,12 +8,9 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.HapticFeedbackConstants
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.view.Window
-import android.widget.ImageButton
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -27,17 +24,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.adapter.ItemTouchCallBack
-import com.absinthe.anywhere_.adapter.manager.WrapContentLinearLayoutManager
-import com.absinthe.anywhere_.adapter.page.PageListAdapter
-import com.absinthe.anywhere_.adapter.page.PageTitleNode
-import com.absinthe.anywhere_.adapter.page.PageTitleProvider
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
@@ -52,22 +43,18 @@ import com.absinthe.anywhere_.ui.settings.SettingsActivity
 import com.absinthe.anywhere_.utils.CipherUtils.decrypt
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
-import com.absinthe.anywhere_.utils.doOnMainThreadIdle
 import com.absinthe.anywhere_.utils.manager.CardTypeIconGenerator
 import com.absinthe.anywhere_.utils.manager.DialogManager.showAdvancedCardSelectDialog
 import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.anywhere_.view.home.FabBuilder.build
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.absinthe.libraries.utils.extensions.dp
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.entity.node.BaseNode
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.leinardi.android.speeddial.SpeedDialActionItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -365,7 +352,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }*/
   }
 
-  private fun initDrawer(drawer: DrawerLayout) {
+  /*private fun initDrawer(drawer: DrawerLayout) {
     binding.drawer.setStatusBarBackground(null)
     val adapter = PageListAdapter()
     val touchCallBack = ItemTouchCallBack().apply {
@@ -464,9 +451,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
       }
     }
-  }
+  }*/
 
-  private fun setupDrawerData(adapter: PageListAdapter, pageEntities: List<PageEntity>) =
+  /*private fun setupDrawerData(adapter: PageListAdapter, pageEntities: List<PageEntity>) =
     lifecycleScope.launch(Dispatchers.IO) {
       val list: MutableList<BaseNode> = ArrayList()
       for (pe in pageEntities) {
@@ -475,7 +462,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       withContext(Dispatchers.Main) {
         adapter.setList(list)
       }
-    }
+    }*/
 
   private fun initObserver() {
     mObserver = Observer { pageEntities ->
