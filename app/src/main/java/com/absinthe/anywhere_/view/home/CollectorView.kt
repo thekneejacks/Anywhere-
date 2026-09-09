@@ -16,7 +16,6 @@ import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.utils.CommandUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.viewbuilder.entity.CollectorBuilder
-import timber.log.Timber
 import java.lang.ref.WeakReference
 
 @SuppressLint("ViewConstructor")
@@ -48,7 +47,7 @@ class CollectorView(context: Context, binder: ICollectorService) : LinearLayout(
   @SuppressLint("ClickableViewAccessibility")
   private fun initView() {
     mBuilder.ibCollector.setOnClickListener {
-      Timber.d("Collector clicked!")
+      //Timber.d("Collector clicked!")
       collectActivity()
       binderRef.get()?.stopCollector()
       AppUtils.openUrl(context, mPackageName, mClassName, "")
@@ -110,7 +109,7 @@ class CollectorView(context: Context, binder: ICollectorService) : LinearLayout(
   private fun collectActivity() {
     val cmd = Const.CMD_GET_TOP_STACK_ACTIVITY
     val result = CommandUtils.execAdbCmd(cmd)
-    Timber.d("Shell result = %s", result)
+    //Timber.d("Shell result = %s", result)
 
     if (result == CommandResult.RESULT_SHIZUKU_PERM_ERROR
       || result == CommandResult.RESULT_ROOT_PERM_ERROR

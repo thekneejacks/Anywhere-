@@ -8,7 +8,6 @@ import android.widget.Button
 import androidx.appcompat.widget.AppCompatImageView
 import com.absinthe.anywhere_.R
 import com.absinthe.libchecker.view.AViewGroup
-import timber.log.Timber
 
 class CoordinatorView(context: Context) : AViewGroup(context) {
 
@@ -60,18 +59,18 @@ class CoordinatorView(context: Context) : AViewGroup(context) {
         // 获取按下时的X，Y坐标
         lastX = motionEvent.rawX
         lastY = motionEvent.rawY
-        Timber.d("MotionEvent.ACTION_DOWN last: %f %f", lastX, lastY)
+        //Timber.d("MotionEvent.ACTION_DOWN last: %f %f", lastX, lastY)
       }
       MotionEvent.ACTION_MOVE -> {
         // 获取移动时的X，Y坐标
         nowX = motionEvent.rawX
         nowY = motionEvent.rawY
-        Timber.d("MotionEvent.ACTION_MOVE now: %f %f", nowX, nowY)
+        //Timber.d("MotionEvent.ACTION_MOVE now: %f %f", nowX, nowY)
 
         // 计算XY坐标偏移量
         tranX = nowX - lastX
         tranY = nowY - lastY
-        Timber.d("MotionEvent.ACTION_MOVE tran: %f %f", tranX, tranY)
+        //Timber.d("MotionEvent.ACTION_MOVE tran: %f %f", tranX, tranY)
 
         // 移动悬浮窗
         targetView.apply {

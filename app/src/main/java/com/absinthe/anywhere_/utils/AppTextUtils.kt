@@ -13,7 +13,6 @@ import com.absinthe.anywhere_.utils.manager.URLManager
 import com.blankj.utilcode.util.Utils
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
-import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -104,7 +103,7 @@ object AppTextUtils {
       }
     }
 
-    Timber.d(cmd.toString())
+    //Timber.d(cmd.toString())
     return cmd.toString()
   }
 

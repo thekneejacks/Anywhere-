@@ -4,7 +4,6 @@ import android.app.Dialog
 import androidx.fragment.app.DialogFragment
 import com.absinthe.anywhere_.BuildConfig
 import com.absinthe.anywhere_.view.app.AnywhereBottomSheetDialog
-import timber.log.Timber
 import java.util.Stack
 
 /**
@@ -24,7 +23,7 @@ object DialogStack {
 
   fun push(dialog: Any) {
     printStack()
-    Timber.i("Push Start")
+    //Timber.i("Push Start")
 
     if (dialog !is Dialog && dialog !is DialogFragment) {
       return
@@ -56,13 +55,13 @@ object DialogStack {
       }
     }
 
-    Timber.i("Push End")
+    //Timber.i("Push End")
     printStack()
   }
 
   fun pop() {
     printStack()
-    Timber.i("Pop Start")
+    //Timber.i("Pop Start")
 
     if (stack.empty()) {
       return
@@ -93,18 +92,18 @@ object DialogStack {
       }
     }
 
-    Timber.i("Pop End")
+    //Timber.i("Pop End")
     printStack()
   }
 
   private fun printStack() {
     if (isPrintStack) {
-      Timber.i("DialogStack:")
+      //Timber.i("DialogStack:")
 
       for (obj in stack) {
-        Timber.i(obj.javaClass.toString())
+        //Timber.i(obj.javaClass.toString())
       }
-      Timber.i("--------------------------------------")
+      //Timber.i("--------------------------------------")
     }
   }
 }

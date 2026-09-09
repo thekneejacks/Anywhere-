@@ -4,7 +4,6 @@ import android.text.TextUtils
 import android.util.Base64
 import androidx.annotation.Keep
 import com.absinthe.anywhere_.utils.manager.IzukoHelper.cipherKey
-import timber.log.Timber
 import java.nio.charset.StandardCharsets
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
@@ -37,7 +36,7 @@ object CipherUtils {
       val encrypted = cipher.doFinal(data.toByteArray())
       Base64.encodeToString(encrypted, Base64.DEFAULT)
     } catch (e: Exception) {
-      Timber.e(e)
+      //Timber.e(e)
       null
     }
   }
@@ -56,7 +55,7 @@ object CipherUtils {
       cipher.init(Cipher.DECRYPT_MODE, generateKey(), IvParameterSpec(ByteArray(cipher.blockSize)))
 
       val original = cipher.doFinal(encrypted)
-      Timber.d(original.toString())
+      //Timber.d(original.toString())
       String(original, StandardCharsets.UTF_8)
     } catch (e: Exception) {
       e.printStackTrace()

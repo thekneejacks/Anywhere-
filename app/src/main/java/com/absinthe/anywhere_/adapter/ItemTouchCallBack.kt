@@ -4,7 +4,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import timber.log.Timber
 
 class ItemTouchCallBack : ItemTouchHelper.Callback() {
 
@@ -28,7 +27,7 @@ class ItemTouchCallBack : ItemTouchHelper.Callback() {
     recyclerView: RecyclerView,
     viewHolder: RecyclerView.ViewHolder
   ): Int {
-    Timber.i("getMovementFlags")
+    //Timber.i("getMovementFlags")
     return if (recyclerView.layoutManager is GridLayoutManager ||
       recyclerView.layoutManager is StaggeredGridLayoutManager
     ) {
@@ -58,7 +57,7 @@ class ItemTouchCallBack : ItemTouchHelper.Callback() {
     viewHolder: RecyclerView.ViewHolder,
     target: RecyclerView.ViewHolder
   ): Boolean {
-    Timber.i("onMove")
+    //Timber.i("onMove")
     mListener?.onMove(viewHolder.bindingAdapterPosition, target.bindingAdapterPosition)
     return true
   }
@@ -71,7 +70,7 @@ class ItemTouchCallBack : ItemTouchHelper.Callback() {
    * @param direction  direction
    */
   override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-    Timber.i("onSwiped")
+    //Timber.i("onSwiped")
     //此处是侧滑删除的主要代码
     mListener?.onSwiped(viewHolder.bindingAdapterPosition)
   }
@@ -83,7 +82,7 @@ class ItemTouchCallBack : ItemTouchHelper.Callback() {
    * @param actionState actionState
    */
   override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
-    Timber.i("onSelectedChanged")
+    //Timber.i("onSelectedChanged")
     //...
     super.onSelectedChanged(viewHolder, actionState)
   }
@@ -95,7 +94,7 @@ class ItemTouchCallBack : ItemTouchHelper.Callback() {
    * @param viewHolder   viewHolder
    */
   override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
-    Timber.i("clearView")
+    //Timber.i("clearView")
     //...
     super.clearView(recyclerView, viewHolder)
   }

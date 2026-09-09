@@ -6,31 +6,28 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.absinthe.anywhere_.database.AnywhereRepository
 import com.absinthe.anywhere_.model.Settings
-import com.absinthe.anywhere_.utils.timber.ReleaseTree
-import com.absinthe.anywhere_.utils.timber.ThreadAwareDebugTree
 import com.absinthe.libraries.utils.utils.Utility
 import jonathanfinerty.once.Once
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import rikka.sui.Sui
-import timber.log.Timber
 
 class AnywhereApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
 
-    if (BuildConfig.DEBUG) {
-      Timber.plant(ThreadAwareDebugTree())
+    /*if (BuildConfig.DEBUG) {
+      ////Timber.plant(ThreadAwareDebugTree())
     } else {
       //checkSignature()
       //PoliceMan.checkApplicationClass(this)
       //PoliceMan.checkPMProxy(this)
-      Timber.plant(ReleaseTree())
+      ////Timber.plant(ReleaseTree())
       /*AppCenter.start(
         this, BuildConfig.APP_CENTER_SECRET,
         Analytics::class.java, Crashes::class.java
       )*/
-    }
+    }*/
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
       HiddenApiBypass.addHiddenApiExemptions("")

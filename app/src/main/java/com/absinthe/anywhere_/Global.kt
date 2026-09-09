@@ -3,7 +3,6 @@ package com.absinthe.anywhere_
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import timber.log.Timber
 
 object Global {
 
@@ -32,11 +31,11 @@ object Global {
       stack.contains("get life cycle exception") ||
       stack.contains("checkStartAnyActivityPermission")
     ) {
-      Timber.w(e)
+      //Timber.w(e)
     } else if (stack.contains("ClipboardService")) {
-      Timber.w(e)
+      //Timber.w(e)
     } else if (stack.contains("de.robv.android.xposed")) {
-      Timber.w(e)
+      //Timber.w(e)
     } else {
       throw e
     }

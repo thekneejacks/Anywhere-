@@ -4,7 +4,6 @@ import android.content.DialogInterface
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.absinthe.anywhere_.utils.manager.DialogStack
-import timber.log.Timber
 
 open class AnywhereDialogFragment : DialogFragment() {
 
@@ -15,7 +14,7 @@ open class AnywhereDialogFragment : DialogFragment() {
     try {
       super.show(manager, tag)
     } catch (e: IllegalStateException) {
-      Timber.e(e)
+      //Timber.e(e)
     }
     DialogStack.push(this)
   }

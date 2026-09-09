@@ -28,7 +28,6 @@ import kotlinx.coroutines.launch
 import rikka.recyclerview.fixEdgeEffect
 import rikka.widget.borderview.BorderRecyclerView
 import rikka.widget.borderview.BorderView
-import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -170,7 +169,7 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
             runCatching {
               backupResultLauncher.launch("Anywhere-Backups-" + AppTextUtils.currentFormatDate + ".awbackups")
             }.onFailure {
-              Timber.e(it)
+              //Timber.e(it)
               ToastUtil.makeText(context, "Document API not working")
             }
           } else {
@@ -184,7 +183,7 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
           runCatching {
             restoreResultLauncher.launch("*/*")
           }.onFailure {
-            Timber.e(it)
+            //Timber.e(it)
             ToastUtil.makeText(context, "Document API not working")
           }
           true

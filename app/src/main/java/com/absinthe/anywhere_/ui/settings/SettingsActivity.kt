@@ -171,7 +171,7 @@ class SettingsActivity : AppBarActivity<ActivitySettingsBinding>() {
               launchUrl(requireActivity(), URLManager.DOCUMENT_PAGE.toUri())
             }
           } catch (e: ActivityNotFoundException) {
-            Timber.e(e)
+            //Timber.e(e)
             try {
               val intent = Intent(Intent.ACTION_VIEW).apply {
                 data = URLManager.DOCUMENT_PAGE.toUri()

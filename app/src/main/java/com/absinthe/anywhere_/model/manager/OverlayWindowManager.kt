@@ -9,7 +9,6 @@ import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.services.overlay.IOverlayService
 import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.view.home.OverlayView
-import timber.log.Timber
 
 class OverlayWindowManager(private val context: Context, private val binder: IOverlayService) {
 
@@ -39,13 +38,13 @@ class OverlayWindowManager(private val context: Context, private val binder: IOv
     }
     mWindowManager.addView(overlayView, layoutParams)
     overlayMap[entity.id] = overlayView
-    Timber.d("Overlay window addView.")
+    //Timber.d("Overlay window addView.")
   }
 
   fun removeView(entity: AnywhereEntity) {
     overlayMap.remove(entity.id)?.let {
       mWindowManager.removeView(it)
-      Timber.d("Overlay window removeView.")
+      //Timber.d("Overlay window removeView.")
     }
   }
 

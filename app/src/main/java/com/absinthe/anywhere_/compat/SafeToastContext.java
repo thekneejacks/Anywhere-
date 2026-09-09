@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import timber.log.Timber;
-
 /**
  * @author drakeet
  */
@@ -73,12 +71,12 @@ final class SafeToastContext extends ContextWrapper {
     @Override
     public void addView(View view, ViewGroup.LayoutParams params) {
       try {
-        Timber.tag(TAG).d("WindowManager's addView(view, params) has been hooked.");
+        //Timber.tag(TAG).d("WindowManager's addView(view, params) has been hooked.");
         base.addView(view, params);
       } catch (BadTokenException e) {
-        Timber.tag(TAG).i(e);
+        //Timber.tag(TAG).i(e);
       } catch (Throwable throwable) {
-        Timber.tag(TAG).e(throwable, "[addView]");
+        //Timber.tag(TAG).e(throwable, "[addView]");
       }
     }
 

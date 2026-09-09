@@ -24,7 +24,6 @@ import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.ActivityStackManager
 import rikka.core.res.isNight
 import rikka.material.app.MaterialActivity
-import timber.log.Timber
 import java.lang.ref.WeakReference
 
 
@@ -43,7 +42,7 @@ abstract class BaseActivity<T : ViewBinding> : MaterialActivity() {
   protected abstract fun setViewBinding(): T?
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    Timber.i("onCreate")
+    //Timber.i("onCreate")
     super.onCreate(savedInstanceState)
 
     reference = WeakReference(this)

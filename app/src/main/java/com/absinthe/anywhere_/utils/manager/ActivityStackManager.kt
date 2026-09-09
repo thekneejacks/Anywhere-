@@ -3,7 +3,6 @@ package com.absinthe.anywhere_.utils.manager
 import android.app.Activity
 import android.os.Process
 import androidx.appcompat.app.AppCompatActivity
-import timber.log.Timber
 import java.lang.ref.WeakReference
 import java.util.Stack
 
@@ -85,7 +84,7 @@ object ActivityStackManager {
       killActivity(activity)
     } catch (e: Exception) {
       e.printStackTrace()
-      Timber.e(e.toString())
+      //Timber.e(e.toString())
     }
   }
 
@@ -112,7 +111,7 @@ object ActivityStackManager {
         }
       }
     } catch (e: Exception) {
-      Timber.e(e.toString())
+      //Timber.e(e.toString())
     }
   }
 
@@ -137,7 +136,7 @@ object ActivityStackManager {
         }
       }
     } catch (e: Exception) {
-      Timber.e(e.toString())
+      //Timber.e(e.toString())
     }
   }
 
@@ -153,7 +152,7 @@ object ActivityStackManager {
         listIterator.remove()
       }
     } catch (e: Exception) {
-      Timber.e(e.toString())
+      //Timber.e(e.toString())
     }
   }
 

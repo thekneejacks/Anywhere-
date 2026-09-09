@@ -8,7 +8,6 @@ import android.view.WindowManager
 import com.absinthe.anywhere_.services.overlay.ICollectorService
 import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.view.home.CollectorView
-import timber.log.Timber
 
 class CollectorWindowManager(context: Context, binder: ICollectorService) {
 
@@ -29,14 +28,14 @@ class CollectorWindowManager(context: Context, binder: ICollectorService) {
       mWindowManager.addView(view, LAYOUT_PARAMS)
     }
     hasAdded = true
-    Timber.d("Collector addView.")
+    //Timber.d("Collector addView.")
   }
 
   fun removeView() {
     if (hasAdded) {
       view.let {
         mWindowManager.removeView(view)
-        Timber.d("Collector removeView.")
+        //Timber.d("Collector removeView.")
       }
     }
     hasAdded = false

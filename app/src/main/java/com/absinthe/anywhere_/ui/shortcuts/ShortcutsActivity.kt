@@ -16,20 +16,16 @@ import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.model.ExtraBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.services.overlay.ICollectorService
 import com.absinthe.anywhere_.utils.CommandUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.handler.Opener
-import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.absinthe.libraries.utils.extensions.dp
 import com.blankj.utilcode.util.Utils
-import com.google.gson.Gson
-import timber.log.Timber
 
 class ShortcutsActivity : BaseActivity<ViewBinding>() {
 
@@ -55,7 +51,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
 
   private fun handleIntent(intent: Intent) {
     intent.action?.let {
-      Timber.d("action = %s", it)
+      //Timber.d("action = %s", it)
 
       when (it) {
         /*ACTION_START_COLLECTOR -> {
@@ -123,7 +119,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
             )
 
             anywhereEntities?.let { entities ->
-              Timber.d("list = %s", entities)
+              //Timber.d("list = %s", entities)
 
               for (ae in entities) {
                 arrayAdapter.add(ae.appName)

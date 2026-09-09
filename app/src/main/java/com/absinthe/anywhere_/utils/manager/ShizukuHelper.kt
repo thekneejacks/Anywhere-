@@ -14,7 +14,6 @@ import com.absinthe.libraries.utils.utils.XiaomiUtilities
 import com.blankj.utilcode.util.IntentUtils
 import rikka.shizuku.Shizuku
 import rikka.shizuku.ShizukuProvider
-import timber.log.Timber
 
 
 /**
@@ -64,7 +63,7 @@ object ShizukuHelper {
         }
       }
     } catch (e: Throwable) {
-      Timber.e(e)
+      //Timber.e(e)
     }
     return false
   }

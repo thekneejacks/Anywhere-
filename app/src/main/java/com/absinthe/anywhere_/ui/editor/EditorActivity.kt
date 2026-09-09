@@ -35,7 +35,6 @@ import com.blankj.utilcode.util.ActivityUtils
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
-import timber.log.Timber
 
 const val EXTRA_ENTITY = "EXTRA_ENTITY"
 const val EXTRA_EDIT_MODE = "EXTRA_EDIT_MODE"
@@ -151,7 +150,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     editor = try {
       EditorFactory.produce(entity.type)
     } catch (e: IllegalArgumentException) {
-      Timber.e(e)
+      //Timber.e(e)
       finish()
       return
     }

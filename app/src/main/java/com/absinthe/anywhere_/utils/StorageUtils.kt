@@ -12,7 +12,6 @@ import com.absinthe.anywhere_.model.database.PageEntity
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 object StorageUtils {
   /* Checks if external storage is available for read and write */
@@ -56,7 +55,7 @@ object StorageUtils {
 
   suspend fun restoreFromJson(context: Context, jsonString: String) {
     val content = CipherUtils.decrypt(jsonString)
-    Timber.d(content)
+    //Timber.d(content)
 
     try {
       val backupBean = Gson().fromJson(content, BackupBean::class.java)
@@ -90,7 +89,7 @@ object StorageUtils {
         }
       }
     } catch (e: Exception) {
-      Timber.e(e)
+      //Timber.e(e)
 
       try {
         val entity = Gson().fromJson(content, AnywhereEntity::class.java)
@@ -102,7 +101,7 @@ object StorageUtils {
           ToastUtil.makeText(context.getString(R.string.toast_restore_success))
         }
       } catch (e: Exception) {
-        Timber.e(e)
+        //Timber.e(e)
         withContext(Dispatchers.Main) {
           ToastUtil.makeText(R.string.toast_backup_file_error)
         }

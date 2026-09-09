@@ -35,7 +35,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import rikka.shizuku.Shizuku
 import rikka.shizuku.ShizukuProvider
-import timber.log.Timber
 
 
 class InitializeFragment : Fragment(), OnButtonCheckedListener {
@@ -113,7 +112,7 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
     checkedId: Int,
     isChecked: Boolean
   ) {
-    Timber.d("onButtonChecked")
+    //Timber.d("onButtonChecked")
     when (checkedId) {
       R.id.btn_url_scheme -> if (isChecked) {
         actCards(CARD_ROOT, false)
@@ -191,7 +190,7 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
         }
         allPerm.value = allPerm.value!! or ROOT_PERM
       } else {
-        Timber.d("Root permission denied.")
+        //Timber.d("Root permission denied.")
         ToastUtil.makeText(R.string.toast_root_permission_denied)
       }
     }
@@ -304,7 +303,7 @@ class InitializeFragment : Fragment(), OnButtonCheckedListener {
               Const.REQUEST_CODE_GO_TO_MIUI_PERM_MANAGER
             )
           } catch (e: ActivityNotFoundException) {
-            Timber.e(e)
+            //Timber.e(e)
           }
         }
         if (isAdd) {

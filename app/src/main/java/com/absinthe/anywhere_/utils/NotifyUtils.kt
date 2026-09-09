@@ -17,7 +17,6 @@ import com.absinthe.anywhere_.R
 import com.blankj.utilcode.util.NotificationUtils
 import com.blankj.utilcode.util.NotificationUtils.ChannelConfig
 import com.blankj.utilcode.util.Utils
-import timber.log.Timber
 
 object NotifyUtils {
 
@@ -41,7 +40,7 @@ object NotifyUtils {
   fun createCollectorNotification(context: Service) {
     val areNotificationsEnabled = notificationManager.areNotificationsEnabled()
     if (!areNotificationsEnabled) {
-      Timber.d("Notifications are disabled")
+      //Timber.d("Notifications are disabled")
       return
     }
     NotificationUtils.notify(
@@ -66,7 +65,7 @@ object NotifyUtils {
   fun updateCollectorNotification(context: Service, pkgName: String, clsName: String) {
     val areNotificationsEnabled = notificationManager.areNotificationsEnabled()
     if (!areNotificationsEnabled) {
-      Timber.d("Notifications are disabled")
+      //Timber.d("Notifications are disabled")
       return
     }
     val intent = Intent().apply {
@@ -94,7 +93,7 @@ object NotifyUtils {
   fun cancelCollectorNotification(context: Service) {
     val areNotificationsEnabled = notificationManager.areNotificationsEnabled()
     if (!areNotificationsEnabled) {
-      Timber.d("Notifications are disabled")
+      //Timber.d("Notifications are disabled")
       return
     }
     NotificationUtils.cancel(COLLECTOR_NOTIFICATION_ID)
@@ -104,7 +103,7 @@ object NotifyUtils {
   /*fun createLogcatNotification(context: Context) {
     val areNotificationsEnabled = notificationManager.areNotificationsEnabled()
     if (!areNotificationsEnabled) {
-      Timber.d("Notifications are disabled")
+      //Timber.d("Notifications are disabled")
       return
     }
     val channelConfig = ChannelConfig(
@@ -135,7 +134,7 @@ object NotifyUtils {
   fun createBackupNotification(context: Service) {
     val areNotificationsEnabled = notificationManager.areNotificationsEnabled()
     if (!areNotificationsEnabled) {
-      Timber.d("Notifications are disabled")
+      //Timber.d("Notifications are disabled")
       return
     }
     val channelConfig = ChannelConfig(
@@ -163,7 +162,7 @@ object NotifyUtils {
   fun createWorkflowNotification(context: Service) {
     val areNotificationsEnabled = notificationManager.areNotificationsEnabled()
     if (!areNotificationsEnabled) {
-      Timber.d("Notifications are disabled")
+      //Timber.d("Notifications are disabled")
       return
     }
     val channelConfig = ChannelConfig(

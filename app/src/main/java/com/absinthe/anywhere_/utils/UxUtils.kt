@@ -40,7 +40,6 @@ import com.blankj.utilcode.util.ConvertUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import java.util.Calendar
 
 object UxUtils {
@@ -104,7 +103,7 @@ object UxUtils {
         null
       )
     } catch (e: Exception) {
-      Timber.e(e)
+      //Timber.e(e)
       getAppIcon(context, entity, size)
     } ?: getAppIcon(context, entity, size)
 
@@ -224,7 +223,7 @@ object UxUtils {
     val wic = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
 
     if (newType == Const.ACTION_BAR_TYPE_DARK || newType.isEmpty()) {
-      Timber.d("Dark-")
+      //Timber.d("Dark-")
       val span = if (activity.isNightMode() && backgroundUri.isEmpty()) {
         textSwitcher.textColor = Color.WHITE
         ForegroundColorSpan(Color.WHITE)
@@ -244,7 +243,7 @@ object UxUtils {
       }
       wic.isAppearanceLightStatusBars = true
     } else if (newType == Const.ACTION_BAR_TYPE_LIGHT) {
-      Timber.d("Light-")
+      //Timber.d("Light-")
       val span = ForegroundColorSpan(Color.WHITE)
       textSwitcher.setText(SpannableString(title).apply {
         setSpan(span, 0, title.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)

@@ -5,10 +5,7 @@ import android.content.Context
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.model.ExtraBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.database.isExecWithRoot
-import com.absinthe.anywhere_.utils.AppTextUtils.getItemCommand
 import com.absinthe.anywhere_.utils.CommandUtils
-import timber.log.Timber
 import java.lang.ref.WeakReference
 
 private const val TYPE_NONE = -1
@@ -93,7 +90,7 @@ object Opener {
   }*/
 
   /*private fun openFromEntity(context: Context) {
-    Timber.d("openFromEntity")
+    //Timber.d("openFromEntity")
     item?.let {
       openShellEntity(context, it)
       //openAnywhereEntity(context, it)
@@ -101,7 +98,7 @@ object Opener {
   }*/
 
   /*private fun openFromCommand(context: Context) {
-    Timber.d("openFromCommand")
+    //Timber.d("openFromCommand")
     command?.let {
       /*when {
         /*it.startsWith(AnywhereType.Prefix.DYNAMIC_PARAMS_PREFIX) -> {
@@ -226,7 +223,7 @@ object Opener {
                 listener?.onOpened()
               }
             } catch (e: Exception) {
-              Timber.e(e)
+              //Timber.e(e)
               if (e is ActivityNotFoundException) {
                 ToastUtil.makeText(R.string.toast_no_react_url)
               } else if (AppUtils.atLeastN()) {
@@ -248,7 +245,7 @@ object Opener {
           listener?.onOpened()
         }
       } catch (e: Exception) {
-        Timber.e(e)
+        //Timber.e(e)
         if (e is ActivityNotFoundException) {
           ToastUtil.makeText(R.string.toast_no_react_url)
         } else if (AppUtils.atLeastN()) {
@@ -404,7 +401,7 @@ object Opener {
     } else {
       ActivityStackManager.topActivity ?: return
     }
-    Timber.d("ctx: $ctx")
+    //Timber.d("ctx: $ctx")
     DialogManager.showImageDialog(
       ctx,
       item.param1,
@@ -516,7 +513,7 @@ object Opener {
             TYPE_URI, TYPE_URI_LABEL -> intent.putExtra(extra.key, extra.value.toUri())
           }
         } catch (e: NumberFormatException) {
-          Timber.e(e)
+          //Timber.e(e)
         }
       }
 
@@ -532,7 +529,7 @@ object Opener {
       runCatching {
         context.sendBroadcast(intent)
       }.onFailure { t ->
-        Timber.e(t)
+        //Timber.e(t)
         ToastUtil.makeText(t.toString())
       }
     } ?: let {
@@ -679,10 +676,10 @@ object Opener {
       }
       listener?.onOpened()
     } catch (e: NeedAccessibilityException) {
-      Timber.e(e)
+      //Timber.e(e)
       ToastUtil.Toasty.show(context, R.string.toast_grant_accessibility)
     } catch (e: Exception) {
-      Timber.e(e)
+      //Timber.e(e)
       listener?.onOpened()
     }
   }*/

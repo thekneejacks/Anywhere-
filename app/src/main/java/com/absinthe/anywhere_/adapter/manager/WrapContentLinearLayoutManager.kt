@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
-import timber.log.Timber
 
 class WrapContentLinearLayoutManager : LinearLayoutManager {
 
@@ -20,7 +19,7 @@ class WrapContentLinearLayoutManager : LinearLayoutManager {
     try {
       super.onLayoutChildren(recycler, state)
     } catch (e: IndexOutOfBoundsException) {
-      Timber.e("encounter an IOOBE in RecyclerView")
+      //Timber.e("encounter an IOOBE in RecyclerView")
     }
   }
 }

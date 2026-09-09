@@ -5,8 +5,6 @@ import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues.workingMode
 import com.absinthe.anywhere_.model.ShizukuProcess
 
-import timber.log.Timber
-
 object CommandUtils {
   /**
    * execute adb command
@@ -39,16 +37,16 @@ object CommandUtils {
         URLSchemeHandler.parse(Utils.getApp(), newCmd)
         CommandResult.RESULT_SUCCESS
       } catch (e: ActivityNotFoundException) {
-        Timber.e(e)
+        //Timber.e(e)
         CommandResult.RESULT_NO_REACT_URL
       } catch (e: FileUriExposedException) {
-        Timber.e(e)
+        //Timber.e(e)
         CommandResult.RESULT_FILE_URI_EXPOSED
       } catch (e: RuntimeException) {
-        Timber.e(e)
+        //Timber.e(e)
         CommandResult.RESULT_ERROR
       } catch (e: URISyntaxException) {
-        Timber.e(e)
+        //Timber.e(e)
         CommandResult.RESULT_NO_REACT_URL
       }
     } else if (newCmd.startsWith("am start -n")) {
@@ -65,13 +63,13 @@ object CommandUtils {
           Utils.getApp().startActivity(intent)
           result = CommandResult.RESULT_SUCCESS
         } catch (e: ActivityNotFoundException) {
-          Timber.d(e)
+          //Timber.d(e)
           result = CommandResult.RESULT_NO_REACT_URL
         } catch (e: SecurityException) {
-          Timber.d(e)
+          //Timber.d(e)
           result = CommandResult.RESULT_SECURITY_EXCEPTION
         } catch (e: RuntimeException) {
-          Timber.e(e)
+          //Timber.e(e)
           result = CommandResult.RESULT_ERROR
         }
       } else {
@@ -114,7 +112,7 @@ object CommandUtils {
         }
       }
     }
-    Timber.d("execCmd result = %s", result)
+    //Timber.d("execCmd result = %s", result)
 
     when (result) {
       CommandResult.RESULT_NO_REACT_URL -> ToastUtil.makeText(R.string.toast_no_react_url)
@@ -136,12 +134,12 @@ object CommandUtils {
    * @param cmd command
    */
   /*private fun execRootCmd(cmd: String): String {
-    Timber.i(cmd)
+    //Timber.i(cmd)
 
     val result: String = try {
       ShellManager.exec(cmd)
     } catch (e: Exception) {
-      Timber.e(e)
+      //Timber.e(e)
       CommandResult.RESULT_ROOT_PERM_ERROR
     }
 
@@ -157,14 +155,14 @@ object CommandUtils {
    * @param cmd command
    */
   private fun execShizukuCmd(cmd: String): String {
-    Timber.d(cmd)
+    //Timber.d(cmd)
     val sb = StringBuilder()
 
     try {
       sb.append(ShizukuProcess.exec(cmd))
-      Timber.e(sb.toString())
+      //Timber.e(sb.toString())
     } catch (e: Exception) {
-      Timber.e(e)
+      //Timber.e(e)
       sb.append(CommandResult.RESULT_SHIZUKU_PERM_ERROR)
     }
 

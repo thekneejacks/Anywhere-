@@ -93,7 +93,7 @@ class AnywhereViewModel(application: Application) : AndroidViewModel(application
           if (Shell.isAppGrantedRoot() == true) {
             listener.onStart()
           } else {
-            Timber.d("ROOT permission denied.")
+            //Timber.d("ROOT permission denied.")
             ToastUtil.makeText(R.string.toast_root_permission_denied)
             ShellManager.acquireRoot()
           }
@@ -106,7 +106,7 @@ class AnywhereViewModel(application: Application) : AndroidViewModel(application
               if (Shell.isAppGrantedRoot() == true) {
                 listener.onStart()
               } else {
-                Timber.d("ROOT permission denied.")
+                //Timber.d("ROOT permission denied.")
                 ToastUtil.makeText(R.string.toast_root_permission_denied)
                 ShellManager.acquireRoot()
               }

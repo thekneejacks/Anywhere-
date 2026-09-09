@@ -22,7 +22,6 @@ import com.blankj.utilcode.util.Utils
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
-import timber.log.Timber
 
 object AppUtils {
   /**
@@ -379,7 +378,7 @@ object AppUtils {
         return resolveInfo[0].activityInfo.packageName
       }
     } catch (e: Throwable) {
-      Timber.e(e)
+      //Timber.e(e)
     }
     return ""
   }
@@ -396,7 +395,7 @@ object AppUtils {
     return try {
       packageManager.getActivityInfo(cn, 0).exported
     } catch (e: PackageManager.NameNotFoundException) {
-      Timber.e(e)
+      //Timber.e(e)
       false
     }
   }
@@ -482,7 +481,7 @@ fun doOnMainThreadIdle(action: () -> Unit, timeout: Long? = null) {
         queue.removeIdleHandler(idleHandler)
         action()
         if (BuildConfig.DEBUG) {
-          Timber.d("${timeout}ms timeout!")
+          //Timber.d("${timeout}ms timeout!")
         }
       }, timeout)
     }

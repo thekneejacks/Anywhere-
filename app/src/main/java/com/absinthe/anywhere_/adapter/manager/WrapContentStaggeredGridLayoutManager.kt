@@ -3,7 +3,6 @@ package com.absinthe.anywhere_.adapter.manager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import timber.log.Timber
 
 class WrapContentStaggeredGridLayoutManager(spanCount: Int, orientation: Int) :
   StaggeredGridLayoutManager(spanCount, orientation) {
@@ -12,7 +11,7 @@ class WrapContentStaggeredGridLayoutManager(spanCount: Int, orientation: Int) :
     try {
       super.onLayoutChildren(recycler, state)
     } catch (e: IndexOutOfBoundsException) {
-      Timber.e("encounter an IOOBE in RecyclerView")
+      //Timber.e("encounter an IOOBE in RecyclerView")
     }
   }
 
@@ -20,7 +19,7 @@ class WrapContentStaggeredGridLayoutManager(spanCount: Int, orientation: Int) :
     try {
       super.onItemsChanged(recyclerView)
     } catch (e: IndexOutOfBoundsException) {
-      Timber.e("encounter an IOOBE in RecyclerView")
+      //Timber.e("encounter an IOOBE in RecyclerView")
     }
   }
 }

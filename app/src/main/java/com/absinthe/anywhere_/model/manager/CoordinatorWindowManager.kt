@@ -9,7 +9,6 @@ import com.absinthe.anywhere_.ui.editor.EditorActivity
 import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.view.home.CoordinatorView
 import com.absinthe.libraries.utils.manager.SystemBarManager
-import timber.log.Timber
 
 class CoordinatorWindowManager(
   private val context: Context,
@@ -36,14 +35,14 @@ class CoordinatorWindowManager(
       }
     }
     hasAdded = true
-    Timber.d("Coordinator addView.")
+    //Timber.d("Coordinator addView.")
   }
 
   fun removeView() {
     if (hasAdded) {
       view.let {
         mWindowManager.removeView(view)
-        Timber.d("Coordinator removeView.")
+        //Timber.d("Coordinator removeView.")
       }
     }
     hasAdded = false

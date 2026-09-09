@@ -81,7 +81,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -133,7 +132,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
       requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-          Timber.d("Request post notification: $isGranted")
+          //Timber.d("Request post notification: $isGranted")
         }
     }
     checkNotificationPermission()
@@ -583,12 +582,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
   private fun getAnywhereIntent(intent: Intent) {
     val action = intent.action
-    Timber.d("action = %s", action)
+    //Timber.d("action = %s", action)
 
     if (action == null || action == Intent.ACTION_VIEW) {
       intent.data?.let {
-        Timber.d("Received Url = %s", it.toString())
-        Timber.d("Received path = %s", it.path)
+        //Timber.d("Received Url = %s", it.toString())
+        //Timber.d("Received path = %s", it.path)
         processUri(it)
       }
     } else if (action == Intent.ACTION_SEND) {
