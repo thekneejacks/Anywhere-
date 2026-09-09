@@ -14,8 +14,8 @@ class CardItemView<T : ViewGroup>(context: Context, val content: T) : MaterialCa
 
   val appName: TextView
   val icon: AppCompatImageView
-  val badge: ImageView
-  val indicator: ImageView
+  //val badge: ImageView
+  //val indicator: ImageView
   val cardBackground: ImageView
 
   init {
@@ -38,35 +38,35 @@ class CardItemView<T : ViewGroup>(context: Context, val content: T) : MaterialCa
       is NormalItemView -> {
         appName = content.appName
         icon = content.icon
-        badge = content.badge
-        indicator = content.indicator
+        //badge = content.badge
+        //indicator = content.indicator
       }
       is StreamItemView -> {
         appName = content.appName
         icon = content.icon
-        badge = content.badge
-        indicator = content.indicator
+        //badge = content.badge
+        //indicator = content.indicator
         addView(cardBackground)
       }
       is StreamSingleLineItemView -> {
         appName = content.appName
         icon = content.icon
-        badge = content.badge
-        indicator = content.indicator
+        //badge = content.badge
+        //indicator = content.indicator
         addView(cardBackground)
       }
       is MinimumItemView -> {
         appName = content.appName
         icon = content.icon
-        badge = content.badge
-        indicator = content.indicator
+        //badge = content.badge
+        //indicator = content.indicator
         addView(cardBackground)
       }
       else -> {
         appName = TextView(context)
         icon = AppCompatImageView(context)
-        badge = ImageView(context)
-        indicator = ImageView(context)
+        //badge = ImageView(context)
+        //ndicator = ImageView(context)
       }
     }
 

@@ -92,12 +92,12 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
             AnywhereApplication.sRepository.getEntityById(id)?.let { entity ->
               Opener.with(this@ShortcutsActivity)
                 .load(entity)
-                .setOpenedListener(object : Opener.OnOpenListener {
+                /*.setOpenedListener(object : Opener.OnOpenListener {
                   override fun onOpened() {
                     shouldFinishOnResume = true
                     finish()
                   }
-                })
+                })*/
                 .open()
             }
           }

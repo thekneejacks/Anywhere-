@@ -3,14 +3,11 @@ package com.absinthe.anywhere_.utils.handler
 import android.annotation.SuppressLint
 import android.content.Context
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.ExtraBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.isExecWithRoot
 import com.absinthe.anywhere_.utils.AppTextUtils.getItemCommand
 import com.absinthe.anywhere_.utils.CommandUtils
-import com.absinthe.anywhere_.utils.manager.DialogManager
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
@@ -25,13 +22,13 @@ object Opener {
   private var listener: OnOpenListener? = null
   private var item: AnywhereEntity? = null
   private var command: String? = null
-  private var type: Int = TYPE_NONE
+  //private var type: Int = TYPE_NONE
   private var extraItem: ExtraBean.ExtraItem? = null
   private var extraItems: Array<ExtraBean.ExtraItem>? = null
 
   fun with(context: Context): Opener {
     this.context = WeakReference(context)
-    type = TYPE_NONE
+    //type = TYPE_NONE
     item = null
     command = null
     listener = null
@@ -41,13 +38,13 @@ object Opener {
   }
 
   fun load(item: AnywhereEntity): Opener {
-    type = TYPE_ENTITY
+    //type = TYPE_ENTITY
     this.item = item
     return this
   }
 
   fun load(cmd: String): Opener {
-    type = TYPE_CMD
+    //type = TYPE_CMD
     this.command = cmd
     return this
   }
@@ -70,19 +67,15 @@ object Opener {
   @Throws(NullPointerException::class)
   fun open() {
     context?.get()?.let {
-      when (type) {
+      /*when (type) {
         TYPE_CMD -> {
           openFromCommand(it)
         }
         TYPE_ENTITY -> {
-          if (item?.isExecWithRoot() == true) {
-            command = getItemCommand(item!!)
-            openFromCommand(it)
-          } else {
-            openFromEntity(it)
-          }
+          openShellEntity(it, item!!)
         }
-      }
+      }*/
+      openShellEntity(it, item!!)
     } ?: let {
       throw NullPointerException("Got a null context instance from Opener.")
     }
@@ -97,12 +90,13 @@ object Opener {
     }
   }*/
 
-  private fun openFromEntity(context: Context) {
+  /*private fun openFromEntity(context: Context) {
     Timber.d("openFromEntity")
     item?.let {
-      openAnywhereEntity(context, it)
+      openShellEntity(context, it)
+      //openAnywhereEntity(context, it)
     }
-  }
+  }*/
 
   private fun openFromCommand(context: Context) {
     Timber.d("openFromCommand")
@@ -121,8 +115,8 @@ object Opener {
     }
   }
 
-  private fun openAnywhereEntity(context: Context, item: AnywhereEntity) {
-    openShellEntity(context, item)
+  /*private fun openAnywhereEntity(context: Context, item: AnywhereEntity) {
+
     /*when (item.type) {
       //AnywhereType.Card.URL_SCHEME -> openUrlSchemeEntity(context, item)
       //AnywhereType.Card.ACTIVITY -> openActivityEntity(context, item)
@@ -135,7 +129,7 @@ object Opener {
       //AnywhereType.Card.WORKFLOW -> openWorkflowEntity(context, item)
       //AnywhereType.Card.ACCESSIBILITY -> openA11yEntity(context, item)
     }*/
-  }
+  }*/
 
   /*private fun openByCommand(context: Context, cmd: String, packageName: String?) {
     if (cmd.isEmpty()) {

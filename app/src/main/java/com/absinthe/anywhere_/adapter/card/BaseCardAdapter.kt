@@ -3,23 +3,16 @@ package com.absinthe.anywhere_.adapter.card
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.ColorDrawable
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.adapter.ItemTouchCallBack
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
@@ -36,14 +29,11 @@ import com.absinthe.anywhere_.view.card.StreamItemView
 import com.absinthe.anywhere_.view.card.StreamSingleLineItemView
 import com.absinthe.libraries.utils.extensions.dp
 import com.blankj.utilcode.util.Utils
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.card.MaterialCardView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 const val ADAPTER_MODE_NORMAL = 0
@@ -125,7 +115,7 @@ class BaseCardAdapter(
           normalView!!.content.description.text = item.description
         }
 
-        if (GlobalValues.sCardBackgroundMode == Const.CARD_BG_MODE_PURE) {
+        /*if (GlobalValues.sCardBackgroundMode == Const.CARD_BG_MODE_PURE) {
           if (item.color == 0) {
             if (item.packageName.isNotEmpty()) {
               lifecycleCoroutineScope.launch {
@@ -180,10 +170,11 @@ class BaseCardAdapter(
           }
         } else {
           itemView.cardBackground.setImageDrawable(null)
-        }
+        }*/
+        itemView.cardBackground.setImageDrawable(null)
       }
       LAYOUT_MODE_MINIMUM -> {
-        if (GlobalValues.sCardBackgroundMode == Const.CARD_BG_MODE_PURE) {
+        /*if (GlobalValues.sCardBackgroundMode == Const.CARD_BG_MODE_PURE) {
           if (item.color == 0) {
             if (item.packageName.isNotEmpty()) {
               lifecycleCoroutineScope.launch {
@@ -244,11 +235,12 @@ class BaseCardAdapter(
           }
         } else {
           itemView.cardBackground.setImageDrawable(null)
-        }
+        }*/
+        itemView.cardBackground.setImageDrawable(null)
       }
     }
 
-    if (item.iconUri.isNullOrEmpty()) {
+    /*if (item.iconUri.isNullOrEmpty()) {
       Glide.with(context.applicationContext)
         .load(UxUtils.getAppIcon(context, item, 45.dp))
         .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -258,9 +250,9 @@ class BaseCardAdapter(
         .load(item.iconUri)
         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         .into(itemView.icon)
-    }
+    }*/
 
-    itemView.badge.apply {
+    /*itemView.badge.apply {
       if (GlobalValues.shortcutsList.contains(item.id)) {
         isVisible = true
         setImageResource(R.drawable.ic_add_shortcut)
@@ -268,8 +260,8 @@ class BaseCardAdapter(
       } else {
         isGone = true
       }
-    }
-    itemView.indicator.apply {
+    }*/
+    /*itemView.indicator.apply {
       /*if (item.type == AnywhereType.Card.SWITCH_SHELL) {
         isVisible = true
         if (item.param3 == SWITCH_OFF) {
@@ -280,7 +272,7 @@ class BaseCardAdapter(
       } else {*/
         isGone = true
       //}
-    }
+    }*/
 
     if (!selectedIndex.contains(holder.layoutPosition)) {
       (holder.itemView as MaterialCardView).apply {

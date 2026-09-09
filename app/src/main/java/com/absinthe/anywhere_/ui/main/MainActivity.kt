@@ -68,9 +68,6 @@ import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.anywhere_.view.home.FabBuilder.build
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.absinthe.libraries.utils.extensions.dp
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
@@ -172,7 +169,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
   override fun onConfigurationChanged(newConfig: Configuration) {
     super.onConfigurationChanged(newConfig)
-    loadBackground(GlobalValues.backgroundUri)
+    //loadBackground(GlobalValues.backgroundUri)
     mToggle?.onConfigurationChanged(newConfig)
   }
 
@@ -279,13 +276,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     setSupportActionBar(binding.toolbar)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     binding.toolbar.title = ""
-    GlobalValues.backgroundUri.apply {
+    /*GlobalValues.backgroundUri.apply {
       if (isNotEmpty()) {
-        loadBackground(this)
+        //loadBackground(this)
         UxUtils.setAdaptiveToolbarTitleColor(this@MainActivity, binding.tsTitle)
         UxUtils.setActionBarTransparent(this@MainActivity)
       }
-    }
+    }*/
     binding.tsTitle.setText(UxUtils.getToolbarTitle())
     binding.fullDraggableContainer.setEnableDrawer(GlobalValues.isPages)
 
@@ -508,13 +505,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     AnywhereApplication.sRepository.allPageEntities.observe(this, mObserver)
 
     viewModel.background.observe(this) { s: String ->
-      GlobalValues.backgroundUri = s
+      /*GlobalValues.backgroundUri = s
 
       if (s.isNotEmpty()) {
-        loadBackground(GlobalValues.backgroundUri)
+        //loadBackground(GlobalValues.backgroundUri)
         UxUtils.setAdaptiveToolbarTitleColor(this@MainActivity, binding.tsTitle)
         UxUtils.setActionBarTransparent(this)
-      }
+      }*/
     }
     viewModel.shouldShowFab.observe(this) {
       binding.fab.isVisible = it
@@ -686,14 +683,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
   }
 
-  private fun loadBackground(url: String) {
+  /*private fun loadBackground(url: String) {
     Glide.with(applicationContext)
       .load(url)
       .override(resources.displayMetrics.widthPixels, resources.displayMetrics.heightPixels)
       .transition(DrawableTransitionOptions.withCrossFade())
       .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
       .into(binding.ivBack)
-  }
+  }*/
 
   private fun showFirstTip(target: View) {
     target.post {

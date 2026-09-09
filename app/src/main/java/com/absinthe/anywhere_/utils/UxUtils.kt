@@ -2,14 +2,7 @@ package com.absinthe.anywhere_.utils
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.LinearGradient
-import android.graphics.Paint
-import android.graphics.PorterDuff
-import android.graphics.RectF
-import android.graphics.Shader
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.text.Spannable
@@ -18,7 +11,6 @@ import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -44,13 +36,7 @@ import com.absinthe.anywhere_.model.viewholder.AppListBean
 import com.absinthe.anywhere_.utils.AppUtils.getPackageNameByScheme
 import com.absinthe.anywhere_.utils.manager.CardTypeIconGenerator
 import com.absinthe.anywhere_.view.home.TextSwitcherView
-import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.ConvertUtils
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
@@ -169,7 +155,7 @@ object UxUtils {
    *
    * @param activity Activity for use Glide
    */
-  fun setAdaptiveToolbarTitleColor(activity: BaseActivity<*>, textSwitcher: TextSwitcherView) {
+  /*fun setAdaptiveToolbarTitleColor(activity: BaseActivity<*>, textSwitcher: TextSwitcherView) {
     val title = getToolbarTitle()
 
     if (backgroundUri.isEmpty()) {
@@ -208,7 +194,8 @@ object UxUtils {
           }
         }
       })
-  }
+    return
+  }*/
 
   /**
    * Set action bar title color and status bar and navigation bar style
@@ -354,7 +341,7 @@ object UxUtils {
    * @param view      target to set background
    * @param darkColor primary color
    */
-  fun createLinearGradientBitmap(context: Context, view: ImageView, darkColor: Int) {
+  /*fun createLinearGradientBitmap(context: Context, view: ImageView, darkColor: Int) {
     val bgBitmap =
       Bitmap.createBitmap(view.measuredWidth, view.measuredHeight, Bitmap.Config.ARGB_8888)
     val canvas = Canvas().apply {
@@ -383,7 +370,7 @@ object UxUtils {
       .diskCacheStrategy(DiskCacheStrategy.NONE)
       .transition(DrawableTransitionOptions.withCrossFade())
       .into(view)
-  }
+  }*/
 
   /**
    * Tint the menu icon

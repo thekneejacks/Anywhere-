@@ -17,8 +17,6 @@ import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 import com.absinthe.anywhere_.view.app.AnywhereDialogFragment
 import com.absinthe.anywhere_.viewbuilder.entity.CreateShortcutDialogBuilder
 import com.blankj.utilcode.util.Utils
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class CreateShortcutDialogFragment : AnywhereDialogFragment() {
   private lateinit var mBuilder: CreateShortcutDialogBuilder
@@ -28,14 +26,17 @@ class CreateShortcutDialogFragment : AnywhereDialogFragment() {
     super.onAttach(context)
     imageResultLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
       it?.let { uri ->
-        activity?.let { activity ->
+        mBuilder.ivIcon.setImageURI(uri)
+        /*activity?.let { activity ->
           Glide.with(activity.applicationContext)
             .load(uri)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(mBuilder.ivIcon)
-        }
+        }*/
         AppUtils.takePersistableUriPermission(requireContext(), it, Intent())
+
       }
+
     }
   }
 
