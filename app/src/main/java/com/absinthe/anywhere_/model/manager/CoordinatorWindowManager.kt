@@ -54,11 +54,9 @@ class CoordinatorWindowManager(
       height = WindowManager.LayoutParams.MATCH_PARENT
       format = PixelFormat.RGBA_8888
 
-      type = if (AppUtils.atLeastO()) {
+      type =
         WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-      } else {
-        WindowManager.LayoutParams.TYPE_PHONE
-      }
+
     }
   }
 }

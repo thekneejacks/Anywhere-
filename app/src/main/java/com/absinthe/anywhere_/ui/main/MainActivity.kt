@@ -154,7 +154,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     } else {
       UxUtils.tintToolbarIcon(this, menu, mToggle, Const.ACTION_BAR_TYPE_DARK)
     }*/
-    UxUtils.tintToolbarIcon(this, menu, mToggle, Const.ACTION_BAR_TYPE_LIGHT)
+    UxUtils.tintToolbarIcon(this, menu, mToggle)
     return super.onPrepareOptionsMenu(menu)
   }
 
@@ -258,7 +258,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         UxUtils.setActionBarTransparent(this@MainActivity)
       }
     }*/
-    binding.tsTitle.setText(UxUtils.getToolbarTitle())
+    binding.tsTitle.setText("Anywhere-")
     //binding.fullDraggableContainer.setEnableDrawer(GlobalValues.isPages)
     binding.fullDraggableContainer.setEnableDrawer(false)
 

@@ -72,11 +72,11 @@ abstract class BaseActivity<T : ViewBinding> : MaterialActivity() {
           }
         }
       } catch (e: Exception) {
-        if (AppUtils.atLeastN()) {
+
           if (e is FileUriExposedException) {
             ToastUtil.makeText(R.string.toast_file_uri_exposed)
           }
-        }
+
       }
     }
   }
@@ -102,13 +102,13 @@ abstract class BaseActivity<T : ViewBinding> : MaterialActivity() {
   }
 
   override fun onApplyUserThemeResource(theme: Resources.Theme, isDecorView: Boolean) {
-    if (AppUtils.atLeastS()) {
+
       if (resources.configuration.isNight()) {
         theme.applyStyle(R.style.ThemeOverlay_DynamicColors_Dark, true)
       } else {
         theme.applyStyle(R.style.ThemeOverlay_DynamicColors_Light, true)
       }
-    }
+
     theme.applyStyle(R.style.ThemeOverlay, true)
   }
 

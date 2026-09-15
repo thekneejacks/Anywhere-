@@ -39,11 +39,9 @@ object ShizukuProcess {
     process.waitFor()
     inputThread.join()
 
-    if (AppUtils.atLeastO()) {
+
       process.destroyForcibly()
-    } else {
-      process.destroy()
-    }
+
 
     return sb.toString()
   }

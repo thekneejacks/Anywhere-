@@ -91,22 +91,17 @@ object ToastUtil {
       toast?.get()?.cancel()
       toast = null
 
-      if (AppUtils.atLeastR() && context !is ContextThemeWrapper) {
+      if (context !is ContextThemeWrapper) {
         Toast(context).also {
           it.duration = duration
           it.setText(message)
           toast = WeakReference(ToastCompat(context, it))
         }.show()
       } else {
-        val ctx = if (context is ContextThemeWrapper) {
-          context
-        } else {
-          contextWrapper
-        }
-        val view = ToastView(ctx).also {
+        val view = ToastView(context).also {
           it.message.text = message
         }
-        Toast(ctx).also {
+        Toast(context).also {
           it.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM, 0, 200)
           it.duration = duration
           it.view = view

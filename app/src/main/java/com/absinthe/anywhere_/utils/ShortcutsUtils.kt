@@ -17,11 +17,9 @@ import com.blankj.utilcode.util.Utils
 
 object ShortcutsUtils {
 
-  val SHORTCUT_MANAGER: ShortcutManager? = if (AppUtils.atLeastNMR1()) {
+  val SHORTCUT_MANAGER: ShortcutManager? =
     Utils.getApp().getSystemService(ShortcutManager::class.java)
-  } else {
-    null
-  }
+
 
   /*@RequiresApi(api = Build.VERSION_CODES.N_MR1)
   fun addShortcut(ae: AnywhereEntity) {

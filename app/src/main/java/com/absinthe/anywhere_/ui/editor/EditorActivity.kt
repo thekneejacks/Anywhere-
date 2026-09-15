@@ -70,7 +70,6 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
   override fun setViewBinding() = ActivityEditorBinding.inflate(layoutInflater)
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    initTransition()
     if (intent.action == ACTION_EDITOR) {
       entity = AnywhereEntity().apply {
         type = AnywhereType.Card.ACTIVITY
@@ -176,36 +175,13 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       }
     }*/
 
-    when (entity.type) {
-      AnywhereType.Card.ACTIVITY, AnywhereType.Card.URL_SCHEME,
-      AnywhereType.Card.SHELL, AnywhereType.Card.BROADCAST -> {
+
         binding.rootToggle.isVisible = true
         binding.rootToggle.isChecked = entity.isExecWithRoot()
         binding.rootToggle.setOnCheckedChangeListener { _, isChecked ->
           editor.execWithRoot = isChecked
         }
-      }
-      else -> {
-        binding.rootToggle.isGone = true
-      }
-    }
-  }
 
-  private fun initTransition() {
-    window.apply {
-      requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
-      sharedElementEnterTransition = MaterialContainerTransform().apply {
-        addTarget(android.R.id.content)
-        duration = 300L
-      }
-      sharedElementReturnTransition = MaterialContainerTransform().apply {
-        addTarget(android.R.id.content)
-        duration = 250L
-      }
-    }
-    findViewById<View>(android.R.id.content).transitionName =
-      getString(R.string.trans_item_container)
-    setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
   }
 
   private fun setUpBottomDrawer() {
@@ -241,11 +217,11 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       }
       backgroundTintList = ColorStateList.valueOf(color)
 
-      imageTintList = if (UxUtils.isLightColor(color)) {
+      //imageTintList = if (UxUtils.isLightColor(color)) {
         ColorStateList.valueOf(Color.BLACK)
-      } else {
-        ColorStateList.valueOf(Color.WHITE)
-      }
+      //} else {
+      //  ColorStateList.valueOf(Color.WHITE)
+      //}
 
       setOnClickListener {
         if (editor.doneEdit()) {

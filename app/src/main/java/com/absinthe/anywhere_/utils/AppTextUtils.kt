@@ -150,26 +150,6 @@ object AppTextUtils {
     }.getOrNull()
   }*/
 
-  /**
-   * Parse URL from a sharing text
-   *
-   * @param sharing original text
-   * @return URL
-   */
-  fun parseUrlFromSharingText(sharing: String?): String {
-    if (sharing.isNullOrBlank()) {
-      return "Error"
-    }
-
-    val pattern = Patterns.WEB_URL
-    val matcher = pattern.matcher(sharing)
-
-    return if (matcher.find()) {
-      matcher.group().split("\\?".toRegex()).toTypedArray()[0]
-    } else {
-      ""
-    }
-  }
 
   /**
    * Judge that whether the url is an image url

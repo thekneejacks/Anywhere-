@@ -26,11 +26,9 @@ class OverlayWindowManager(private val context: Context, private val binder: IOv
       format = PixelFormat.RGBA_8888
       flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
 
-      type = if (AppUtils.atLeastO()) {
+      type =
         WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-      } else {
-        WindowManager.LayoutParams.TYPE_PHONE
-      }
+
     }
     val overlayView = OverlayView(context, binder, layoutParams).apply {
       this.entity = entity

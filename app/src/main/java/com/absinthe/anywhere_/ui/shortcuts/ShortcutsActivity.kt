@@ -145,7 +145,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
                         .setShortLabel(entity.appName)
                         .setIcon(
                           IconCompat.createWithAdaptiveBitmap(
-                            UxUtils.getEntityIcon(
+                            UxUtils.getAppIcon(
                               this,
                               entity,
                               45
