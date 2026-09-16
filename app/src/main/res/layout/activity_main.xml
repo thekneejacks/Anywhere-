@@ -84,37 +84,6 @@
 
     </com.absinthe.anywhere_.view.home.CustomFullDraggableContainer>
 
-    <com.google.android.material.navigation.NavigationView
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:layout_gravity="start"
-      android:maxWidth="500dp"
-      app:insetForeground="@null">
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="false"
-        android:orientation="vertical">
-
-        <include layout="@layout/layout_nav_header" />
-
-        <ScrollView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:fillViewport="true">
-
-          <com.absinthe.anywhere_.view.home.DrawerRecyclerView
-            android:id="@+id/rv_pages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        </ScrollView>
-
-      </LinearLayout>
-
-    </com.google.android.material.navigation.NavigationView>
-
   </androidx.drawerlayout.widget.DrawerLayout>
 
 </FrameLayout>
