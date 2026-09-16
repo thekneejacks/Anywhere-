@@ -135,7 +135,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       binding.tvOpenUrl.isGone = true
     }*/
 
-    binding.tvOpenUrl.isGone = true
+
 
     editor = try {
       EditorFactory.produce(entity.type)
@@ -156,23 +156,6 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       .beginTransaction()
       .replace(binding.fragmentContainerView.id, fragment)
       .commitNow()
-
-    /*if (editor is WorkflowEditorFragment) {
-      workflowResultItem.observe(this) {
-        (editor as WorkflowEditorFragment).apply {
-          if (adapter.data.isNotEmpty() && currentIndex != -1) {
-            adapter.setData(currentIndex, FlowStepBean(it, adapter.data[currentIndex].delay))
-          }
-        }
-      }
-    }*/
-
-
-        binding.rootToggle.isVisible = true
-        binding.rootToggle.isChecked = entity.isExecWithRoot()
-        binding.rootToggle.setOnCheckedChangeListener { _, isChecked ->
-          editor.execWithRoot = isChecked
-        }
 
   }
 
@@ -252,27 +235,6 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
               AppTextUtils.genCardSharingUrl(entity)
             )
           }*/
-          R.id.custom_icon -> {
-            try {
-              setDocumentResult("image/*") {
-                val ae = entity.copy().apply {
-                  iconUri = it.toString()
-                }
-                AnywhereApplication.sRepository.update(ae)
-                onBackPressed()
-              }
-            } catch (e: ActivityNotFoundException) {
-              e.printStackTrace()
-              ToastUtil.makeText(R.string.toast_no_document_app)
-            }
-          }
-          R.id.restore_icon -> {
-            val ae = entity.copy().apply {
-              iconUri = ""
-            }
-            AnywhereApplication.sRepository.update(ae)
-            onBackPressed()
-          }
           /*R.id.share_to_cloud -> {
             AppUtils.sendEntityToMailBox(this@EditorActivity, entity)
           }*/
@@ -293,11 +255,6 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
           it.isVisible = false
         }
       }*/
-
-      menu.findItem(R.id.restore_icon)?.isVisible = !entity.iconUri.isNullOrEmpty()
-      menu.findItem(R.id.share_card)?.isVisible =
-        entity.type != AnywhereType.Card.IMAGE && entity.type != AnywhereType.Card.FILE
-
       invalidate()
     }
   }
