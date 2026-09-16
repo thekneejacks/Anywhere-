@@ -31,8 +31,6 @@ const val EXTRA_PACKAGE_NAME = "EXTRA_PACKAGE_NAME"
 const val EXTRA_CLASS_NAME = "EXTRA_CLASS_NAME"
 
 class EditorActivity : BaseActivity<ActivityEditorBinding>() {
-
-  private lateinit var bottomDrawerBehavior: BottomSheetBehavior<FrameLayout>
   private lateinit var editor: IEditor
   private lateinit var entity: AnywhereEntity
 
@@ -82,22 +80,14 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
   }
 
   override fun onBackPressed() {
-    if (bottomDrawerBehavior.state != BottomSheetBehavior.STATE_HIDDEN) {
-      bottomDrawerBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-    } else {
+
       setResult(Activity.RESULT_OK)
       super.onBackPressed()
-    }
+
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    if (shouldShowMenu()) {
-      if (isEditMode) {
-        menuInflater.inflate(R.menu.editor_bottom_bar_edit_mode_menu, menu)
-      } else {
-        menuInflater.inflate(R.menu.editor_bottom_bar_menu, menu)
-      }
-    }
+    if (isEditMode) menuInflater.inflate(R.menu.editor_bottom_bar_edit_mode_menu, menu)
     return true
   }
 
@@ -125,25 +115,22 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
   }
 
   private fun setUpBottomDrawer() {
-    bottomDrawerBehavior = BottomSheetBehavior.from(binding.bottomDrawer)
-    bottomDrawerBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-
     binding.bar.apply {
       if (!isEditMode) {
         navigationIcon?.alpha = 64
         setNavigationOnClickListener(null)
       } else {
         navigationIcon?.alpha = 255
-        setNavigationOnClickListener { bottomDrawerBehavior.setState(BottomSheetBehavior.STATE_EXPANDED) }
+        setNavigationOnClickListener { editor.tryRunning() }
       }
       setOnMenuItemClickListener {
         when (it.itemId) {
-          R.id.trying_run -> {
-            editor.tryRunning()
+          R.id.add_home_shortcuts -> {
+            showCreatePinnedShortcutDialog(this@EditorActivity, entity)
           }
-          /*R.id.overlay -> {
-            startOverlay()
-          }*/
+          R.id.delete -> {
+            DialogManager.showDeleteAnywhereDialog(this@EditorActivity, entity)
+          }
         }
         true
       }
@@ -169,105 +156,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
         }
       }
     }
-
-    binding.navigationView.apply {
-      setNavigationItemSelectedListener {
-        when (it.itemId) {
-          R.id.add_home_shortcuts -> {
-            showCreatePinnedShortcutDialog(this@EditorActivity, entity)
-          }
-          R.id.delete -> {
-            DialogManager.showDeleteAnywhereDialog(this@EditorActivity, entity)
-          }
-        }
-        bottomDrawerBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-        true
-      }
-
-      /*menu.findItem(R.id.add_shortcuts)?.let {
-        if (atLeastNMR1()) {
-          if (GlobalValues.shortcutsList.contains(entity.id)) {
-            binding.navigationView.apply {
-              menu.clear()
-              inflateMenu(R.menu.editor_added_shortcut_menu)
-            }
-          }
-        } else {
-          it.isVisible = false
-        }
-      }*/
-      invalidate()
-    }
   }
 
-  /*private fun startOverlay() {
-    if (PermissionUtils.isGrantedDrawOverlays()) {
-      startOverlayImpl()
-
-    } else {
-      if (atLeastR()) {
-        ToastUtil.makeText(R.string.toast_overlay_choose_anywhere)
-      }
-      PermissionUtils.requestDrawOverlays(object : PermissionUtils.SimpleCallback {
-        override fun onGranted() {
-          startOverlayImpl()
-        }
-
-        override fun onDenied() {}
-      })
-    }
-  }*/
-
-  /*private fun startOverlayImpl() {
-    if (!Once.beenDone(OnceTag.OVERLAY_TIP)) {
-      ToastUtil.makeText(R.string.toast_overlay_tip)
-      Once.markDone(OnceTag.OVERLAY_TIP)
-    }
-
-    if (isBound) {
-      overlayService?.addOverlay(entity)
-      ActivityUtils.startHomeActivity()
-    } else {
-      applicationContext.bindService(
-        Intent(this, OverlayService::class.java),
-        conn,
-        Context.BIND_AUTO_CREATE
-      )
-    }
-    finish()
-  }*/
-
-  /*@RequiresApi(api = Build.VERSION_CODES.N_MR1)
-  private fun addShortcut(context: Context, ae: AnywhereEntity) {
-    if (ShortcutsUtils.SHORTCUT_MANAGER!!.dynamicShortcuts.size < 3) {
-      val builder = AnywhereDialogBuilder(context)
-      showAddShortcutDialog(context, builder, ae) {
-        ShortcutsUtils.addShortcut(ae)
-        onBackPressed()
-      }
-    } else {
-      showCannotAddShortcutDialog(context) {
-        ShortcutsUtils.addShortcut(ae)
-        onBackPressed()
-      }
-    }
-  }*/
-
-  /*@RequiresApi(api = Build.VERSION_CODES.N_MR1)
-  private fun removeShortcut(context: Context, ae: AnywhereEntity) {
-    showRemoveShortcutDialog(context, ae) {
-      ShortcutsUtils.removeShortcut(ae)
-      onBackPressed()
-    }
-  }*/
-
-  private fun shouldShowMenu(): Boolean {
-    return entity.type != AnywhereType.Card.IMAGE &&
-      //entity.type != AnywhereType.Card.SWITCH_SHELL &&
-      entity.type != AnywhereType.Card.FILE
-  }
-
-  companion object {
-    var workflowResultItem: MutableLiveData<AnywhereEntity> = MutableLiveData()
-  }
+ 
 }

@@ -35,7 +35,7 @@ object Opener {
 
   @Throws(NullPointerException::class)
   fun open() {
-    openShellSimple()
+    //openShellSimple()
   }
 
   private fun openShellSimple() {

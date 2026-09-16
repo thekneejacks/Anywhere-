@@ -8,6 +8,7 @@ import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.databinding.EditorShellBinding
 import com.absinthe.anywhere_.model.database.setExecWithRoot
 import com.absinthe.anywhere_.ui.editor.BaseEditorFragment
+import com.absinthe.anywhere_.utils.CommandUtils
 import com.absinthe.anywhere_.utils.handler.Opener
 
 class ShellEditorFragment : BaseEditorFragment() {
@@ -30,11 +31,8 @@ class ShellEditorFragment : BaseEditorFragment() {
       binding.etShellContent.error = getString(R.string.bsd_error_should_not_empty)
       return
     }
-
-    val doneItem = item.copy().apply {
-      param1 = binding.etShellContent.text.toString()
-    }
-    Opener.with(requireContext()).load(doneItem).open()
+    val param1 = binding.etShellContent.text.toString()
+    CommandUtils.execAdbCmd(param1)
   }
 
   override fun doneEdit(): Boolean {
