@@ -134,7 +134,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     binding.tsTitle.setText("Anywhere-")
     //binding.fullDraggableContainer.setEnableDrawer(GlobalValues.isPages)
-    binding.fullDraggableContainer.setEnableDrawer(false)
+
 
     //initFab()
     val addButton: ImageButton = findViewById(R.id.fab)
