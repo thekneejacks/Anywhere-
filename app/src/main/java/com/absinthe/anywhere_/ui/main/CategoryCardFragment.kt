@@ -178,30 +178,6 @@ class CategoryCardFragment : Fragment() {
   private fun setupRecyclerView() {
     decoration = SpacesItemDecoration(resources.getDimension(R.dimen.cardview_item_margin).toInt())
 
-    /*when (GlobalValues.cardMode) {
-      Const.PREF_CARD_MODE_LARGE -> {
-        decoration = SpacesItemDecoration(
-          resources.getDimension(R.dimen.cardview_margin_parent_horizontal).toInt() / 2
-        )
-        adapter = BaseCardAdapter(LAYOUT_MODE_LARGE, lifecycleScope)
-      }
-      Const.PREF_CARD_MODE_MEDIUM -> {
-        adapter = BaseCardAdapter(LAYOUT_MODE_MEDIUM, lifecycleScope)
-      }
-      Const.PREF_CARD_MODE_SMALL -> {
-        adapter = BaseCardAdapter(LAYOUT_MODE_SMALL, lifecycleScope)
-      }
-      Const.PREF_CARD_MODE_MINIMUM -> {
-        decoration = SpacesItemDecoration(
-          resources.getDimension(R.dimen.cardview_margin_parent_horizontal).toInt() / 2
-        )
-        adapter = BaseCardAdapter(LAYOUT_MODE_MINIMUM, lifecycleScope)
-      }
-      else -> {
-        adapter = BaseCardAdapter(LAYOUT_MODE_MEDIUM, lifecycleScope)
-      }
-    }*/
-
     adapter = BaseCardAdapter(LAYOUT_MODE_MEDIUM, lifecycleScope)
 
     adapter.apply {
@@ -243,16 +219,7 @@ class CategoryCardFragment : Fragment() {
 
   private fun updateItems(list: List<AnywhereEntity>) {
     adapter.setDiffNewData(
-      /*if (GlobalValues.isPages) {
-        if (category == AnywhereType.Category.DEFAULT_CATEGORY) {
-          list.filter { it.category.isNullOrEmpty() || it.category == this.category }
-            .toMutableList()
-        } else {
-          list.filter { it.category == this.category }.toMutableList()
-        }
-      } else {
-        list.toMutableList()
-      }*/
+
         list.toMutableList()
     )
     //updateWidget(Utils.getApp())
@@ -290,21 +257,9 @@ class CategoryCardFragment : Fragment() {
   ) {
     recyclerView.layoutManager =
       if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-        /*val spanCount = when (GlobalValues.cardMode) {
-          Const.PREF_CARD_MODE_LARGE -> 2
-          Const.PREF_CARD_MODE_MEDIUM, Const.PREF_CARD_MODE_SMALL -> 4
-          Const.PREF_CARD_MODE_MINIMUM -> 8
-          else -> 4
-        }*/
         val spanCount = 4
         WrapContentStaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
       } else {
-        /*val spanCount = when (GlobalValues.cardMode) {
-          Const.PREF_CARD_MODE_LARGE -> 1
-          Const.PREF_CARD_MODE_MEDIUM, Const.PREF_CARD_MODE_SMALL -> 2
-          Const.PREF_CARD_MODE_MINIMUM -> 4
-          else -> 2
-        }*/
         val spanCount =2
         WrapContentStaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
       }

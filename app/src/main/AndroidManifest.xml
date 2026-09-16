@@ -165,12 +165,6 @@
         android:resource="@xml/shortcuts" />
     </activity-alias>
 
-    <!--    Setup    -->
-    <activity
-      android:name=".ui.setup.SetupActivity"
-      android:exported="false"
-      android:label="@string/setup_title" />
-
     <!--    Settings    -->
     <activity
       android:name=".ui.settings.SettingsActivity"
@@ -224,73 +218,6 @@
       android:exported="false"
       android:label="@string/settings_backup" />
 
-    <!--    App list page
-    <activity
-      android:name=".ui.list.AppListActivity"
-      android:exported="false"
-      android:label="@string/app_list_title"
-      android:launchMode="singleTop">
-      <intent-filter>
-        <action android:name="android.intent.action.SEARCH" />
-      </intent-filter>
-
-      <meta-data
-        android:name="android.app.searchable"
-        android:resource="@xml/searchable" />
-    </activity>-->
-
-    <!--    App detail page
-    <activity
-      android:name=".ui.list.AppDetailActivity"
-      android:exported="true"
-      android:label="@string/app_list_detail_title">
-      <intent-filter>
-        <action android:name="android.intent.action.SHOW_APP_INFO" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </activity>-->
-
-    <!--    Tile setting page    
-    <activity
-      android:name=".ui.settings.TileSettingsActivity"
-      android:exported="true"
-      android:label="@string/settings_tiles">
-      <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
-      </intent-filter>
-    </activity> -->
-
-    <!--    QR code collection page
-    <activity
-      android:name=".ui.qrcode.QRCodeCollectionActivity"
-      android:configChanges="orientation"
-      android:exported="false"
-      android:label="@string/btn_qr_code_collection" />-->
-
-    <!--    Lab page
-    <activity
-      android:name=".ui.settings.LabActivity"
-      android:exported="false"
-      android:label="@string/settings_lab" /> -->
-
-    <!--    Defrost mode page
-    <activity
-      android:name=".ui.settings.DefrostActivity"
-      android:exported="false"
-      android:label="@string/title_activity_defrost" />-->
-
-    <!--    Logcat page
-    <activity
-      android:name=".ui.settings.LogcatActivity"
-      android:exported="false"
-      android:label="@string/logcat" />-->
-
-    <!--    Cloud rules page
-    <activity
-      android:name=".ui.cloud.CloudRulesActivity"
-      android:exported="false"
-      android:label="@string/btn_cloud_rules" />-->
-
     <!--    Editor container    -->
     <activity
       android:name=".ui.editor.EditorActivity"
@@ -313,98 +240,6 @@
       android:name="com.blankj.utilcode.util.UtilsTransActivity"
       android:exported="false"
       tools:replace="exported" />
-
-    <!--<activity
-      android:name=".ui.shortcuts.ThirdAppsShortcutActivity"
-      android:exported="false" />-->
-
-
-    <!--    Overlay view service
-    <service
-      android:name=".services.overlay.OverlayService"
-      android:enabled="true"
-      android:exported="false" /> -->
-
-
-    <!--    Collector service
-    <service
-      android:name=".services.overlay.CollectorService"
-      android:enabled="true" /> -->
-
-    <!--    Home launcher widget service
-    <service
-      android:name=".services.widget.AppRemoteViewsService"
-      android:exported="true"
-      android:permission="android.permission.BIND_REMOTEVIEWS" />-->
-
-    <!--    Accessibility service
-    <service
-      android:name=".services.IzukoService"
-      android:exported="false"
-      android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
-      <intent-filter>
-        <action android:name="android.accessibilityservice.AccessibilityService" />
-      </intent-filter>
-
-      <meta-data
-        android:name="android.accessibilityservice"
-        android:resource="@xml/accessibility_service_config" />
-    </service>-->
-
-    <!--    Workflow service
-    <service
-      android:name=".services.WorkflowIntentService"
-      android:exported="true"
-      android:permission="android.permission.BIND_JOB_SERVICE" /> -->
-
-    <!--    Backup service
-    <service
-      android:name=".services.BackupIntentService"
-      android:exported="false"
-      android:permission="android.permission.BIND_JOB_SERVICE" />  -->
-    <!--    Device Control
-    <service
-      android:name=".services.widget.AwControlsProviderService"
-      android:exported="true"
-      android:permission="android.permission.BIND_CONTROLS">
-      <intent-filter>
-        <action android:name="android.service.controls.ControlsProviderService" />
-      </intent-filter>
-    </service>  -->
-
-    <!--    Home launcher widget click event receiver
-    <receiver
-      android:name=".receiver.HomeWidgetProvider"
-      android:exported="true">
-      <meta-data
-        android:name="android.appwidget.provider"
-        android:resource="@xml/widget_home_provider_info" />
-
-      <intent-filter>
-        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-        <action android:name="${applicationId}.action.CLICK" />
-      </intent-filter>
-    </receiver> -->
-
-    <!--    DPM receiver
-    <receiver
-      android:name=".receiver.AdminReceiver"
-      android:exported="true"
-      android:permission="android.permission.BIND_DEVICE_ADMIN">
-      <intent-filter>
-        <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-        <action android:name="android.app.develop.action.DEVICE_DELEGATION" />
-      </intent-filter>
-
-      <meta-data
-        android:name="android.app.develop.delegation"
-        android:resource="@xml/app_delegation" />
-    </receiver> -->
-
-    <!--    Notification click event receiver
-    <receiver
-      android:name=".receiver.NotificationClickReceiver"
-      android:exported="false" />-->
 
     <!--    Shizuku provider    -->
     <provider

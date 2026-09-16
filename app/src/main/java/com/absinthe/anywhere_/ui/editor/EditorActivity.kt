@@ -9,8 +9,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.IBinder
 import android.view.Menu
-import android.view.View
-import android.view.Window
 import android.widget.FrameLayout
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -23,16 +21,12 @@ import com.absinthe.anywhere_.databinding.ActivityEditorBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.isExecWithRoot
 import com.absinthe.anywhere_.services.overlay.IOverlayService
-import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.utils.ToastUtil
-import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.anywhere_.utils.manager.DialogManager.showCreatePinnedShortcutDialog
 import com.absinthe.libraries.utils.extensions.getColorByAttr
 import com.blankj.utilcode.util.ActivityUtils
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.transition.platform.MaterialContainerTransform
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
 const val EXTRA_ENTITY = "EXTRA_ENTITY"
 const val EXTRA_EDIT_MODE = "EXTRA_EDIT_MODE"
@@ -48,7 +42,6 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
   private lateinit var entity: AnywhereEntity
 
   private val isEditMode by lazy { intent.getBooleanExtra(EXTRA_EDIT_MODE, false) }
-  private val isFromWorkFlow by lazy { intent.getBooleanExtra(EXTRA_FROM_WORKFLOW, false) }
   private var overlayService: IOverlayService? = null
   private var isBound = false
 
@@ -157,7 +150,6 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       arguments = Bundle().apply {
         putParcelable(EXTRA_ENTITY, entity)
         putBoolean(EXTRA_EDIT_MODE, isEditMode)
-        putBoolean(EXTRA_FROM_WORKFLOW, isFromWorkFlow)
       }
     }
     supportFragmentManager

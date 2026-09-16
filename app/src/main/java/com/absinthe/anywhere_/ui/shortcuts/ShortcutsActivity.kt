@@ -17,28 +17,21 @@ import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.model.database.AnywhereEntity
+import com.absinthe.anywhere_.utils.CommandUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.UxUtils
-import com.absinthe.anywhere_.utils.handler.Opener
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.absinthe.libraries.utils.extensions.dp
 import com.blankj.utilcode.util.Utils
 
 class ShortcutsActivity : BaseActivity<ViewBinding>() {
-
-  //private var isBound = false
-  //private var collectorService: ICollectorService? = null
-
   private val viewModel by viewModels<AnywhereViewModel>()
 
   override fun setViewBinding(): Nothing? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    //UxUtils.setActionBarTransparent(this)
-    //Analytics.trackEvent(EventTag.SHORTCUT_OPEN)
     handleIntent(intent)
   }
 
@@ -49,66 +42,15 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
 
   private fun handleIntent(intent: Intent) {
     intent.action?.let {
-      //Timber.d("action = %s", it)
-
       when (it) {
-        /*ACTION_START_COLLECTOR -> {
-          if (GlobalValues.workingMode == Const.WORKING_MODE_URL_SCHEME) {
-            openNewURLScheme(this)
-          } else {
-            if (isBound) {
-              collectorService?.startCollector()
-            } else {
-              CollectorService.serviceConnection = object : ServiceConnection {
-                override fun onServiceDisconnected(name: ComponentName?) {
-                  isBound = false
-                  collectorService = null
-                }
-
-                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-                  isBound = true
-                  collectorService = ICollectorService.Stub.asInterface(service)
-                  collectorService?.startCollector()
-                }
-
-              }
-              applicationContext.bindService(
-                Intent(this, CollectorService::class.java),
-                CollectorService.serviceConnection!!,
-                Context.BIND_AUTO_CREATE
-              )
-            }
-          }
-          shouldFinishOnResume = true
-        }*/
         ACTION_START_ENTITY -> {
           intent.getStringExtra(Const.INTENT_EXTRA_SHORTCUTS_ID)?.let { id ->
             AnywhereApplication.sRepository.getParamById(id)?.let { param ->
-              Opener.with(this@ShortcutsActivity)
-                .load(param)
-                /*.setOpenedListener(object : Opener.OnOpenListener {
-                  override fun onOpened() {
-                    shouldFinishOnResume = true
-                    finish()
-                  }
-                })*/
-                .open()
+              CommandUtils.execAdbCmd(param)
             }
           }
         }
-        /*ACTION_START_FROM_WIDGET -> {
-          intent.getParcelableExtra<AnywhereEntity>(Const.INTENT_EXTRA_WIDGET_ENTITY)
-            ?.let { entity ->
-              Opener.with(this@ShortcutsActivity)
-                .load(entity)
-                .setOpenedListener(object : Opener.OnOpenListener {
-                  override fun onOpened() {
-                    shouldFinishOnResume = true
-                  }
-                })
-                .open()
-            } ?: let { shouldFinishOnResume = true }
-        }*/
+
         Intent.ACTION_CREATE_SHORTCUT -> {
           viewModel.allAnywhereEntities.observe(this) { anywhereEntities: List<AnywhereEntity>? ->
             val arrayAdapter = ArrayAdapter<String>(
@@ -166,94 +108,9 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
             }
           }
         }
-        /*ACTION_START_IMAGE -> {
-          intent.getStringExtra(Const.INTENT_EXTRA_SHORTCUTS_CMD)?.let { uri ->
-            showImageDialog(
-              this,
-              uri,
-              object : AnywhereDialogFragment.OnDismissListener {
-                override fun onDismiss() {
-                  shouldFinishOnResume = true
-                  finish()
-                }
-              })
-          } ?: run { shouldFinishOnResume = true }
-        }*/
-        /*ACTION_START_DEVICE_CONTROL -> {
-          val type = intent.getIntExtra(Const.INTENT_EXTRA_TYPE, -1)
-          val param1 = intent.getStringExtra(Const.INTENT_EXTRA_PARAM_1) ?: return@let
-          val param2 = intent.getStringExtra(Const.INTENT_EXTRA_PARAM_2) ?: return@let
-          val param3 = intent.getStringExtra(Const.INTENT_EXTRA_PARAM_3) ?: return@let
-          val entity = AnywhereEntity().apply {
-            this.type = type
-            this.param1 = param1
-            this.param2 = param2
-            this.param3 = param3
-          }
-          Opener.with(this@ShortcutsActivity)
-            .load(entity)
-            .setOpenedListener(object : Opener.OnOpenListener {
-              override fun onOpened() {
-                shouldFinishOnResume = true
-              }
-            })
-            .open()
-        }*/
-        /*Intent.ACTION_VIEW -> {
-          intent.data?.let { uri ->
-            if (uri.host == URLManager.OPEN_HOST) {
-              var dynamicParam: ExtraBean.ExtraItem? = null
-              uri.getQueryParameter(Const.INTENT_EXTRA_DYNAMIC_PARAM)
-                ?.let { dynamic ->
-                  try {
-                    dynamicParam = Gson().fromJson(
-                      dynamic,
-                      ExtraBean.ExtraItem::class.java
-                    )
-                  } catch (ignore: Exception) {
-                  }
-                }
-              var dynamicParams: Array<ExtraBean.ExtraItem>? = null
-              uri.getQueryParameter(Const.INTENT_EXTRA_DYNAMICS_PARAM)
-                ?.let { dynamics ->
-                  try {
-                    dynamicParams = Gson().fromJson(
-                      dynamics,
-                      Array<ExtraBean.ExtraItem>::class.java
-                    )
-                  } catch (ignore: Exception) {
-                  }
-                }
-              uri.getQueryParameter(Const.INTENT_EXTRA_OPEN_SHORT_ID)?.let { sid ->
-                viewModel.allAnywhereEntities.observe(this) { list ->
-                  list.find { findItem ->
-                    findItem.id.endsWith(sid)
-                  }?.apply {
-                    Opener.with(this@ShortcutsActivity)
-                      .load(this)
-                      .setDynamicExtra(dynamicParam)
-                      .setDynamicExtras(dynamicParams)
-                      .setOpenedListener(object : Opener.OnOpenListener {
-                        override fun onOpened() {
-                          shouldFinishOnResume = true
-                        }
-                      })
-                      .open()
-                  } ?: run {
-                    ToastUtil.makeText(R.string.toast_invaild_sid)
-                    shouldFinishOnResume = true
-                  }
-                }
-              } ?: run { shouldFinishOnResume = true }
-            }
-          }
-        }*/
         else -> shouldFinishOnResume = true
       }
     }
-    /*if (intent.getBooleanExtra(Const.INTENT_EXTRA_EMULATE_BACK_PRESS, false)) {
-      CommandUtils.execAdbCmd(Const.CMD_BACK_PRESS)
-    }*/
   }
 
   companion object {

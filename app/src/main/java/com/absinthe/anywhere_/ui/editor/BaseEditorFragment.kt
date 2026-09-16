@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 
 abstract class BaseEditorFragment : Fragment(), IEditor {
 
@@ -15,7 +14,7 @@ abstract class BaseEditorFragment : Fragment(), IEditor {
     arguments?.getParcelable(EXTRA_ENTITY) as? AnywhereEntity ?: AnywhereEntity()
   }
   protected val isEditMode by lazy { requireArguments().getBoolean(EXTRA_EDIT_MODE) }
-  protected val isFromWorkflow by lazy { requireArguments().getBoolean(EXTRA_FROM_WORKFLOW) }
+  //protected val isFromWorkflow by lazy { requireArguments().getBoolean(EXTRA_FROM_WORKFLOW) }
   protected var doneItem: AnywhereEntity = AnywhereEntity()
 
   protected abstract fun setBinding(inflater: LayoutInflater, container: ViewGroup?): View
@@ -32,9 +31,9 @@ abstract class BaseEditorFragment : Fragment(), IEditor {
   }
 
   override fun doneEdit(): Boolean {
-    if (isFromWorkflow) {
+    /*if (isFromWorkflow) {
       EditorActivity.workflowResultItem.value = doneItem
-    }
-    return isFromWorkflow
+    }*/
+    return false
   }
 }

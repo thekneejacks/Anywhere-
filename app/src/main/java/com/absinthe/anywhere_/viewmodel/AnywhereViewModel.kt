@@ -1,23 +1,14 @@
 package com.absinthe.anywhere_.viewmodel
 
 import android.app.Application
-import android.content.Context
-import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.absinthe.anywhere_.AnywhereApplication
-import com.absinthe.anywhere_.adapter.page.PageNode
-import com.absinthe.anywhere_.adapter.page.PageTitleNode
 import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.database.AnywhereRepository
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
-import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
-import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
-import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.chad.library.adapter.base.entity.node.BaseNode
 
 class AnywhereViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -39,29 +30,8 @@ class AnywhereViewModel(application: Application) : AndroidViewModel(application
     mRepository.delete(ae)
   }
 
-  fun getEntity(title: String): PageTitleNode {
-    val pageNodeList: MutableList<BaseNode> = ArrayList()
 
-    pageNodeList.add(PageNode().apply {
-      this.title = title
-    })
 
-    return PageTitleNode(pageNodeList, title).apply {
-      isExpanded = (title == GlobalValues.category)
-    }
-  }
-
-  fun setUpUrlScheme(context: Context, url: String = "") {
-    val ae = AnywhereEntity().apply {
-      appName = AnywhereType.Card.NEW_TITLE_MAP[AnywhereType.Card.URL_SCHEME]!!
-      param1 = url
-      type = AnywhereType.Card.URL_SCHEME
-    }
-    context.startActivity(Intent(context, EditorActivity::class.java).apply {
-      putExtra(EXTRA_ENTITY, ae)
-      putExtra(EXTRA_EDIT_MODE, false)
-    })
-  }
 
   /*fun startCollector(activity: Activity, listener: OnStartCollectorListener) {
     when (GlobalValues.workingMode) {

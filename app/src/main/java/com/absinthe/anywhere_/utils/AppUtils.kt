@@ -1,27 +1,15 @@
 package com.absinthe.anywhere_.utils
 
 import android.annotation.SuppressLint
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.UriPermission
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.os.MessageQueue
-import androidx.annotation.ChecksSdkIntAtLeast
 import com.absinthe.anywhere_.BuildConfig
-import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.viewholder.FlowStepBean
-import com.absinthe.anywhere_.utils.handler.URLSchemeHandler
-import com.absinthe.anywhere_.utils.manager.URLManager
-import com.blankj.utilcode.util.Utils
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
-import com.google.gson.reflect.TypeToken
 
 object AppUtils {
   /**

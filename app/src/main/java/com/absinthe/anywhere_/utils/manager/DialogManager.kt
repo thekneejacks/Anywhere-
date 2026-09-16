@@ -13,8 +13,6 @@ import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.backup.RestoreApplyFragmentDialog
-import com.absinthe.anywhere_.ui.dialog.AdvancedCardSelectDialogFragment
-import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.ui.dialog.RenameDialogFragment
 import com.absinthe.anywhere_.ui.shortcuts.CreateShortcutDialogFragment
 import com.absinthe.anywhere_.utils.ToastUtil
@@ -452,15 +450,6 @@ object DialogManager {
     dialogFragment.setListener(listener)
     dialogFragment.show(activity.supportFragmentManager, dialogFragment.tag)
   }*/
-
-  fun showAdvancedCardSelectDialog(activity: AppCompatActivity, isFromWorkFlow: Boolean = false) {
-    val dialogFragment = AdvancedCardSelectDialogFragment().apply {
-      arguments = Bundle().apply {
-        putBoolean(EXTRA_FROM_WORKFLOW, isFromWorkFlow)
-      }
-    }
-    dialogFragment.show(activity.supportFragmentManager, dialogFragment.tag)
-  }
 
   /*fun showWebdavRestoreDialog(activity: AppCompatActivity) {
     val dialog = WebdavFilesListDialogFragment()
