@@ -21,6 +21,7 @@ import com.absinthe.anywhere_.databinding.ActivityEditorBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.isExecWithRoot
 import com.absinthe.anywhere_.services.overlay.IOverlayService
+import com.absinthe.anywhere_.ui.editor.impl.ShellEditorFragment
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.anywhere_.utils.manager.DialogManager.showCreatePinnedShortcutDialog
@@ -112,38 +113,8 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     }
     setSupportActionBar(binding.bar)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    /*if (isEditMode) {
-      binding.tvOpenUrl.apply {
-        isVisible = true
-        text = HtmlCompat.fromHtml(
-          String.format(
-            getString(R.string.bsd_open_url),
-            entity.id.substring(entity.id.length - 4, entity.id.length)
-          ),
-          HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
-        setOnLongClickListener {
-          ClipboardUtil.put(
-            this@EditorActivity,
-            "anywhere://open?sid=${entity.id.substring(entity.id.length - 4, entity.id.length)}"
-          )
-          ToastUtil.makeText(R.string.toast_copied)
-          true
-        }
-      }
-    } else {
-      binding.tvOpenUrl.isGone = true
-    }*/
 
-
-
-    editor = try {
-      EditorFactory.produce(entity.type)
-    } catch (e: IllegalArgumentException) {
-      //Timber.e(e)
-      finish()
-      return
-    }
+    editor = ShellEditorFragment()
 
     val fragment = editor as BaseEditorFragment
     fragment.apply {
@@ -208,36 +179,12 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     binding.navigationView.apply {
       setNavigationItemSelectedListener {
         when (it.itemId) {
-          /*R.id.add_shortcuts -> {
-            if (atLeastNMR1()) {
-              if (!GlobalValues.shortcutsList.contains(entity.id)) {
-                addShortcut(this@EditorActivity, entity)
-              } else {
-                removeShortcut(this@EditorActivity, entity)
-              }
-            }
-          }*/
           R.id.add_home_shortcuts -> {
             showCreatePinnedShortcutDialog(this@EditorActivity, entity)
           }
           R.id.delete -> {
             DialogManager.showDeleteAnywhereDialog(this@EditorActivity, entity)
           }
-          /*R.id.move_to_page -> {
-            DialogManager.showPageListDialog(this@EditorActivity, entity)
-          }*/
-          /*R.id.custom_color -> {
-            DialogManager.showColorPickerDialog(this@EditorActivity, entity)
-          }*/
-          /*R.id.share_card -> {
-            DialogManager.showCardSharingDialog(
-              this@EditorActivity,
-              AppTextUtils.genCardSharingUrl(entity)
-            )
-          }*/
-          /*R.id.share_to_cloud -> {
-            AppUtils.sendEntityToMailBox(this@EditorActivity, entity)
-          }*/
         }
         bottomDrawerBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         true

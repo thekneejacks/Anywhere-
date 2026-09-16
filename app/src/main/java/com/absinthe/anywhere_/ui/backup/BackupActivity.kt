@@ -189,17 +189,6 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
           true
         }
       }
-      findPreference<Preference>(Const.PREF_BACKUP_SHARE)?.apply {
-        setOnPreferenceClickListener {
-          StorageUtils.exportAnywhereEntityJsonString()?.let { content ->
-            CipherUtils.encrypt(content)?.let {
-              val dig = if (it.length > 50) it.substring(0, 50) + "…" else it
-              DialogManager.showBackupShareDialog(requireActivity(), dig, it)
-            }
-          }
-          true
-        }
-      }
       findPreference<Preference>(Const.PREF_RESTORE_APPLY)?.apply {
         setOnPreferenceClickListener {
           DialogManager.showRestoreApplyDialog(requireActivity() as BaseActivity<*>)
