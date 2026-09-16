@@ -1,7 +1,6 @@
 package com.absinthe.anywhere_.ui.editor
 
 import android.app.Activity
-import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.ServiceConnection
 import android.content.res.ColorStateList
@@ -10,19 +9,14 @@ import android.os.Bundle
 import android.os.IBinder
 import android.view.Menu
 import android.widget.FrameLayout
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
-import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.databinding.ActivityEditorBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.database.isExecWithRoot
 import com.absinthe.anywhere_.services.overlay.IOverlayService
 import com.absinthe.anywhere_.ui.editor.impl.ShellEditorFragment
-import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.anywhere_.utils.manager.DialogManager.showCreatePinnedShortcutDialog
 import com.absinthe.libraries.utils.extensions.getColorByAttr

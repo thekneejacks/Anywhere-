@@ -1,16 +1,13 @@
 package com.absinthe.anywhere_.ui.main
 
-//import com.absinthe.anywhere_.utils.AppUtils.updateWidget
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -18,12 +15,8 @@ import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.adapter.ItemTouchCallBack
 import com.absinthe.anywhere_.adapter.SpacesItemDecoration
-import com.absinthe.anywhere_.adapter.card.ADAPTER_MODE_NORMAL
-import com.absinthe.anywhere_.adapter.card.ADAPTER_MODE_SELECT
-import com.absinthe.anywhere_.adapter.card.ADAPTER_MODE_SORT
 import com.absinthe.anywhere_.adapter.card.BaseCardAdapter
 import com.absinthe.anywhere_.adapter.card.DiffListCallback
-import com.absinthe.anywhere_.adapter.card.LAYOUT_MODE_MEDIUM
 import com.absinthe.anywhere_.adapter.manager.WrapContentStaggeredGridLayoutManager
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.GlobalValues
@@ -31,15 +24,9 @@ import com.absinthe.anywhere_.databinding.FragmentCategoryCardBinding
 import com.absinthe.anywhere_.extension.addSystemBarPaddingAsync
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
-import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.libraries.utils.extensions.paddingEndCompat
 import com.absinthe.libraries.utils.extensions.paddingStartCompat
-import com.absinthe.libraries.utils.utils.XiaomiUtilities
 import com.google.android.material.card.MaterialCardView
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.lang.ref.WeakReference
 
 const val BUNDLE_CATEGORY = "CATEGORY"
@@ -97,77 +84,10 @@ class CategoryCardFragment : Fragment() {
   }
 
   override fun onPrepareOptionsMenu(menu: Menu) {
-    menu.findItem(R.id.toolbar_settings).isVisible = adapter.mode == ADAPTER_MODE_NORMAL
-    menu.findItem(R.id.toolbar_sort).isVisible = adapter.mode == ADAPTER_MODE_NORMAL
-    menu.findItem(R.id.toolbar_done).isVisible = adapter.mode != ADAPTER_MODE_NORMAL
-    menu.findItem(R.id.toolbar_delete).isVisible = adapter.mode == ADAPTER_MODE_SELECT
-    menu.findItem(R.id.toolbar_move).isVisible = adapter.mode == ADAPTER_MODE_SELECT
-    menu.findItem(R.id.toolbar_create_sc).isVisible =
-      adapter.mode == ADAPTER_MODE_SELECT && XiaomiUtilities.isMIUI()
-
+    menu.findItem(R.id.toolbar_settings).isVisible = true
     super.onPrepareOptionsMenu(menu)
   }
 
-  fun sort() {
-    adapter.mode = ADAPTER_MODE_SORT
-    itemTouchHelper.attachToRecyclerView(binding.recyclerView)
-    requireActivity().invalidateOptionsMenu()
-    binding.recyclerView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-  }
-
-  fun multiSelect() {
-    adapter.mode = ADAPTER_MODE_SELECT
-    requireActivity().invalidateOptionsMenu()
-    binding.recyclerView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-  }
-
-  fun refreshSortMode() {
-    AnywhereApplication.sRepository.refresh()
-    observeEntitiesList()
-  }
-
-  fun editDone() {
-    if (adapter.mode == ADAPTER_MODE_SORT) {
-      adapter.mode = ADAPTER_MODE_NORMAL
-
-      itemTouchHelper.attachToRecyclerView(null)
-      requireActivity().invalidateOptionsMenu()
-
-      adapter.updateSortedList()
-      //GlobalValues.sortMode = Const.SORT_MODE_TIME_DESC
-    } else if (adapter.mode == ADAPTER_MODE_SELECT) {
-      resetSelectState()
-      adapter.clearSelect()
-      adapter.mode = ADAPTER_MODE_NORMAL
-      requireActivity().invalidateOptionsMenu()
-    }
-    binding.recyclerView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-  }
-
-  fun deleteSelected() {
-    DialogManager.showDeleteSelectCardDialog(requireContext()) {
-      adapter.deleteSelect()
-      resetSelectState()
-    }
-  }
-
-  fun moveSelected() {
-    DialogManager.showPageListDialog(requireContext()) {
-      adapter.moveSelect(it)
-    }
-  }
-
-  fun createShortcutSelected() {
-    DialogManager.showMultiSelectCreatingShortcutDialog(requireContext()) {
-      GlobalScope.launch(Dispatchers.IO) {
-        adapter.createShortcutSelect()
-
-        withContext(Dispatchers.Main) {
-          resetSelectState()
-        }
-      }
-    }
-  }
 
   private fun initView() {
     setHasOptionsMenu(true)
@@ -178,15 +98,12 @@ class CategoryCardFragment : Fragment() {
   private fun setupRecyclerView() {
     decoration = SpacesItemDecoration(resources.getDimension(R.dimen.cardview_item_margin).toInt())
 
-    adapter = BaseCardAdapter(LAYOUT_MODE_MEDIUM, lifecycleScope)
+    adapter = BaseCardAdapter()
 
     adapter.apply {
       setDiffCallback(DiffListCallback())
       setOnItemClickListener { _, view, i ->
         clickItem(view, i)
-      }
-      setOnItemLongClickListener { _, view, i ->
-        longClickItem(view, i)
       }
       setHasStableIds(true)
     }

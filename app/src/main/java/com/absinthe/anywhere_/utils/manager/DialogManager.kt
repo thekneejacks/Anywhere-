@@ -1,11 +1,7 @@
 package com.absinthe.anywhere_.utils.manager
 
 import android.app.Activity
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
-import android.content.Intent
-import android.text.Spanned
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import com.absinthe.anywhere_.AnywhereApplication
@@ -13,7 +9,6 @@ import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.backup.RestoreApplyFragmentDialog
 import com.absinthe.anywhere_.ui.shortcuts.CreateShortcutDialogFragment
-import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 
 /**

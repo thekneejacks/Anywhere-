@@ -102,23 +102,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       R.id.toolbar_settings -> {
         startActivity(Intent(this, SettingsActivity::class.java))
       }
-
-      R.id.toolbar_done -> {
-        CategoryCardFragment.currentReference?.get()?.editDone()
-        binding.viewPager.isUserInputEnabled = true
-      }
-
-      R.id.toolbar_delete -> {
-        CategoryCardFragment.currentReference?.get()?.deleteSelected()
-      }
-
-      R.id.toolbar_move -> {
-        CategoryCardFragment.currentReference?.get()?.moveSelected()
-      }
-
-      R.id.toolbar_create_sc -> {
-        CategoryCardFragment.currentReference?.get()?.createShortcutSelected()
-      }
     }
 
     return if (mToggle?.onOptionsItemSelected(item) == true) {
