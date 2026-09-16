@@ -132,7 +132,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     binding.toolbar.title = ""
 
-    binding.tsTitle.setText("Anywhere-")
     //binding.fullDraggableContainer.setEnableDrawer(GlobalValues.isPages)
 
 
@@ -169,10 +168,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
               super.onPageSelected(position)
               val pos = if (position >= it.size) it.size - 1 else position
               setsCategory(it[pos].title, pos)
-
-              if (isTitleShown) {
-                binding.tsTitle.setText(it[pos].title)
-              }
             }
           })
 

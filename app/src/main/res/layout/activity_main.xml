@@ -45,19 +45,6 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             android:translationZ="3dp">
-
-            <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-              <com.absinthe.anywhere_.view.home.TextSwitcherView
-                android:id="@+id/ts_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" />
-
-            </LinearLayout>
-
           </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -76,7 +63,7 @@
           />
 
       </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    
+
   </androidx.drawerlayout.widget.DrawerLayout>
 
 </FrameLayout>
