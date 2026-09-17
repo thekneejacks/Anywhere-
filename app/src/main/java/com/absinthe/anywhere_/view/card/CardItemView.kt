@@ -35,27 +35,7 @@ class CardItemView<T : ViewGroup>(context: Context, val content: T) : MaterialCa
     }
 
     when (content) {
-      is NormalItemView -> {
-        appName = content.appName
-        icon = content.icon
-        //badge = content.badge
-        //indicator = content.indicator
-      }
       is StreamItemView -> {
-        appName = content.appName
-        icon = content.icon
-        //badge = content.badge
-        //indicator = content.indicator
-        addView(cardBackground)
-      }
-      is StreamSingleLineItemView -> {
-        appName = content.appName
-        icon = content.icon
-        //badge = content.badge
-        //indicator = content.indicator
-        addView(cardBackground)
-      }
-      is MinimumItemView -> {
         appName = content.appName
         icon = content.icon
         //badge = content.badge
