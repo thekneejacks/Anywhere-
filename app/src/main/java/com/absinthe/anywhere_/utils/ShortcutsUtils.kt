@@ -6,8 +6,6 @@ import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.toBitmap
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const

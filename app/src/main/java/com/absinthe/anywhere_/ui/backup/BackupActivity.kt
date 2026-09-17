@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.text.HtmlCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -30,7 +29,6 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-const val BACKUP_TIP_VERSION = "2.0.0"
 
 class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
 
@@ -150,24 +148,5 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
       return recyclerView
     }
 
-    private fun getBackupTip(): CharSequence {
-      return HtmlCompat.fromHtml(
-        String.format(
-          getString(R.string.settings_backup_tip),
-          BACKUP_TIP_VERSION,
-          BACKUP_TIP_VERSION
-        ), HtmlCompat.FROM_HTML_MODE_LEGACY
-      )
-    }
-
-    /*private fun getPWString(text: String): String {
-      val sb = StringBuilder().apply {
-        for (char in text) {
-          append("●")
-        }
-      }
-
-      return sb.toString()
-    }*/
   }
 }

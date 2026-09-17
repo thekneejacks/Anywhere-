@@ -27,15 +27,15 @@ class BaseCardAdapter(
   override fun convert(holder: BaseViewHolder, item: AnywhereEntity) {
 
     val itemView = holder.itemView as CardItemView<*>
-     itemView.appName.text = item.appName
+    itemView.appName.text = item.appName
 
 
-        val normalView: CardItemView<StreamItemView>? =
-          itemView as CardItemView<StreamItemView>
+    val normalView: CardItemView<StreamItemView>? =
+      itemView as CardItemView<StreamItemView>
 
 
     normalView!!.content.description.text = item.description
-        itemView.cardBackground.setImageDrawable(null)
+    itemView.cardBackground.setImageDrawable(null)
 
 
 
@@ -61,10 +61,10 @@ class BaseCardAdapter(
   fun clickItem(v: View, position: Int) {
     try {
       val item = getItem(position)
-        val intent = Intent(context, EditorActivity::class.java).apply {
-          putExtra(EXTRA_ENTITY, item)
-          putExtra(EXTRA_EDIT_MODE, true)
-        }
+      val intent = Intent(context, EditorActivity::class.java).apply {
+        putExtra(EXTRA_ENTITY, item)
+        putExtra(EXTRA_EDIT_MODE, true)
+      }
       context.startActivity(intent)
     } catch (e: IndexOutOfBoundsException) {
       e.printStackTrace()

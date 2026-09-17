@@ -24,8 +24,6 @@ import com.absinthe.anywhere_.databinding.FragmentCategoryCardBinding
 import com.absinthe.anywhere_.extension.addSystemBarPaddingAsync
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
-import com.absinthe.libraries.utils.extensions.paddingEndCompat
-import com.absinthe.libraries.utils.extensions.paddingStartCompat
 import com.google.android.material.card.MaterialCardView
 import java.lang.ref.WeakReference
 
@@ -51,7 +49,6 @@ class CategoryCardFragment : Fragment() {
       })
     }
   }
-  private val cardObserver = Observer<Any> { refreshRecyclerView() }
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -112,8 +109,6 @@ class CategoryCardFragment : Fragment() {
       adapter = this@CategoryCardFragment.adapter
       setRecyclerViewLayoutManager(this, resources.configuration)
       addItemDecoration(decoration)
-      paddingStartCompat = decoration.space
-      paddingEndCompat = decoration.space
       addSystemBarPaddingAsync(addStatusBarPadding = false)
     }
 
@@ -153,7 +148,7 @@ class CategoryCardFragment : Fragment() {
   }
 
   private fun refreshRecyclerView() {
-    binding.recyclerView.removeItemDecoration(decoration)
+    //binding.recyclerView.removeItemDecoration(decoration)
     setupRecyclerView()
 
     AnywhereApplication.sRepository.allAnywhereEntities.value?.let { list ->

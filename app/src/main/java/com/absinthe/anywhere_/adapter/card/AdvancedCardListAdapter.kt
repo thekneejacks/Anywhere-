@@ -3,7 +3,6 @@ package com.absinthe.anywhere_.adapter.card
 import com.absinthe.anywhere_.R
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-
 class AdvancedCardListAdapter :
   BaseQuickAdapter<AdvancedCardItem, BaseViewHolder>(R.layout.item_advanced_card) {
 
