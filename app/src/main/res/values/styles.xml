@@ -27,9 +27,6 @@
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
     <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
-
-    <item name="aboutPageHeaderBackground">@color/aboutHeader</item>
-    <item name="aboutPageHeaderContentScrim">@color/aboutHeader</item>
   </style>
 
   <style name="Transparent" parent="@style/AppTheme">
@@ -72,11 +69,6 @@
     <item name="cornerSizeTopLeft">16dp</item>
     <item name="cornerSizeBottomRight">0dp</item>
     <item name="cornerSizeBottomLeft">0dp</item>
-  </style>
-
-  <style name="DialogAnimation">
-    <item name="android:windowEnterAnimation">@anim/anim_bottom_sheet_slide_up</item>
-    <item name="android:windowExitAnimation">@anim/anim_bottom_sheet_slide_down</item>
   </style>
 
   <style name="Widget.Aw.PopupMenu" parent="Widget.AppCompat.ListView.DropDown">

@@ -39,7 +39,7 @@ android {
   }
 
   buildFeatures {
-    aidl = true
+    aidl = false
     buildConfig = true
     viewBinding = true
   }
@@ -83,7 +83,7 @@ android {
   }
 
   dependenciesInfo.includeInApk = false
-  
+
 
   packaging {
     resources {
@@ -163,7 +163,7 @@ dependencies {
 
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-  implementation("com.github.zhaobozhen.libraries:me:1.1.4")
+  //implementation("com.github.zhaobozhen.libraries:me:1.1.4")
   implementation("com.github.zhaobozhen.libraries:utils:1.1.4")
 
   val appCenterSdkVersion = "5.0.3"
@@ -190,10 +190,10 @@ dependencies {
   implementation("androidx.drawerlayout:drawerlayout:1.2.0")
 
   //KTX
-  implementation("androidx.collection:collection-ktx:1.2.0")
+  //implementation("androidx.collection:collection-ktx:1.2.0")
   implementation("androidx.activity:activity-ktx:1.8.1")
   implementation("androidx.fragment:fragment-ktx:1.6.2")
-  implementation("androidx.palette:palette-ktx:1.0.0")
+  //implementation("androidx.palette:palette-ktx:1.0.0")
   implementation("androidx.core:core-ktx:1.12.0")
   implementation("androidx.preference:preference-ktx:1.2.1")
 
@@ -220,7 +220,7 @@ dependencies {
   //UX
   //implementation("com.drakeet.about:about:2.5.2")
   //implementation("com.drakeet.multitype:multitype:4.3.0")
-  implementation("com.drakeet.drawer:drawer:1.0.3")
+  //implementation("com.drakeet.drawer:drawer:1.0.3")
   //implementation("com.github.sephiroth74:android-target-tooltip:2.0.4")
   //implementation("com.leinardi.android:speed-dial:3.3.0")
   //implementation("me.zhanghai.android.fastscroll:library:1.3.0")
@@ -231,7 +231,7 @@ dependencies {
   // required by Shizuku
   implementation("dev.rikka.shizuku:provider:$shizukuVersion")
 
-  implementation("dev.rikka.rikkax.appcompat:appcompat:1.6.1")
+    //implementation("dev.rikka.rikkax.appcompat:appcompat:1.6.1")
   implementation("dev.rikka.rikkax.core:core:1.4.1")
   implementation("dev.rikka.rikkax.material:material:2.7.0")
   implementation("dev.rikka.rikkax.recyclerview:recyclerview-ktx:1.3.2")
@@ -241,20 +241,4 @@ dependencies {
   //implementation("dev.rikka.rikkax.layoutinflater:layoutinflater:1.3.0")
     implementation("dev.rikka.rikkax.material:material-preference:2.0.0")
 
-  //Network
-  //implementation("com.squareup.okhttp3:okhttp:4.11.0")
-  //implementation("com.squareup.retrofit2:retrofit:2.9.0")
-  //implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-  //implementation("com.squareup.okio:okio:3.5.0")
-
-  //Rx
-  //implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-  //implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-  //implementation("org.reactivestreams:reactive-streams:1.0.4")
-
-  //Debug
-  //testImplementation("junit:junit:4.13.2")
-  //debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
-  //androidTestImplementation("androidx.test:runner:1.5.2")
-  //androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
