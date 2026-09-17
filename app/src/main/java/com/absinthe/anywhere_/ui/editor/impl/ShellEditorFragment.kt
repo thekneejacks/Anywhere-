@@ -9,7 +9,6 @@ import com.absinthe.anywhere_.databinding.EditorShellBinding
 import com.absinthe.anywhere_.model.database.setExecWithRoot
 import com.absinthe.anywhere_.ui.editor.BaseEditorFragment
 import com.absinthe.anywhere_.utils.CommandUtils
-import com.absinthe.anywhere_.utils.handler.Opener
 
 class ShellEditorFragment : BaseEditorFragment() {
 

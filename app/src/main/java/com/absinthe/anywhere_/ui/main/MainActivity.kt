@@ -30,10 +30,10 @@ import com.absinthe.anywhere_.constants.GlobalValues.setsCategory
 import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
+import com.absinthe.anywhere_.ui.backup.BackupActivity
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.absinthe.anywhere_.ui.settings.SettingsActivity
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
@@ -100,7 +100,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.toolbar_settings -> {
-        startActivity(Intent(this, SettingsActivity::class.java))
+        startActivity(Intent(this, BackupActivity::class.java))
       }
     }
 

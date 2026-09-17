@@ -8,8 +8,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.IBinder
 import android.view.Menu
-import android.widget.FrameLayout
-import androidx.lifecycle.MutableLiveData
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
@@ -21,7 +19,6 @@ import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.anywhere_.utils.manager.DialogManager.showCreatePinnedShortcutDialog
 import com.absinthe.libraries.utils.extensions.getColorByAttr
 import com.blankj.utilcode.util.ActivityUtils
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 const val EXTRA_ENTITY = "EXTRA_ENTITY"
 const val EXTRA_EDIT_MODE = "EXTRA_EDIT_MODE"
@@ -158,5 +155,5 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     }
   }
 
- 
+
 }
