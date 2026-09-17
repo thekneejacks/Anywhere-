@@ -21,7 +21,6 @@ import com.absinthe.anywhere_.adapter.manager.WrapContentStaggeredGridLayoutMana
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.FragmentCategoryCardBinding
-import com.absinthe.anywhere_.extension.addSystemBarPaddingAsync
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
 import com.google.android.material.card.MaterialCardView
@@ -31,7 +30,6 @@ const val BUNDLE_CATEGORY = "CATEGORY"
 
 class CategoryCardFragment : Fragment() {
 
-  private val category by lazy { arguments?.getString(BUNDLE_CATEGORY) ?: GlobalValues.category }
   private lateinit var decoration: SpacesItemDecoration
 
   private lateinit var binding: FragmentCategoryCardBinding
@@ -109,7 +107,6 @@ class CategoryCardFragment : Fragment() {
       adapter = this@CategoryCardFragment.adapter
       setRecyclerViewLayoutManager(this, resources.configuration)
       addItemDecoration(decoration)
-      addSystemBarPaddingAsync(addStatusBarPadding = false)
     }
 
     itemTouchHelper = ItemTouchHelper(ItemTouchCallBack().apply {
@@ -135,32 +132,6 @@ class CategoryCardFragment : Fragment() {
         list.toMutableList()
     )
     //updateWidget(Utils.getApp())
-  }
-
-  private fun resetSelectState() {
-    for (pos in 0 until adapter.itemCount) {
-      binding.recyclerView.layoutManager?.findViewByPosition(pos)?.let {
-        it.scaleX = 1.0f
-        it.scaleY = 1.0f
-        (it as MaterialCardView).isChecked = false
-      }
-    }
-  }
-
-  private fun refreshRecyclerView() {
-    //binding.recyclerView.removeItemDecoration(decoration)
-    setupRecyclerView()
-
-    AnywhereApplication.sRepository.allAnywhereEntities.value?.let { list ->
-      adapter.setDiffNewData(
-        if (category == AnywhereType.Category.DEFAULT_CATEGORY) {
-          list.filter { it.category.isNullOrEmpty() || it.category == this.category }
-            .toMutableList()
-        } else {
-          list.filter { it.category == this.category }.toMutableList()
-        }
-      )
-    }
   }
 
   private fun setRecyclerViewLayoutManager(

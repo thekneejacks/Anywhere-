@@ -83,12 +83,7 @@ android {
   }
 
   dependenciesInfo.includeInApk = false
-
-    externalNativeBuild {
-        cmake {
-            path = file("CMakeLists.txt")
-        }
-    }
+  
 
   packaging {
     resources {

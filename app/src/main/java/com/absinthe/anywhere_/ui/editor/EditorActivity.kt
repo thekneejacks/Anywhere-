@@ -6,19 +6,17 @@ import android.content.ServiceConnection
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.os.IBinder
 import android.view.Menu
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.databinding.ActivityEditorBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.services.overlay.IOverlayService
 import com.absinthe.anywhere_.ui.editor.impl.ShellEditorFragment
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.anywhere_.utils.manager.DialogManager.showCreatePinnedShortcutDialog
 import com.absinthe.libraries.utils.extensions.getColorByAttr
-import com.blankj.utilcode.util.ActivityUtils
+
 
 const val EXTRA_ENTITY = "EXTRA_ENTITY"
 const val EXTRA_EDIT_MODE = "EXTRA_EDIT_MODE"
@@ -32,23 +30,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
   private lateinit var entity: AnywhereEntity
 
   private val isEditMode by lazy { intent.getBooleanExtra(EXTRA_EDIT_MODE, false) }
-  private var overlayService: IOverlayService? = null
-  private var isBound = false
 
-  private val conn = object : ServiceConnection {
-    override fun onServiceDisconnected(name: ComponentName?) {
-      isBound = false
-      overlayService = null
-    }
-
-    override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-      isBound = true
-      overlayService = IOverlayService.Stub.asInterface(service)
-      overlayService?.addOverlay(entity)
-      ActivityUtils.startHomeActivity()
-    }
-
-  }
 
   override fun setViewBinding() = ActivityEditorBinding.inflate(layoutInflater)
 

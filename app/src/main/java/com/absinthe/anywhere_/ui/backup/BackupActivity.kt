@@ -16,7 +16,6 @@ import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.databinding.ActivityBackupBinding
 import com.absinthe.anywhere_.utils.AppTextUtils
-import com.absinthe.anywhere_.utils.CipherUtils
 import com.absinthe.anywhere_.utils.StorageUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.blankj.utilcode.util.Utils
@@ -51,11 +50,9 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
             try {
               Utils.getApp().contentResolver.openOutputStream(it)?.let { os ->
                 StorageUtils.exportAnywhereEntityJsonString()?.let { content ->
-                  CipherUtils.encrypt(content)?.let { encrypted ->
-                    os.write(encrypted.toByteArray())
+                    os.write(content.toByteArray())
                     os.close()
                     ToastUtil.makeText(requireContext(), getString(R.string.toast_backup_success))
-                  }
                 }
               }
             } catch (e: IOException) {

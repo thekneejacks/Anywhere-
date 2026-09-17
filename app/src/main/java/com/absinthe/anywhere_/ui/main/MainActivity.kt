@@ -32,7 +32,6 @@ import com.absinthe.anywhere_.ui.backup.BackupActivity
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import kotlinx.coroutines.Dispatchers
@@ -226,7 +225,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
   }
 
   private fun processUri(uri: Uri) {
-    if (uri.host == URLManager.URL_HOST) {
+    if (uri.host == "url") {
       val param1 = uri.getQueryParameter(Const.INTENT_EXTRA_PARAM_1).orEmpty()
       val param2 = uri.getQueryParameter(Const.INTENT_EXTRA_PARAM_2).orEmpty()
       val param3 = uri.getQueryParameter(Const.INTENT_EXTRA_PARAM_3).orEmpty()

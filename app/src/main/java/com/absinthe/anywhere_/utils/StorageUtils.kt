@@ -53,10 +53,7 @@ object StorageUtils {
     }
   }
 
-  suspend fun restoreFromJson(context: Context, jsonString: String) {
-    val content = CipherUtils.decrypt(jsonString)
-    //Timber.d(content)
-
+  suspend fun restoreFromJson(context: Context, content: String) {
     try {
       val backupBean = Gson().fromJson(content, BackupBean::class.java)
       if (backupBean == null) {
