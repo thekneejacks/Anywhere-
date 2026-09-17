@@ -54,31 +54,6 @@ abstract class BaseActivity<T : ViewBinding> : MaterialActivity() {
       setContentView(root)
     }
     initView()
-
-    openDocumentResultLauncher = registerForActivityResult(OpenDocument()) {
-      try {
-        it?.let {
-          it.data?.let { uri ->
-            onDocumentResultAction?.invoke(uri)
-            if (uri.toString().contains("file://")) {
-              ToastUtil.makeText(R.string.toast_file_uri_exposed)
-            } else {
-              try {
-                AppUtils.takePersistableUriPermission(this, uri, it)
-              } catch (e: RuntimeException) {
-                ToastUtil.makeText(R.string.toast_runtime_error)
-              }
-            }
-          }
-        }
-      } catch (e: Exception) {
-
-          if (e is FileUriExposedException) {
-            ToastUtil.makeText(R.string.toast_file_uri_exposed)
-          }
-
-      }
-    }
   }
 
   override fun onResume() {

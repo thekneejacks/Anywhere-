@@ -31,13 +31,13 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
   override fun setViewBinding(): Nothing? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
     handleIntent(intent)
+    super.onCreate(savedInstanceState)
   }
 
   override fun onNewIntent(intent: Intent) {
-    super.onNewIntent(intent)
     handleIntent(intent)
+    super.onNewIntent(intent)
   }
 
   private fun handleIntent(intent: Intent) {
