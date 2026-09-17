@@ -165,17 +165,6 @@
         android:resource="@xml/shortcuts" />
     </activity-alias>
 
-    <!--    Settings    -->
-    <activity
-      android:name=".ui.settings.SettingsActivity"
-      android:exported="true"
-      android:label="@string/settings_title"
-      android:launchMode="singleTask">
-      <intent-filter>
-        <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
-      </intent-filter>
-    </activity>
-
     <!--    About page
     <activity
       android:name=".ui.about.AboutActivity"
@@ -249,24 +238,6 @@
       android:exported="true"
       android:multiprocess="false"
       android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
-
-    <!--    File provider    -->
-    <provider
-      android:name="androidx.core.content.FileProvider"
-      android:authorities="${applicationId}.fileprovider"
-      android:exported="false"
-      android:grantUriPermissions="true">
-      <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths" />
-    </provider>
-    <!--    Core Provider    -->
-    <provider
-      android:name=".provider.CoreProvider"
-      android:authorities="${applicationId}.coreprovider"
-      android:exported="true"
-      android:readPermission="com.absinthe.anywhere_.provider.READ"
-      android:writePermission="com.absinthe.anywhere_.provider.WRITE" />
 
     <meta-data
       android:name="android.max_aspect"

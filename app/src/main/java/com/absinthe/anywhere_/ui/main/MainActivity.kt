@@ -34,7 +34,6 @@ import com.absinthe.anywhere_.ui.backup.BackupActivity
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.utils.manager.URLManager
 import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
@@ -92,7 +91,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
   }
 
   override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-    UxUtils.tintToolbarIcon(this, menu, mToggle)
+    //UxUtils.tintToolbarIcon(this, menu, mToggle)
     return super.onPrepareOptionsMenu(menu)
   }
 

@@ -31,7 +31,7 @@ class ShellEditorFragment : BaseEditorFragment() {
       return
     }
     val param1 = binding.etShellContent.text.toString()
-    CommandUtils.execAdbCmd(param1)
+    CommandUtils.execShizukuCmd(param1)
   }
 
   override fun doneEdit(): Boolean {

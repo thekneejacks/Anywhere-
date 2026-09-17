@@ -9,28 +9,14 @@ import android.graphics.drawable.LayerDrawable
 import com.absinthe.anywhere_.R
 
 object CardTypeIconGenerator {
-
-  private val COLORS = listOf(
-    R.color.material_blue_300,
-    R.color.material_red_300,
-    0,
-    R.color.material_green_300,
-    R.color.material_pink_300,
-    R.color.material_deep_purple_300,
-    R.color.material_cyan_300,
-    R.color.material_lime_300,
-    R.color.material_indigo_300,
-    R.color.material_deep_orange_300,
-    R.color.material_amber_300,
-  )
-
+  
   @SuppressLint("UseCompatLoadingForDrawables")
   fun getAdvancedIcon(context: Context, type: Int, size: Int): Drawable {
     val foreDrawable = context.getDrawable(R.drawable.ic_card_shell)?.apply {
       setTintList(ColorStateList.valueOf(Color.parseColor("#66FFFFFF")))
     }
     val backDrawable = context.getDrawable(R.drawable.bg_circle)?.apply {
-      val colorRes = context.getColor(COLORS[type])
+      val colorRes = context.getColor(R.color.material_deep_purple_300)
       setTintList(ColorStateList.valueOf(colorRes))
     }
     return LayerDrawable(listOf(backDrawable, foreDrawable).toTypedArray()).apply {

@@ -13,7 +13,6 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.absinthe.anywhere_.AppBarActivity
-import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.databinding.ActivityBackupBinding
@@ -21,7 +20,6 @@ import com.absinthe.anywhere_.utils.AppTextUtils
 import com.absinthe.anywhere_.utils.CipherUtils
 import com.absinthe.anywhere_.utils.StorageUtils
 import com.absinthe.anywhere_.utils.ToastUtil
-import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.blankj.utilcode.util.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -97,72 +95,6 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
       setPreferencesFromResource(R.xml.settings_backup, rootKey)
 
-      /*findPreference<Preference>(Const.PREF_WEBDAV_HOST)?.apply {
-        setOnPreferenceChangeListener { preference, newValue ->
-          GlobalValues.webdavHost = newValue.toString()
-          preference.summary = newValue.toString()
-          true
-        }
-        summary = GlobalValues.webdavHost
-      }
-      findPreference<Preference>(Const.PREF_WEBDAV_USERNAME)?.apply {
-        setOnPreferenceChangeListener { preference, newValue ->
-          GlobalValues.webdavUsername = newValue.toString()
-          preference.summary = newValue.toString()
-          true
-        }
-        summary = GlobalValues.webdavUsername
-        isIconSpaceReserved = true
-      }
-      findPreference<EditTextPreference>(Const.PREF_WEBDAV_PASSWORD)?.apply {
-        setOnPreferenceChangeListener { preference, newValue ->
-          GlobalValues.webdavPassword = newValue.toString()
-          preference.summary = getPWString(newValue.toString())
-          true
-        }
-        setOnBindEditTextListener {
-          it.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        }
-        summary = getPWString(GlobalValues.webdavPassword)
-        isIconSpaceReserved = true
-      }
-      findPreference<Preference>(Const.PREF_WEBDAV_BACKUP)?.apply {
-        setOnPreferenceClickListener {
-          if (GlobalValues.webdavHost.isEmpty() ||
-            GlobalValues.webdavUsername.isEmpty() ||
-            GlobalValues.webdavPassword.isEmpty()
-          ) {
-            Snackbar.make(listView, R.string.toast_check_webdav_configuration, Snackbar.LENGTH_LONG)
-              .show()
-          } else {
-            StorageUtils.webdavBackup()
-          }
-          true
-        }
-        isIconSpaceReserved = true
-      }
-      findPreference<TwoStatePreference>(Const.PREF_WEBDAV_AUTO_BACKUP)?.apply {
-        setOnPreferenceChangeListener { _, newValue ->
-          GlobalValues.isAutoBackup = newValue as Boolean
-          true
-        }
-        isIconSpaceReserved = true
-      }
-      findPreference<Preference>(Const.PREF_WEBDAV_RESTORE)?.apply {
-        setOnPreferenceClickListener {
-          if (GlobalValues.webdavHost.isEmpty() ||
-            GlobalValues.webdavUsername.isEmpty() ||
-            GlobalValues.webdavPassword.isEmpty()
-          ) {
-            Snackbar.make(listView, R.string.toast_check_webdav_configuration, Snackbar.LENGTH_LONG)
-              .show()
-          } else {
-            DialogManager.showWebdavRestoreDialog(requireActivity() as BaseActivity<*>)
-          }
-          true
-        }
-        isIconSpaceReserved = true
-      }*/
       findPreference<Preference>(Const.PREF_BACKUP)?.apply {
         setOnPreferenceClickListener {
           if (StorageUtils.isExternalStorageWritable) {
@@ -188,21 +120,6 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
           }
           true
         }
-      }
-      findPreference<Preference>(Const.PREF_RESTORE_APPLY)?.apply {
-        setOnPreferenceClickListener {
-          DialogManager.showRestoreApplyDialog(requireActivity() as BaseActivity<*>)
-          true
-        }
-      }
-      findPreference<Preference>("backupTip")?.apply {
-        summary = getBackupTip()
-      }
-      findPreference<Preference>("backupTip2")?.apply {
-        summary = HtmlCompat.fromHtml(
-          getString(R.string.settings_backup_tip2),
-          HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
       }
     }
 

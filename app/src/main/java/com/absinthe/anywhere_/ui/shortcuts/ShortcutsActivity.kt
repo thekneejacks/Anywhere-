@@ -46,7 +46,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
         ACTION_START_ENTITY -> {
           intent.getStringExtra(Const.INTENT_EXTRA_SHORTCUTS_ID)?.let { id ->
             AnywhereApplication.sRepository.getParamById(id)?.let { param ->
-              CommandUtils.execAdbCmd(param)
+              CommandUtils.execShizukuCmd(param)
             }
           }
         }
