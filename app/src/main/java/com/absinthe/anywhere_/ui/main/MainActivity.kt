@@ -19,14 +19,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
-import com.absinthe.anywhere_.constants.GlobalValues.setsCategory
 import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.model.database.PageEntity
@@ -160,16 +158,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
               return CategoryCardFragment.newInstance(it[position].title)
             }
           }
-
-          // 当ViewPager切换页面时，改变页码
-          registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-              super.onPageSelected(position)
-              val pos = if (position >= it.size) it.size - 1 else position
-              setsCategory(it[pos].title, pos)
-            }
-          })
-
 
           getChildAt(0)?.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 

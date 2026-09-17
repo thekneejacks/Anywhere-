@@ -1,8 +1,5 @@
 package com.absinthe.anywhere_.constants
 
-import androidx.core.content.edit
-import com.absinthe.anywhere_.model.Settings
-
 object GlobalValues {
 
   /*var spName = if (BuildConfig.DEBUG) {
@@ -123,16 +120,7 @@ object GlobalValues {
       mmkv.encode(Const.PREF_ICON_PACK, value)
     }*/
 
-  var category
-    get() = //mmkv.decodeString(Const.PREF_CURR_CATEGORY, AnywhereType.Category.DEFAULT_CATEGORY)
-      Settings.prefs!!.getString(Const.PREF_CURR_CATEGORY,AnywhereType.Category.DEFAULT_CATEGORY)
-      ?: AnywhereType.Category.DEFAULT_CATEGORY
-    set(value) {
-      //mmkv.encode(Const.PREF_CURR_CATEGORY, value)
-      Settings.prefs!!.edit(commit = true){
-        putString(Const.PREF_CURR_CATEGORY, value)
-      }
-    }
+  var category = "AnywhereType.Category.DEFAULT_CATEGORY"
 
 
 
@@ -159,16 +147,6 @@ object GlobalValues {
     set(value) {
       mmkv.encode(Const.PREF_WEBDAV_PASSWORD, value)
     }*/
-
-  var currentPage
-    get() = // mmkv.decodeInt(Const.PREF_CURR_PAGE_NUM, 0)
-      Settings.prefs!!.getInt(Const.PREF_CURR_PAGE_NUM,0)
-    set(value) {
-      //mmkv.encode(Const.PREF_CURR_PAGE_NUM, value)
-      Settings.prefs!!.edit(commit = true){
-        putInt(Const.PREF_CURR_PAGE_NUM, value)
-      }
-    }
 
   /*var dumpInterval
     get() = mmkv.decodeInt(Const.PREF_DUMP_INTERVAL, 1000)
@@ -258,8 +236,4 @@ object GlobalValues {
     actionBarType = ""
   }*/
 
-  fun setsCategory(sCategory: String, page: Int) {
-    category = sCategory
-    currentPage = page
-  }
 }
