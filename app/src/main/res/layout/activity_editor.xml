@@ -48,7 +48,6 @@
     android:layout_height="wrap_content"
     android:importantForAccessibility="no"
     android:text="@string/bsd_btn_done"
-    android:transitionName="@string/trans_background"
     app:layout_anchor="@id/bar"
     app:srcCompat="@drawable/ic_done_solid" />
 

@@ -7,7 +7,6 @@ import androidx.core.text.HtmlCompat
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.ui.backup.RestoreApplyFragmentDialog
 import com.absinthe.anywhere_.ui.shortcuts.CreateShortcutDialogFragment
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
 
@@ -113,22 +112,6 @@ object DialogManager {
     }
   }
 
-
-  fun showMultiSelectCreatingShortcutDialog(context: Context, action: () -> Unit) {
-    AnywhereDialogBuilder(context).apply {
-      setTitle(R.string.dialog_add_home_shortcut_title)
-      setMessage(R.string.dialog_add_select_shortcut_message)
-      setPositiveButton(android.R.string.ok) { _, _ -> action() }
-      setNegativeButton(android.R.string.cancel, null)
-      show()
-    }
-  }
-
-
-  fun showRestoreApplyDialog(activity: AppCompatActivity) {
-    val dialog = RestoreApplyFragmentDialog()
-    dialog.show(activity.supportFragmentManager, dialog.tag)
-  }
 
   fun showCreatePinnedShortcutDialog(activity: AppCompatActivity, ae: AnywhereEntity) {
     val fragment = CreateShortcutDialogFragment.newInstance(ae)
