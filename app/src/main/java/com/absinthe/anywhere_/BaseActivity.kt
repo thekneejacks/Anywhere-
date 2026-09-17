@@ -10,7 +10,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.FileUriExposedException
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
@@ -19,8 +18,6 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.utils.AppUtils
-import com.absinthe.anywhere_.utils.ToastUtil
 import com.absinthe.anywhere_.utils.manager.ActivityStackManager
 import rikka.core.res.isNight
 import rikka.material.app.MaterialActivity

@@ -96,13 +96,12 @@ object ShortcutsUtils {
     GlobalValues.shortcutsList = listOf()
   }*/
 
-  @RequiresApi(api = Build.VERSION_CODES.O)
   fun addPinnedShortcut(ae: AnywhereEntity, icon: Drawable, name: String) {
     if (SHORTCUT_MANAGER!!.isRequestPinShortcutSupported) {
       // Assumes there's already a shortcut with the ID "my-shortcut".
       // The shortcut must be enabled.
       val intent = Intent(Utils.getApp(), ShortcutsActivity::class.java).apply {
-        action = ShortcutsActivity.ACTION_START_ENTITY
+        action = "PIN_SHORTCUT"
         putExtra(Const.INTENT_EXTRA_SHORTCUTS_ID, ae.id)
       }
 
