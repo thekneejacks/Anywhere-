@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.absinthe.anywhere_.AppBarActivity
+import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.databinding.ActivityBackupBinding
@@ -23,19 +23,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import rikka.recyclerview.fixEdgeEffect
 import rikka.widget.borderview.BorderRecyclerView
-import rikka.widget.borderview.BorderView
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
 
-class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
+class BackupActivity : BaseActivity<ActivityBackupBinding>() {
 
   override fun setViewBinding() = ActivityBackupBinding.inflate(layoutInflater)
-
-  override fun getToolBar() = binding.toolbar.toolBar
-
-  override fun getAppBarLayout() = binding.toolbar.appBar
 
   class BackupFragment : PreferenceFragmentCompat() {
 
@@ -136,11 +131,6 @@ class BackupActivity : AppBarActivity<ActivityBackupBinding>() {
             .toInt()
         lp.leftMargin = lp.rightMargin
       }
-
-      recyclerView.borderViewDelegate.borderVisibilityChangedListener =
-        BorderView.OnBorderVisibilityChangedListener { top: Boolean, _: Boolean, _: Boolean, _: Boolean ->
-          (activity as BackupActivity?)?.getAppBarLayout()?.isLifted = !top
-        }
 
       return recyclerView
     }
