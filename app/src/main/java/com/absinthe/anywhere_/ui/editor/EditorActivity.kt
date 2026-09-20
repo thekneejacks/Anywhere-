@@ -1,6 +1,5 @@
 package com.absinthe.anywhere_.ui.editor
 
-import android.app.Activity
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -13,7 +12,6 @@ import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.editor.impl.ShellEditorFragment
 import com.absinthe.anywhere_.utils.manager.DialogManager
 import com.absinthe.anywhere_.utils.manager.DialogManager.showCreatePinnedShortcutDialog
-import com.absinthe.libraries.utils.extensions.getColorByAttr
 
 
 const val EXTRA_ENTITY = "EXTRA_ENTITY"
@@ -56,12 +54,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     setUpBottomDrawer()
   }
 
-  override fun onBackPressed() {
 
-      setResult(Activity.RESULT_OK)
-      super.onBackPressed()
-
-  }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     if (isEditMode) menuInflater.inflate(R.menu.editor_bottom_bar_edit_mode_menu, menu)
@@ -114,15 +107,15 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     }
 
     binding.fab.apply {
-      val color = if (entity.color == 0) {
-        context.getColorByAttr(com.google.android.material.R.attr.colorSecondaryContainer)
-      } else {
-        entity.color
-      }
+      val color = //if (entity.color == 0) {
+        //context.getColorByAttr(com.google.android.material.R.attr.colorSecondaryContainer)
+      //*} else {
+        Color.GREEN
+      //}*/
       backgroundTintList = ColorStateList.valueOf(color)
 
       //imageTintList = if (UxUtils.isLightColor(color)) {
-        ColorStateList.valueOf(Color.BLACK)
+       // ColorStateList.valueOf(Color.BLACK)
       //} else {
       //  ColorStateList.valueOf(Color.WHITE)
       //}

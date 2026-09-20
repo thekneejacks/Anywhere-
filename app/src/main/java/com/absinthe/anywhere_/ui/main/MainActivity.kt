@@ -2,14 +2,11 @@ package com.absinthe.anywhere_.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import android.widget.ImageButton
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -28,9 +25,6 @@ import com.absinthe.anywhere_.ui.editor.EditorActivity
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-  private var shouldFinish = false
-  private var hasResumed = false
-  private var mToggle: ActionBarDrawerToggle? = null
 
   override fun setViewBinding() = ActivityMainBinding.inflate(layoutInflater)
 
@@ -45,31 +39,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     super.onCreate(savedInstanceState)
   }
 
-  override fun onResume() {
-    super.onResume()
-    if (shouldFinish && hasResumed) {
-      finish()
-      return
-    }
-    hasResumed = true
-  }
-
-  override fun onNewIntent(intent: Intent) {
-    super.onNewIntent(intent)
-    //getAnywhereIntent(intent)
-  }
-
-  override fun onConfigurationChanged(newConfig: Configuration) {
-    super.onConfigurationChanged(newConfig)
-    //loadBackground(GlobalValues.backgroundUri)
-    mToggle?.onConfigurationChanged(newConfig)
-  }
-
-  override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-    //UxUtils.tintToolbarIcon(this, menu, mToggle)
-    return super.onPrepareOptionsMenu(menu)
-  }
-
   @SuppressLint("RestrictedApi")
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
@@ -78,12 +47,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       }
     }
 
-    return if (mToggle?.onOptionsItemSelected(item) == true) {
-      true
-    } else super.onOptionsItemSelected(item)
+    return super.onOptionsItemSelected(item)
   }
 
-  override fun onBackPressed() {
+  /*override fun onBackPressed() {
+    super.onBackPressed()
     when {
       binding.drawer.isDrawerVisible(GravityCompat.START) -> {
         binding.drawer.closeDrawer(GravityCompat.START)
@@ -94,7 +62,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         finish()
       }
     }
-  }
+  }*/
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.main_menu, menu)

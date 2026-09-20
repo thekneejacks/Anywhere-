@@ -10,10 +10,6 @@
   app:fitsSystemWindowsInsets="start|end"
   tools:context="com.absinthe.anywhere_.ui.backup.BackupActivity">
 
-  <include
-    android:id="@+id/toolbar"
-    layout="@layout/toolbar" />
-
   <androidx.fragment.app.FragmentContainerView
     android:id="@+id/fragment_container_view"
     android:name="com.absinthe.anywhere_.ui.backup.BackupActivity$BackupFragment"
