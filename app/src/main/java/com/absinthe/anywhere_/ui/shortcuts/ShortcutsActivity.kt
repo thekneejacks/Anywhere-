@@ -15,6 +15,7 @@ class ShortcutsActivity : BaseActivity<ViewBinding>() {
   override fun onCreate(savedInstanceState: Bundle?) {
     handleIntent(intent)
     super.onCreate(savedInstanceState)
+    finish()
   }
 
   override fun onNewIntent(intent: Intent) {

@@ -3,20 +3,15 @@ package com.absinthe.anywhere_.ui.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import android.widget.ImageButton
-import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
-import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.absinthe.anywhere_.AnywhereApplication
@@ -24,26 +19,15 @@ import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.database.PageEntity
 import com.absinthe.anywhere_.ui.backup.BackupActivity
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.absinthe.anywhere_.viewmodel.AnywhereViewModel
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-
-  private val viewModel by viewModels<AnywhereViewModel>()
-  private lateinit var mObserver: Observer<List<PageEntity>?>
-
-  //private var isBound = false
-  private var isTitleShown = false
   private var shouldFinish = false
   private var hasResumed = false
   private var mToggle: ActionBarDrawerToggle? = null
@@ -59,12 +43,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
 
     super.onCreate(savedInstanceState)
-    initObserver()
-    getAnywhereIntent(intent)
-
-    checkCardCategory()
-
-
   }
 
   override fun onResume() {
@@ -78,7 +56,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
   override fun onNewIntent(intent: Intent) {
     super.onNewIntent(intent)
-    getAnywhereIntent(intent)
+    //getAnywhereIntent(intent)
   }
 
   override fun onConfigurationChanged(newConfig: Configuration) {
@@ -128,10 +106,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     binding.toolbar.title = ""
 
-    //binding.fullDraggableContainer.setEnableDrawer(GlobalValues.isPages)
 
-
-    //initFab()
     val addButton: ImageButton = findViewById(R.id.fab)
     addButton.setOnClickListener {
       val ae = AnywhereEntity().apply {
@@ -159,14 +134,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
           }
 
           getChildAt(0)?.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-
-          //isUserInputEnabled = GlobalValues.isPages
           isUserInputEnabled = false
-          /*if (GlobalValues.isPages) {
-            setCurrentItem(GlobalValues.currentPage, false)
-          } else {*/
           setCurrentItem(0, false)
-          //}
         }
       }
     }
@@ -176,92 +145,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       it.setDisplayHomeAsUpEnabled(false)
       binding.drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }
-  }
-
-
-  private fun initObserver() {
-    mObserver = Observer { pageEntities ->
-      if (pageEntities == null) return@Observer
-
-      AnywhereApplication.sRepository.allPageEntities.removeObserver(mObserver)
-
-      if (pageEntities.isEmpty() && !isPageInit) {
-        val pe = PageEntity().apply {
-          title = GlobalValues.category
-          priority = 1
-        }
-        AnywhereApplication.sRepository.insertPage(pe)
-        isPageInit = true
-      }
-    }
-
-    AnywhereApplication.sRepository.allPageEntities.observe(this, mObserver)
-
-    viewModel.background.observe(this) { s: String ->
-      /*GlobalValues.backgroundUri = s
-
-      if (s.isNotEmpty()) {
-        //loadBackground(GlobalValues.backgroundUri)
-        UxUtils.setAdaptiveToolbarTitleColor(this@MainActivity, binding.tsTitle)
-        UxUtils.setActionBarTransparent(this)
-      }*/
-    }
-    viewModel.shouldShowFab.observe(this) {
-      binding.fab.isVisible = it
-    }
-  }
-
-  private fun getAnywhereIntent(intent: Intent) {
-    val action = intent.action
-    //Timber.d("action = %s", action)
-
-    if (action == null || action == Intent.ACTION_VIEW) {
-      intent.data?.let {
-        //Timber.d("Received Url = %s", it.toString())
-        //Timber.d("Received path = %s", it.path)
-        processUri(it)
-      }
-    }
-  }
-
-  private fun processUri(uri: Uri) {
-    if (uri.host == "url") {
-      val param1 = uri.getQueryParameter(Const.INTENT_EXTRA_PARAM_1).orEmpty()
-      val param2 = uri.getQueryParameter(Const.INTENT_EXTRA_PARAM_2).orEmpty()
-      val param3 = uri.getQueryParameter(Const.INTENT_EXTRA_PARAM_3).orEmpty()
-
-      val ae = AnywhereEntity().apply {
-        this.appName = "New Shell"
-        this.param1 = param1
-        this.param2 = param2
-        this.param3 = param3
-        this.type = AnywhereType.Card.SHELL
-      }
-      startActivity(Intent(this, EditorActivity::class.java).apply {
-        putExtra(EXTRA_ENTITY, ae)
-        putExtra(EXTRA_EDIT_MODE, false)
-      })
-    }
-  }
-
-  private fun checkCardCategory() {
-    AnywhereApplication.sRepository.allAnywhereEntities.observe(this) {
-      lifecycleScope.launch(Dispatchers.IO) {
-        it.asSequence().forEach {
-          if (AnywhereApplication.sRepository.getPageEntityByTitle(it.category) == null) {
-            AnywhereApplication.sRepository.insertPage(
-              PageEntity().apply {
-                title = it.category ?: AnywhereType.Category.DEFAULT_CATEGORY
-                priority = AnywhereApplication.sRepository.allPageEntities.value?.size ?: 0
-              }
-            )
-          }
-        }
-      }
-    }
-  }
-
-  companion object {
-    private var isPageInit = false
   }
 }

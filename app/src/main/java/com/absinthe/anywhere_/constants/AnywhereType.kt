@@ -1,7 +1,5 @@
 package com.absinthe.anywhere_.constants
 
-import com.absinthe.anywhere_.R
-
 object AnywhereType {
 
   object Card {

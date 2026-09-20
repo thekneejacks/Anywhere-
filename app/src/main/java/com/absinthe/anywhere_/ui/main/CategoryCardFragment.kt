@@ -18,12 +18,10 @@ import com.absinthe.anywhere_.adapter.SpacesItemDecoration
 import com.absinthe.anywhere_.adapter.card.BaseCardAdapter
 import com.absinthe.anywhere_.adapter.card.DiffListCallback
 import com.absinthe.anywhere_.adapter.manager.WrapContentStaggeredGridLayoutManager
-import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.FragmentCategoryCardBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
-import com.google.android.material.card.MaterialCardView
 import java.lang.ref.WeakReference
 
 const val BUNDLE_CATEGORY = "CATEGORY"

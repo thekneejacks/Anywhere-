@@ -1,8 +1,6 @@
 package com.absinthe.anywhere_.ui.editor
 
 import android.app.Activity
-import android.content.ComponentName
-import android.content.ServiceConnection
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
