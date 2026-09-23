@@ -13,8 +13,8 @@ object UxUtils {
    * @param context for get manager
    * @param item    for get package name
    */
-  fun getAppIcon(context: Context, item: AnywhereEntity, size: Int): Drawable {
-    return CardTypeIconGenerator.getAdvancedIcon(context, item.type, size)
+  fun getAppIcon(context: Context, size: Int): Drawable {
+    return CardTypeIconGenerator.getAdvancedIcon(context, size)
   }
 
 

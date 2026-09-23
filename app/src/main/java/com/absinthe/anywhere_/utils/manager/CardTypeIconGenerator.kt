@@ -9,9 +9,9 @@ import android.graphics.drawable.LayerDrawable
 import com.absinthe.anywhere_.R
 
 object CardTypeIconGenerator {
-  
+
   @SuppressLint("UseCompatLoadingForDrawables")
-  fun getAdvancedIcon(context: Context, type: Int, size: Int): Drawable {
+  fun getAdvancedIcon(context: Context, size: Int): Drawable {
     val foreDrawable = context.getDrawable(R.drawable.ic_card_shell)?.apply {
       setTintList(ColorStateList.valueOf(Color.parseColor("#66FFFFFF")))
     }

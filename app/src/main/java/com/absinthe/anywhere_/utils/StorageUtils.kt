@@ -42,10 +42,6 @@ object StorageUtils {
       null
     } else {
       for (ae in anywhereList) {
-        if (ae.type == AnywhereType.Card.IMAGE || ae.type == AnywhereType.Card.FILE) {
-          continue
-        }
-        ae.iconUri = ""
         finalList.add(ae)
       }
       val backupBean = BackupBean(finalList, pageList)
@@ -66,16 +62,6 @@ object StorageUtils {
         pageList.addAll(backupBean.pageList)
 
         for (ae in backupBean.anywhereList) {
-          if (!pageList.any { it.title == ae.category }) {
-            val category = ae.category.orEmpty().ifEmpty { AnywhereType.Category.DEFAULT_CATEGORY }
-            pageList.add(
-              PageEntity().apply {
-                title = category
-                priority = AnywhereApplication.sRepository.allPageEntities.value?.size ?: 0
-              }
-            )
-            ae.category = category
-          }
           aeList.add(ae)
         }
         AnywhereApplication.sRepository.insert(aeList)
@@ -90,7 +76,6 @@ object StorageUtils {
 
       try {
         val entity = Gson().fromJson(content, AnywhereEntity::class.java)
-        entity.category = GlobalValues.category
 
         AnywhereApplication.sRepository.insert(entity)
 

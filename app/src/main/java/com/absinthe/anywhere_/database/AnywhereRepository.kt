@@ -34,10 +34,6 @@ class AnywhereRepository(application: Application) {
     allAnywhereEntities = sortedEntities
   }
 
-  fun refresh() {
-    allAnywhereEntities = sortedEntities
-  }
-
   fun insert(ae: AnywhereEntity) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.insert(ae)
 
@@ -53,10 +49,6 @@ class AnywhereRepository(application: Application) {
 
   }
 
-  fun update(list: List<AnywhereEntity>) = GlobalScope.launch(Dispatchers.IO) {
-    mAnywhereDao.update(list)
-
-  }
 
   fun delete(ae: AnywhereEntity, delayTime: Long = 0L) = GlobalScope.launch(Dispatchers.IO) {
     delay(delayTime)
@@ -67,48 +59,12 @@ class AnywhereRepository(application: Application) {
 
   }
 
-  fun delete(list: List<AnywhereEntity>, delayTime: Long = 0L) =
-    GlobalScope.launch(Dispatchers.IO) {
-      delay(delayTime)
-      mAnywhereDao.delete(list)
-      /*if (AppUtils.atLeastNMR1()) {
-        list.forEach { ShortcutsUtils.removeShortcut(it) }
-      }*/
-
-    }
-
-  fun insertPage(pe: PageEntity) = GlobalScope.launch(Dispatchers.IO) {
-    mAnywhereDao.insertPage(pe)
-
-  }
-
   fun insertPage(pageList: List<PageEntity>) = GlobalScope.launch(Dispatchers.IO) {
     mAnywhereDao.insertPage(pageList)
 
   }
 
-  fun updatePage(pe: PageEntity) = GlobalScope.launch(Dispatchers.IO) {
-    mAnywhereDao.updatePage(pe)
-
-  }
-
-  fun deletePage(pe: PageEntity) = GlobalScope.launch(Dispatchers.IO) {
-    mAnywhereDao.deletePage(pe)
-
-  }
-
-  fun getEntityById(id: String): AnywhereEntity? {
-    return mAnywhereDao.getEntityById(id)
-  }
-
   fun getParamById(id: String): String? {
     return mAnywhereDao.getParamById(id)
-  }
-
-  fun getPageEntityByTitle(title: String?): PageEntity? {
-    if (title == null) {
-      return null
-    }
-    return mAnywhereDao.getPageEntityByTitle(title)
   }
 }

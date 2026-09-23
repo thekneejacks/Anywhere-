@@ -11,12 +11,6 @@ class DiffListCallback : DiffUtil.ItemCallback<AnywhereEntity>() {
 
   override fun areContentsTheSame(oldItem: AnywhereEntity, newItem: AnywhereEntity): Boolean {
     return oldItem.appName == newItem.appName &&
-      oldItem.param1 == newItem.param1 &&
-      oldItem.param2 == newItem.param2 &&
-      oldItem.param3 == newItem.param3 &&
-      oldItem.description == newItem.description &&
-      oldItem.type == newItem.type &&
-      oldItem.color == newItem.color &&
-      oldItem.iconUri == newItem.iconUri
+      oldItem.param1 == newItem.param1
   }
 }

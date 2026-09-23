@@ -78,7 +78,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     val addButton: ImageButton = findViewById(R.id.fab)
     addButton.setOnClickListener {
       val ae = AnywhereEntity().apply {
-        this.type = AnywhereType.Card.SHELL
         appName = "New Shell"
       }
       startActivityForResult(Intent(this, EditorActivity::class.java).apply {

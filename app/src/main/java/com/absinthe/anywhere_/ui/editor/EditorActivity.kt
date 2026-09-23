@@ -33,11 +33,9 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
   override fun onCreate(savedInstanceState: Bundle?) {
     if (intent.action == ACTION_EDITOR) {
       entity = AnywhereEntity().apply {
-        type = AnywhereType.Card.ACTIVITY
         appName =
           com.blankj.utilcode.util.AppUtils.getAppName(intent.getStringExtra(EXTRA_PACKAGE_NAME))
         param1 = intent.getStringExtra(EXTRA_PACKAGE_NAME).toString()
-        param2 = intent.getStringExtra(EXTRA_CLASS_NAME).toString()
       }
     } else {
       (intent.getParcelableExtra(EXTRA_ENTITY) as? AnywhereEntity)?.let {

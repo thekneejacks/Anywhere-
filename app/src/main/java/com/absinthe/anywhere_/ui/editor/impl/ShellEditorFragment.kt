@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.databinding.EditorShellBinding
-import com.absinthe.anywhere_.model.database.setExecWithRoot
 import com.absinthe.anywhere_.ui.editor.BaseEditorFragment
 import com.absinthe.anywhere_.utils.CommandUtils
 
@@ -21,7 +20,6 @@ class ShellEditorFragment : BaseEditorFragment() {
 
   override fun initView() {
     binding.tietAppName.setText(item.appName)
-    binding.tietDescription.setText(item.description)
     binding.etShellContent.setText(item.param1)
   }
 
@@ -47,8 +45,6 @@ class ShellEditorFragment : BaseEditorFragment() {
     doneItem = item.copy().apply {
       appName = binding.tietAppName.text.toString()
       param1 = binding.etShellContent.text.toString()
-      description = binding.tietDescription.text.toString()
-      setExecWithRoot(execWithRoot)
     }
 
     if (super.doneEdit()) return true

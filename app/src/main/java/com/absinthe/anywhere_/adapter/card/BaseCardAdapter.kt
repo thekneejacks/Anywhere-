@@ -28,13 +28,8 @@ class BaseCardAdapter(
 
     val itemView = holder.itemView as CardItemView<*>
     itemView.appName.text = item.appName
+    
 
-
-    val normalView: CardItemView<StreamItemView>? =
-      itemView as CardItemView<StreamItemView>
-
-
-    normalView!!.content.description.text = item.description
     itemView.cardBackground.setImageDrawable(null)
 
 

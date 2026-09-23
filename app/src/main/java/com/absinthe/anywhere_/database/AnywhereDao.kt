@@ -1,6 +1,5 @@
 package com.absinthe.anywhere_.database
 
-import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
@@ -25,9 +24,6 @@ interface AnywhereDao {
   @Update
   suspend fun update(list: List<AnywhereEntity>)
 
-  @Query("DELETE FROM anywhere_table")
-  suspend fun deleteAll()
-
   @Delete
   suspend fun delete(ae: AnywhereEntity)
 
@@ -37,26 +33,11 @@ interface AnywhereDao {
   @get:Query("SELECT * from anywhere_table ORDER BY time_stamp DESC")
   val allAnywhereEntitiesOrderByTimeDesc: LiveData<List<AnywhereEntity>>
 
-  @get:Query("SELECT * from anywhere_table ORDER BY time_stamp ASC")
-  val allAnywhereEntitiesOrderByTimeAsc: LiveData<List<AnywhereEntity>>
-
-  @get:Query("SELECT * from anywhere_table ORDER BY app_name DESC")
-  val allAnywhereEntitiesOrderByNameDesc: LiveData<List<AnywhereEntity>>
-
-  @get:Query("SELECT * from anywhere_table ORDER BY app_name ASC")
-  val allAnywhereEntitiesOrderByNameAsc: LiveData<List<AnywhereEntity>>
-
   @Query("SELECT * from anywhere_table WHERE _id LIKE :id")
   fun getEntityById(id: String): AnywhereEntity?
 
   @Query("SELECT param_1 from anywhere_table WHERE _id LIKE :id")
   fun getParamById(id: String): String?
-
-  @Query("SELECT * FROM anywhere_table")
-  fun selectAll(): Cursor?
-
-  @Query("SELECT * FROM anywhere_table WHERE _id LIKE :id")
-  fun selectById(id: Long): Cursor?
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun insertPage(pe: PageEntity)
