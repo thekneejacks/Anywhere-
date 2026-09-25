@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<FrameLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
@@ -9,16 +9,14 @@
   app:edgeToEdge="true"
   app:fitsSystemWindowsInsets="start|end">
 
-  <com.absinthe.anywhere_.view.home.FadingEdgeRecyclerView
+  <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
-    android:fadingEdge="vertical"
-    android:fadingEdgeLength="12dp"
+    android:fadingEdge="none"
     android:overScrollMode="never"
-    android:paddingTop="@dimen/cardview_margin_parent_horizontal"
-    android:requiresFadingEdge="vertical"
+    android:requiresFadingEdge="none"
     app:fitsSystemWindowsInsets="bottom" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>
