@@ -4,12 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.database.PageEntity
 
-@Database(entities = [AnywhereEntity::class, PageEntity::class], version = 13, exportSchema = false)
+@Database(entities = [AnywhereEntity::class], version = 14, exportSchema = false)
 abstract class AnywhereRoomDatabase : RoomDatabase() {
 
   abstract fun anywhereDao(): AnywhereDao
@@ -30,9 +27,6 @@ abstract class AnywhereRoomDatabase : RoomDatabase() {
           AnywhereRoomDatabase::class.java,
           "anywhere_database"
         )
-          .addMigrations(
-            MIGRATION_12_13
-          )
           .allowMainThreadQueries() //should be very careful
           .build()
         INSTANCE = instance
@@ -56,12 +50,5 @@ abstract class AnywhereRoomDatabase : RoomDatabase() {
         database.execSQL("ALTER TABLE anywhere_new RENAME TO anywhere_table")
       }
     }*/
-
-    private val MIGRATION_12_13: Migration = object : Migration(12, 13) {
-      override fun migrate(database: SupportSQLiteDatabase) {
-        // Remove page table
-        database.execSQL("DROP TABLE page_table")
-      }
-    }
   }
 }
