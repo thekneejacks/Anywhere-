@@ -121,13 +121,13 @@ class BackupActivity : BaseActivity<ActivityBackupBinding>() {
       recyclerView.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
       recyclerView.isVerticalScrollBarEnabled = false
 
-      val lp = recyclerView.layoutParams
+      /*val lp = recyclerView.layoutParams
       if (lp is FrameLayout.LayoutParams) {
         lp.rightMargin =
           recyclerView.context.resources.getDimension(rikka.material.R.dimen.rd_activity_horizontal_margin)
             .toInt()
         lp.leftMargin = lp.rightMargin
-      }
+      }*/
 
       return recyclerView
     }

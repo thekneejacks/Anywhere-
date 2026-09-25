@@ -21,19 +21,6 @@
     <item name="android:elevation">0dp</item>
   </style>
 
-  <style name="AppTheme.About" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
-  </style>
-
-  <style name="Transparent" parent="@style/AppTheme">
-    <item name="android:windowBackground">@color/transparent</item>
-    <item name="windowNoTitle">true</item>
-    <item name="android:windowIsTranslucent">true</item>
-  </style>
 
   <style name="ShapeAppearanceOverlay.AppTheme.Dialog.Rounded" parent="">
     <item name="cornerFamily">rounded</item>

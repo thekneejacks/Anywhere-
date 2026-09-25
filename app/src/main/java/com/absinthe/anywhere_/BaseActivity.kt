@@ -3,12 +3,12 @@ package com.absinthe.anywhere_
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import rikka.material.app.MaterialActivity
 
 
 @SuppressLint("Registered, MissingSuperCall")
-abstract class BaseActivity<T : ViewBinding> : MaterialActivity() {
+abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
 
   protected lateinit var binding: T
   protected lateinit var root: View

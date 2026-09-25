@@ -6,7 +6,7 @@
   <style name="Platform.Theme.Anywhere" parent="Platform.V23.Theme.Anywhere" />
 
   <style name="Base.AppTheme" parent="Platform.Theme.Anywhere">
-    <item name="preferenceTheme">@style/PreferenceThemeOverlay.Rikka.Material3</item>
+    <item name="preferenceTheme">@style/Theme.MaterialComponents.DayNight</item>
     <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
     <item name="dropDownListViewStyle">@style/Widget.Aw.PopupMenu</item>
 
