@@ -18,13 +18,6 @@ object StorageUtils {
       return Environment.MEDIA_MOUNTED == state
     }
 
-  /* Checks if external storage is available to at least read */
-  val isExternalStorageReadable: Boolean
-    get() {
-      val state = Environment.getExternalStorageState()
-      return Environment.MEDIA_MOUNTED == state || Environment.MEDIA_MOUNTED_READ_ONLY == state
-    }
-
   /**
    * Export Anywhere- entities to json string
    *

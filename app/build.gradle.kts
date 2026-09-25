@@ -7,7 +7,7 @@ plugins {
   kotlin("android")
   id("com.google.devtools.ksp")
   id("kotlin-parcelize")
-  id("dev.rikka.tools.materialthemebuilder")
+  //id("dev.rikka.tools.materialthemebuilder")
 }
 
 val verName = "2.5.5b"

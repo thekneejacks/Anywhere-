@@ -16,7 +16,6 @@ import com.absinthe.anywhere_.adapter.SpacesItemDecoration
 import com.absinthe.anywhere_.adapter.card.BaseCardAdapter
 import com.absinthe.anywhere_.adapter.card.DiffListCallback
 import com.absinthe.anywhere_.adapter.manager.WrapContentStaggeredGridLayoutManager
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.databinding.FragmentCategoryCardBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
@@ -54,11 +53,6 @@ class CategoryCardFragment : Fragment() {
   override fun onResume() {
     super.onResume()
     currentReference = WeakReference(this)
-
-    if (GlobalValues.shortcutListChanged) {
-      adapter.notifyDataSetChanged()
-      GlobalValues.shortcutListChanged = false
-    }
   }
 
   override fun onDetach() {

@@ -3,21 +3,15 @@ package com.absinthe.anywhere_.utils
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
-import android.view.ContextThemeWrapper
-import android.view.Gravity
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.absinthe.anywhere_.AwContextWrapper
-import com.absinthe.anywhere_.compat.ToastCompat
-import com.absinthe.anywhere_.view.app.ToastView
 import com.blankj.utilcode.util.Utils
-import java.lang.ref.WeakReference
 
 object ToastUtil {
 
   private val contextWrapper by lazy { AwContextWrapper(Utils.getApp()) }
   private val handler = Handler(Looper.getMainLooper())
-  private var toast: WeakReference<ToastCompat>? = null
 
   /**
    * make a toast via a string
@@ -65,49 +59,26 @@ object ToastUtil {
       show(context, message, Toast.LENGTH_SHORT)
     }
 
-    fun show(context: Context, @StringRes res: Int) {
-      show(context, context.getString(res), Toast.LENGTH_SHORT)
-    }
-
-    fun showLong(context: Context, message: String) {
-      show(context, message, Toast.LENGTH_LONG)
-    }
-
-    fun showLong(context: Context, @StringRes res: Int) {
-      show(context, context.getString(res), Toast.LENGTH_LONG)
-    }
-
     private fun show(context: Context, message: String, duration: Int) {
       if (Looper.myLooper() == Looper.getMainLooper()) {
-        showInternal(context, message, duration)
+        Toast.makeText(context, message, duration).show()
       } else {
         Handler(Looper.getMainLooper()).post {
-          showInternal(context, message, duration)
+          Toast.makeText(context, message, duration).show()
         }
       }
     }
 
-    private fun showInternal(context: Context, message: String, duration: Int) {
+    /*private fun showInternal(context: Context, message: String, duration: Int) {
       toast?.get()?.cancel()
       toast = null
 
-      if (context !is ContextThemeWrapper) {
-        Toast(context).also {
-          it.duration = duration
-          it.setText(message)
-          toast = WeakReference(ToastCompat(context, it))
-        }.show()
-      } else {
-        val view = ToastView(context).also {
-          it.message.text = message
-        }
-        Toast(context).also {
-          it.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM, 0, 200)
-          it.duration = duration
-          it.view = view
-          toast = WeakReference(ToastCompat(context, it))
-        }.show()
-      }
-    }
+      Toast(context).also {
+        it.duration = duration
+        it.setText(message)
+        toast = WeakReference(ToastCompat(context, it))
+      }.show()
+
+    }*/
   }
 }
