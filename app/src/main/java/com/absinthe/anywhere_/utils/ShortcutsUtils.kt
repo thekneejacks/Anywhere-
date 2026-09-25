@@ -19,6 +19,8 @@ object ShortcutsUtils {
     Utils.getApp().getSystemService(ShortcutManager::class.java)
 
 
+
+
   /*@RequiresApi(api = Build.VERSION_CODES.N_MR1)
   fun addShortcut(ae: AnywhereEntity) {
     val intent = Intent(Utils.getApp(), ShortcutsActivity::class.java).apply {

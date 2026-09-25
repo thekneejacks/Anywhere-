@@ -2,11 +2,11 @@ package com.absinthe.anywhere_.view.card
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Typeface
 import android.util.TypedValue
 import android.widget.TextView
 import com.absinthe.anywhere_.R
-import com.absinthe.libraries.utils.extensions.dp
 import com.google.android.material.card.MaterialCardView
 
 @SuppressLint("ViewConstructor")
@@ -16,6 +16,8 @@ class CardItemView(context: Context) : MaterialCardView(context) {
   //val icon: AppCompatImageView
   //val badge: ImageView
   //val indicator: ImageView
+
+  val Number.dp: Int get() = (toInt() * Resources.getSystem().displayMetrics.density).toInt()
 
   init {
     layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, 95.dp)
