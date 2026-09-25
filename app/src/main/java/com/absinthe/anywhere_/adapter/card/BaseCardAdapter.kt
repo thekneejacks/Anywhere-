@@ -3,7 +3,6 @@ package com.absinthe.anywhere_.adapter.card
 import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
-import com.absinthe.anywhere_.adapter.ItemTouchCallBack
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
@@ -15,7 +14,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.card.MaterialCardView
 
 class BaseCardAdapter(
-) : BaseQuickAdapter<AnywhereEntity, BaseViewHolder>(0), ItemTouchCallBack.OnItemTouchListener {
+) : BaseQuickAdapter<AnywhereEntity, BaseViewHolder>(0) {
 
   private val selectedIndex = mutableListOf<Int>()
 
@@ -41,13 +40,13 @@ class BaseCardAdapter(
     }
   }
 
-  override fun onMove(fromPosition: Int, toPosition: Int) {
+  /*override fun onMove(fromPosition: Int, toPosition: Int) {
     data.add(toPosition, data.removeAt(fromPosition))
     notifyItemMoved(fromPosition, toPosition)
   }
 
   override fun onSwiped(position: Int) { /* Do nothing */
-  }
+  }*/
 
   override fun getItemId(position: Int): Long = data[position].id.toLong()
 

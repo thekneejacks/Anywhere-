@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.adapter.ItemTouchCallBack
 import com.absinthe.anywhere_.adapter.SpacesItemDecoration
 import com.absinthe.anywhere_.adapter.card.BaseCardAdapter
 import com.absinthe.anywhere_.adapter.card.DiffListCallback
@@ -30,7 +28,6 @@ class CategoryCardFragment : Fragment() {
 
   private lateinit var binding: FragmentCategoryCardBinding
   private lateinit var adapter: BaseCardAdapter
-  private lateinit var itemTouchHelper: ItemTouchHelper
   private var isFirstLoadItems = true
 
   private val listObserver = Observer<List<AnywhereEntity>> { list ->
@@ -103,12 +100,6 @@ class CategoryCardFragment : Fragment() {
       adapter = this@CategoryCardFragment.adapter
       setRecyclerViewLayoutManager(this, resources.configuration)
       addItemDecoration(decoration)
-    }
-
-    itemTouchHelper = ItemTouchHelper(ItemTouchCallBack().apply {
-      setOnItemTouchListener(adapter)
-    }).apply {
-      attachToRecyclerView(null)
     }
   }
 
