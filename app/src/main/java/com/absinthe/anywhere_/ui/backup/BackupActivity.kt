@@ -21,8 +21,6 @@ import com.absinthe.anywhere_.utils.ToastUtil
 import com.blankj.utilcode.util.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import rikka.recyclerview.fixEdgeEffect
-import rikka.widget.borderview.BorderRecyclerView
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -119,8 +117,7 @@ class BackupActivity : BaseActivity<ActivityBackupBinding>() {
       savedInstanceState: Bundle?
     ): RecyclerView {
       val recyclerView =
-        super.onCreateRecyclerView(inflater, parent, savedInstanceState) as BorderRecyclerView
-      recyclerView.fixEdgeEffect()
+        super.onCreateRecyclerView(inflater, parent, savedInstanceState)
       recyclerView.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
       recyclerView.isVerticalScrollBarEnabled = false
 
