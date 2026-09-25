@@ -50,9 +50,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
   }
 
   override fun initView() {
-    setSupportActionBar(binding.toolbar)
+    /*setSupportActionBar(binding.toolbar)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    binding.toolbar.title = ""
+    binding.toolbar.title = ""*/
 
 
     val addButton: ImageButton = findViewById(R.id.fab)

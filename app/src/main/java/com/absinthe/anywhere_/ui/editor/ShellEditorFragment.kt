@@ -1,24 +1,33 @@
-package com.absinthe.anywhere_.ui.editor.impl
+package com.absinthe.anywhere_.ui.editor
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.databinding.EditorShellBinding
-import com.absinthe.anywhere_.ui.editor.BaseEditorFragment
+import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.CommandUtils
 
-class ShellEditorFragment : BaseEditorFragment() {
+class ShellEditorFragment : Fragment(), IEditor {
 
   private lateinit var binding: EditorShellBinding
 
-  override fun setBinding(inflater: LayoutInflater, container: ViewGroup?): View {
+  protected val item by lazy {
+    arguments?.getParcelable(EXTRA_ENTITY) ?: AnywhereEntity()
+  }
+  protected val isEditMode by lazy { requireArguments().getBoolean(EXTRA_EDIT_MODE) }
+  //protected val isFromWorkflow by lazy { requireArguments().getBoolean(EXTRA_FROM_WORKFLOW) }
+  protected var doneItem: AnywhereEntity = AnywhereEntity()
+
+  fun setBinding(inflater: LayoutInflater, container: ViewGroup?): View {
     binding = EditorShellBinding.inflate(inflater, container, false)
     return binding.root
   }
 
-  override fun initView() {
+  fun initView() {
     binding.tietAppName.setText(item.appName)
     binding.etShellContent.setText(item.param1)
   }
@@ -47,7 +56,7 @@ class ShellEditorFragment : BaseEditorFragment() {
       param1 = binding.etShellContent.text.toString()
     }
 
-    if (super.doneEdit()) return true
+    //if (doneEdit()) return true
     if (isEditMode && doneItem == item) return true
 
     if (isEditMode) {
@@ -65,5 +74,15 @@ class ShellEditorFragment : BaseEditorFragment() {
     }
 
     return true
+  }
+
+  override fun onCreateView(
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
+  ): View? {
+    val root = setBinding(inflater, container)
+    initView()
+    return root
   }
 }

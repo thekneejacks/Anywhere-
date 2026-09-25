@@ -73,6 +73,7 @@
   <string name="dialog_cant_add_shortcut_title">Unable to Add Shortcuts</string>
   <string name="dialog_cant_add_shortcut_message">You can only add up to 3 Shortcuts</string>
   <string name="dialog_add_home_shortcut_title">Add Pinned Shortcut</string>
+  <string name="dialog_launch">Launch</string>
   <string name="dialog_copy">Copy</string>
   <string name="dialog_dynamic_params_title">Input Dynamic Params</string>
   <string name="dialog_shell_result_title">Shell Result</string>

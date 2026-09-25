@@ -9,11 +9,6 @@
     <item name="preferenceTheme">@style/Theme.MaterialComponents.DayNight</item>
     <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
     <item name="dropDownListViewStyle">@style/Widget.Aw.PopupMenu</item>
-
-    <item name="android:windowActionBar">false</item>
-    <item name="android:windowNoTitle">true</item>
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
   </style>
 
   <style name="Theme" parent="Base.AppTheme" />

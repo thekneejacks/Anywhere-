@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+
   <item
     android:id="@+id/add_home_shortcuts"
     android:icon="@drawable/ic_add_home_shortcuts"
@@ -12,5 +14,11 @@
     android:icon="@drawable/ic_delete"
     android:showAsAction="always"
     android:title="@string/dialog_delete_title" />
+
+  <item
+    android:id="@+id/launch"
+    android:icon="@drawable/ic_play"
+    android:showAsAction="always"
+    android:title="@string/dialog_launch" />
 
 </menu>
