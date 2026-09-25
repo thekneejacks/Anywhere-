@@ -166,7 +166,6 @@ dependencies {
   //implementation("com.github.zhaobozhen.libraries:me:1.1.4")
   implementation("com.github.zhaobozhen.libraries:utils:1.1.4")
 
-  val appCenterSdkVersion = "5.0.3"
   //implementation("com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}")
   //implementation("com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}")
 
@@ -187,7 +186,7 @@ dependencies {
   implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
   //implementation("androidx.viewpager2:viewpager2:1.1.0-beta02")
   implementation("androidx.recyclerview:recyclerview:1.3.1")
-  implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+  //implementation("androidx.drawerlayout:drawerlayout:1.2.0")
 
   //KTX
   //implementation("androidx.collection:collection-ktx:1.2.0")
@@ -232,7 +231,7 @@ dependencies {
   implementation("dev.rikka.shizuku:provider:$shizukuVersion")
 
     //implementation("dev.rikka.rikkax.appcompat:appcompat:1.6.1")
-  implementation("dev.rikka.rikkax.core:core:1.4.1")
+  //implementation("dev.rikka.rikkax.core:core:1.4.1")
   //implementation("dev.rikka.rikkax.material:material:2.7.0")
   //implementation("dev.rikka.rikkax.recyclerview:recyclerview-ktx:1.3.2")
     //implementation("dev.rikka.rikkax.widget:borderview:1.1.0")

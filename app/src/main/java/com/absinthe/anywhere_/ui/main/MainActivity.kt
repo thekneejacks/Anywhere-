@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import android.widget.ImageButton
-import androidx.drawerlayout.widget.DrawerLayout
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
@@ -45,20 +44,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     return super.onOptionsItemSelected(item)
   }
 
-  /*override fun onBackPressed() {
-    super.onBackPressed()
-    when {
-      binding.drawer.isDrawerVisible(GravityCompat.START) -> {
-        binding.drawer.closeDrawer(GravityCompat.START)
-      }
-
-      else -> {
-        //backupIfNeeded()
-        finish()
-      }
-    }
-  }*/
-
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.main_menu, menu)
     return true
@@ -81,12 +66,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       }, Const.REQUEST_CODE_OPEN_EDITOR)
     }
 
-
-
-    supportActionBar?.let {
-      it.setHomeButtonEnabled(false)
-      it.setDisplayHomeAsUpEnabled(false)
-      binding.drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-    }
   }
 }

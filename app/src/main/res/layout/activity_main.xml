@@ -1,64 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-  <androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer"
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fitsSystemWindows="false"
+  android:orientation="vertical"
+  app:fitsSystemWindowsInsets="top">
+
+  <androidx.fragment.app.FragmentContainerView
+    android:id="@+id/fragment_container_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    app:consumeSystemWindowsInsets="start|end"
-    app:edgeToEdge="true"
-    app:fitsSystemWindowsInsets="start|end"
-    tools:context=".ui.main.MainActivity">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appbarlayout"
+    android:name="com.absinthe.anywhere_.ui.main.CategoryCardFragment" />
 
-      <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="false"
-        app:fitsSystemWindowsInsets="top">
+  <com.google.android.material.appbar.AppBarLayout
+    style="?appBarStyle"
+    android:id="@+id/appbarlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@null"
+    app:elevation="0dp">
 
-        <androidx.fragment.app.FragmentContainerView
-          android:id="@+id/fragment_container_view"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          app:layout_behavior="@string/appbar_scrolling_view_behavior"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/toolbar"
-          android:name="com.absinthe.anywhere_.ui.main.CategoryCardFragment"/>
+    <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:elevation="3dp"
+      android:minHeight="?attr/actionBarSize"
+      android:theme="?attr/actionBarTheme"
+      android:translationZ="3dp"/>
 
-        <com.google.android.material.appbar.AppBarLayout
-          style="?appBarStyle"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@null"
-          app:elevation="0dp">
+  </com.google.android.material.appbar.AppBarLayout>
 
-          <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="3dp"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            android:translationZ="3dp">
-          </androidx.appcompat.widget.Toolbar>
+  <ImageButton
+    android:id="@+id/fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:clipToPadding="false"
+    android:contentDescription="TODO"
+    android:padding="16dp"
+    android:layout_marginRight="32dp"
+    android:layout_marginBottom="32dp"
+    android:src="@drawable/ic_add" />
 
-        </com.google.android.material.appbar.AppBarLayout>
+</FrameLayout>
 
-        <ImageButton
-          android:id="@+id/fab"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="bottom|end"
-          android:clipToPadding="false"
-          android:contentDescription="TODO"
-          android:padding="16dp"
-          android:layout_marginRight="32dp"
-          android:layout_marginBottom="64dp"
-          android:src="@drawable/ic_add"
-          />
-
-      </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-  </androidx.drawerlayout.widget.DrawerLayout>
