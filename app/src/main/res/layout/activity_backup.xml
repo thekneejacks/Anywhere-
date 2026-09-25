@@ -8,13 +8,16 @@
   android:fitsSystemWindows="false"
   app:consumeSystemWindowsInsets="start|end"
   app:edgeToEdge="true"
+  android:padding="0dp"
   app:fitsSystemWindowsInsets="start|end"
-  tools:context="com.absinthe.anywhere_.ui.backup.BackupActivity">
+  tools:context="com.absinthe.anywhere_.ui.backup.BackupActivity"
+  >
 
   <androidx.fragment.app.FragmentContainerView
     android:id="@+id/fragment_container_view"
     android:name="com.absinthe.anywhere_.ui.backup.BackupActivity$BackupFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    />
 
 </FrameLayout>
