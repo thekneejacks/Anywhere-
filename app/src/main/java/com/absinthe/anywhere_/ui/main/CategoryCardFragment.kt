@@ -91,7 +91,7 @@ class CategoryCardFragment : Fragment() {
     adapter.apply {
       setDiffCallback(DiffListCallback())
       setOnItemClickListener { _, view, i ->
-        clickItem(view, i)
+        clickItem(i)
       }
       setHasStableIds(true)
     }

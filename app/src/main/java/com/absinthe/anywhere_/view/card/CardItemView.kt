@@ -2,24 +2,23 @@ package com.absinthe.anywhere_.view.card
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.view.ViewGroup
-import android.widget.ImageView
+import android.graphics.Typeface
+import android.util.TypedValue
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
 import com.absinthe.anywhere_.R
+import com.absinthe.libraries.utils.extensions.dp
 import com.google.android.material.card.MaterialCardView
 
 @SuppressLint("ViewConstructor")
-class CardItemView<T : ViewGroup>(context: Context, val content: T) : MaterialCardView(context) {
+class CardItemView(context: Context) : MaterialCardView(context) {
 
   val appName: TextView
-  val icon: AppCompatImageView
+  //val icon: AppCompatImageView
   //val badge: ImageView
   //val indicator: ImageView
-  val cardBackground: ImageView
 
   init {
-    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, 95.dp)
     isCheckable = true
     isClickable = true
     isFocusable = true
@@ -27,27 +26,33 @@ class CardItemView<T : ViewGroup>(context: Context, val content: T) : MaterialCa
     cardElevation = context.resources.getDimension(R.dimen.cardview_elevation)
     radius = context.resources.getDimension(R.dimen.cardview_corner_radius)
 
-    content.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-    cardBackground = ImageView(context).apply {
-      layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-    }
+    //content.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
 
-    when (content) {
+
+    /*when (content) {
       is StreamItemView -> {
         appName = content.appName
-        icon = content.icon
+        //icon = content.icon
         //badge = content.badge
         //indicator = content.indicator
-        addView(cardBackground)
+        //addView(cardBackground)
       }
       else -> {
         appName = TextView(context)
-        icon = AppCompatImageView(context)
+        //icon = AppCompatImageView(context)
         //badge = ImageView(context)
         //ndicator = ImageView(context)
       }
-    }
+    }*/
 
-    addView(content)
+    appName = TextView(context).apply {
+      id = generateViewId()
+      setTypeface(null, Typeface.BOLD)
+      setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+      maxLines = 2
+      setPadding(6.dp,4.dp,0,0)
+    }
+    addView(appName)
+    //addView(content)
   }
 }
