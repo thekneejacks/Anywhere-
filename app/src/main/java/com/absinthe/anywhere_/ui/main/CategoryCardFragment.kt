@@ -24,8 +24,6 @@ import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.doOnMainThreadIdle
 import java.lang.ref.WeakReference
 
-const val BUNDLE_CATEGORY = "CATEGORY"
-
 class CategoryCardFragment : Fragment() {
 
   private lateinit var decoration: SpacesItemDecoration
@@ -152,14 +150,6 @@ class CategoryCardFragment : Fragment() {
   }
 
   companion object {
-    fun newInstance(category: String): CategoryCardFragment {
-      return CategoryCardFragment().apply {
-        arguments = Bundle().apply {
-          putString(BUNDLE_CATEGORY, category)
-        }
-      }
-    }
-
     var currentReference: WeakReference<CategoryCardFragment>? = null
   }
 }

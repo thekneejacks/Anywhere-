@@ -4,11 +4,8 @@ import android.content.Context
 import android.os.Environment
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.constants.AnywhereType
-import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.model.BackupBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.database.PageEntity
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -35,16 +32,15 @@ object StorageUtils {
    */
   fun exportAnywhereEntityJsonString(): String? {
     val anywhereList = AnywhereApplication.sRepository.allAnywhereEntities.value
-    val pageList = AnywhereApplication.sRepository.allPageEntities.value
     val finalList = mutableListOf<AnywhereEntity>()
 
-    return if (anywhereList == null || pageList == null) {
+    return if (anywhereList == null) {
       null
     } else {
       for (ae in anywhereList) {
         finalList.add(ae)
       }
-      val backupBean = BackupBean(finalList, pageList)
+      val backupBean = BackupBean(finalList)
       Gson().toJson(backupBean)
     }
   }
@@ -58,20 +54,17 @@ object StorageUtils {
         }
       } else {
         val aeList = mutableListOf<AnywhereEntity>()
-        val pageList = mutableListOf<PageEntity>()
-        pageList.addAll(backupBean.pageList)
 
         for (ae in backupBean.anywhereList) {
           aeList.add(ae)
         }
         AnywhereApplication.sRepository.insert(aeList)
-        AnywhereApplication.sRepository.insertPage(pageList)
 
         withContext(Dispatchers.Main) {
           ToastUtil.makeText(context.getString(R.string.toast_restore_success))
         }
       }
-    } catch (e: Exception) {
+    } catch (_: Exception) {
       //Timber.e(e)
 
       try {
@@ -82,7 +75,7 @@ object StorageUtils {
         withContext(Dispatchers.Main) {
           ToastUtil.makeText(context.getString(R.string.toast_restore_success))
         }
-      } catch (e: Exception) {
+      } catch (_: Exception) {
         //Timber.e(e)
         withContext(Dispatchers.Main) {
           ToastUtil.makeText(R.string.toast_backup_file_error)

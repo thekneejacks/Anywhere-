@@ -11,10 +11,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
@@ -86,26 +84,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
       }, Const.REQUEST_CODE_OPEN_EDITOR)
     }
 
-    AnywhereApplication.sRepository.allPageEntities.observe(this) {
-      if (it.isNotEmpty()) {
-        binding.viewPager.apply {
-          offscreenPageLimit = 2
-          adapter = object : FragmentStateAdapter(this@MainActivity) {
-            override fun getItemCount(): Int {
-              return it.size.coerceAtLeast(1)
-            }
 
-            override fun createFragment(position: Int): Fragment {
-              return CategoryCardFragment.newInstance(it[position].title)
-            }
-          }
 
-          getChildAt(0)?.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-          isUserInputEnabled = false
-          setCurrentItem(0, false)
+    binding.viewPager.apply {
+      offscreenPageLimit = 2
+      adapter = object : FragmentStateAdapter(this@MainActivity) {
+        override fun getItemCount(): Int {
+          return 1
+        }
+
+        override fun createFragment(position: Int): Fragment {
+          return CategoryCardFragment()
         }
       }
+
+      getChildAt(0)?.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+      isUserInputEnabled = false
+      setCurrentItem(0, false)
     }
+
+
 
     supportActionBar?.let {
       it.setHomeButtonEnabled(false)

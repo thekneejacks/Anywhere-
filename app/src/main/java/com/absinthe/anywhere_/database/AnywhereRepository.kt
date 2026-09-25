@@ -3,7 +3,6 @@ package com.absinthe.anywhere_.database
 import android.app.Application
 import androidx.lifecycle.LiveData
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.model.database.PageEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -13,7 +12,6 @@ class AnywhereRepository(application: Application) {
 
   var allAnywhereEntities: LiveData<List<AnywhereEntity>>
     private set
-  val allPageEntities: LiveData<List<PageEntity>>
 
   private val mAnywhereDao: AnywhereDao =
     AnywhereRoomDatabase.getDatabase(application).anywhereDao()
@@ -30,7 +28,6 @@ class AnywhereRepository(application: Application) {
 
 
   init {
-    allPageEntities = mAnywhereDao.allPageEntities
     allAnywhereEntities = sortedEntities
   }
 
@@ -56,11 +53,6 @@ class AnywhereRepository(application: Application) {
     /*if (AppUtils.atLeastNMR1()) {
       ShortcutsUtils.removeShortcut(ae)
     }*/
-
-  }
-
-  fun insertPage(pageList: List<PageEntity>) = GlobalScope.launch(Dispatchers.IO) {
-    mAnywhereDao.insertPage(pageList)
 
   }
 

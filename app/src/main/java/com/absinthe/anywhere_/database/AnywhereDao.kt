@@ -33,27 +33,6 @@ interface AnywhereDao {
   @get:Query("SELECT * from anywhere_table ORDER BY time_stamp DESC")
   val allAnywhereEntitiesOrderByTimeDesc: LiveData<List<AnywhereEntity>>
 
-  @Query("SELECT * from anywhere_table WHERE _id LIKE :id")
-  fun getEntityById(id: String): AnywhereEntity?
-
   @Query("SELECT param_1 from anywhere_table WHERE _id LIKE :id")
   fun getParamById(id: String): String?
-
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  suspend fun insertPage(pe: PageEntity)
-
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  suspend fun insertPage(pageList: List<PageEntity>)
-
-  @Update
-  suspend fun updatePage(pe: PageEntity)
-
-  @Delete
-  suspend fun deletePage(pe: PageEntity)
-
-  @get:Query("SELECT * from page_table ORDER BY priority ASC")
-  val allPageEntities: LiveData<List<PageEntity>>
-
-  @Query("SELECT * from page_table WHERE title LIKE :title")
-  fun getPageEntityByTitle(title: String): PageEntity?
 }

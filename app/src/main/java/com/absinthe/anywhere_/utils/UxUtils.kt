@@ -2,7 +2,6 @@ package com.absinthe.anywhere_.utils
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.manager.CardTypeIconGenerator
 
 object UxUtils {

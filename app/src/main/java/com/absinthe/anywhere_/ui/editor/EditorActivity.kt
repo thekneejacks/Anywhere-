@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.Menu
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
-import com.absinthe.anywhere_.constants.AnywhereType
 import com.absinthe.anywhere_.databinding.ActivityEditorBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.editor.impl.ShellEditorFragment
