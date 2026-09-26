@@ -20,6 +20,7 @@ const val EXTRA_EDIT_MODE = "EXTRA_EDIT_MODE"
 const val ACTION_EDITOR = "com.absinthe.anywhere_.intent.action.EDITOR"
 const val EXTRA_PACKAGE_NAME = "EXTRA_PACKAGE_NAME"
 
+@kotlinx.serialization.InternalSerializationApi
 class EditorActivity : BaseActivity<ActivityEditorBinding>() {
   private lateinit var editor: IEditor
   private lateinit var entity: AnywhereEntity

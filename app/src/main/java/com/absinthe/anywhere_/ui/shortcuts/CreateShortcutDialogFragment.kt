@@ -18,6 +18,7 @@ import com.absinthe.anywhere_.view.app.AnywhereDialogFragment
 import com.absinthe.anywhere_.viewbuilder.entity.CreateShortcutDialogBuilder
 import com.blankj.utilcode.util.Utils
 
+@kotlinx.serialization.InternalSerializationApi
 class CreateShortcutDialogFragment : AnywhereDialogFragment() {
   private lateinit var mBuilder: CreateShortcutDialogBuilder
   private lateinit var imageResultLauncher: ActivityResultLauncher<String>

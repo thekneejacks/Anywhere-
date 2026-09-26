@@ -2,15 +2,16 @@ package com.absinthe.anywhere_.utils
 
 import android.content.Context
 import android.os.Environment
-import android.util.Log
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.model.BackupBean
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
+@kotlinx.serialization.InternalSerializationApi
 object StorageUtils {
   /* Checks if external storage is available for read and write */
   val isExternalStorageWritable: Boolean
@@ -35,13 +36,16 @@ object StorageUtils {
         finalList.add(ae)
       }*/
       val backupBean = BackupBean(anywhereList)
-      Gson().toJson(backupBean)
+      //Gson().toJson(backupBean)
+      Json.encodeToString(backupBean)
     }
   }
 
   suspend fun restoreFromJson(context: Context, content: String) {
     try {
-      val backupBean = Gson().fromJson(content, BackupBean::class.java)
+      //val backupBean = Gson().fromJson(content, BackupBean::class.java)
+      val backupBean = Json.decodeFromString<BackupBean>(content)
+
       if (backupBean == null) {
         withContext(Dispatchers.Main) {
           ToastUtil.makeText(R.string.toast_backup_file_error)

@@ -7,6 +7,7 @@ import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.utils.CommandUtils
 
+@kotlinx.serialization.InternalSerializationApi
 class ShortcutsActivity : Activity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {

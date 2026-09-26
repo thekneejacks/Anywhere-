@@ -13,6 +13,7 @@ import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
 
+@kotlinx.serialization.InternalSerializationApi
 class EntityAdapter(private val dataSet: List<AnywhereEntity>) :
   RecyclerView.Adapter<EntityAdapter.ViewHolder>() {
 

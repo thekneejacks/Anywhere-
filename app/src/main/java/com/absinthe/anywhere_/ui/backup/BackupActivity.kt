@@ -26,7 +26,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-
+@kotlinx.serialization.InternalSerializationApi
 class BackupActivity : BaseActivity<ActivityBackupBinding>() {
 
   override fun setViewBinding() = ActivityBackupBinding.inflate(layoutInflater)

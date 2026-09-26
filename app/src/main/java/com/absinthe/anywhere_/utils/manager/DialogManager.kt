@@ -15,6 +15,7 @@ import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
  *
  * To manage all Dialogs / DialogFragments / BottomSheetDialogs in App.
  */
+@kotlinx.serialization.InternalSerializationApi
 object DialogManager {
 
 

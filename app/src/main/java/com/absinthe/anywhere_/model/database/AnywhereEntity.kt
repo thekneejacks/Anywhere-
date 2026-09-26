@@ -6,26 +6,29 @@ import androidx.annotation.Keep
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Keep
 @Parcelize
+@Serializable
+@kotlinx.serialization.InternalSerializationApi
 @Entity(tableName = "anywhere_table")
 data class AnywhereEntity(
   @PrimaryKey
   @ColumnInfo(name = BaseColumns._ID)
   var id: String = System.currentTimeMillis().toString(),
 
-  @SerializedName(APP_NAME)
+  @SerialName(APP_NAME)
   @ColumnInfo(name = APP_NAME)
   var appName: String = "",
 
-  @SerializedName(PARAM_1)
+  @SerialName(PARAM_1)
   @ColumnInfo(name = PARAM_1)
   var param1: String = "",
 
-  @SerializedName(TIME_STAMP)
+  @SerialName(TIME_STAMP)
   @ColumnInfo(name = TIME_STAMP)
   var timeStamp: String = id,
 

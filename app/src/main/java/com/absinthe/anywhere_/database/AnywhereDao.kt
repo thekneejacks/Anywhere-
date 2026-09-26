@@ -9,7 +9,10 @@ import androidx.room.Update
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 
 @Dao
+@kotlinx.serialization.InternalSerializationApi
 interface AnywhereDao {
+
+
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun insert(ae: AnywhereEntity)
 

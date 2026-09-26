@@ -8,6 +8,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@kotlinx.serialization.InternalSerializationApi
 class AnywhereRepository(application: Application) {
 
   private val mainActivity = MainActivity

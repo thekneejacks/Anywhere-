@@ -3,6 +3,8 @@ package com.absinthe.anywhere_
 import android.app.Application
 import com.absinthe.anywhere_.database.AnywhereRepository
 
+
+@kotlinx.serialization.InternalSerializationApi
 class AnywhereApplication : Application() {
 
   override fun onCreate() {

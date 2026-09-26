@@ -1,8 +1,11 @@
 package com.absinthe.anywhere_.model
 
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
+@kotlinx.serialization.InternalSerializationApi
 data class BackupBean(
-  @SerializedName("anywhereList") val anywhereList: List<AnywhereEntity>,
+  @SerialName("anywhereList") val anywhereList: List<AnywhereEntity>,
 )

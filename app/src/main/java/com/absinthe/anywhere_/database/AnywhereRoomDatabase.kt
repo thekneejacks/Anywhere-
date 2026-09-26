@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 
+@kotlinx.serialization.InternalSerializationApi
 @Database(entities = [AnywhereEntity::class], version = 14, exportSchema = false)
 abstract class AnywhereRoomDatabase : RoomDatabase() {
 

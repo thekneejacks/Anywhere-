@@ -13,6 +13,7 @@ import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.shortcuts.ShortcutsActivity
 import com.blankj.utilcode.util.Utils
 
+@kotlinx.serialization.InternalSerializationApi
 object ShortcutsUtils {
 
   val SHORTCUT_MANAGER: ShortcutManager? =

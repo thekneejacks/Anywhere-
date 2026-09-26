@@ -11,6 +11,7 @@ import com.absinthe.anywhere_.databinding.EditorShellBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.utils.CommandUtils
 
+@kotlinx.serialization.InternalSerializationApi
 class ShellEditorFragment : Fragment(), IEditor {
 
   private lateinit var binding: EditorShellBinding

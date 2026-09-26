@@ -7,6 +7,7 @@ plugins {
   kotlin("android")
   id("com.google.devtools.ksp")
   id("kotlin-parcelize")
+  id("kotlinx-serialization")
   //id("dev.rikka.tools.materialthemebuilder")
 }
 
@@ -186,7 +187,8 @@ dependencies {
   //KTX
   implementation("androidx.preference:preference-ktx:1.2.1")
 
-  implementation("com.google.code.gson:gson:2.9.0")
+  //implementation("com.google.code.gson:gson:2.9.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
   implementation("com.blankj:utilcodex:1.31.1")
   //implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11")
 
