@@ -3,32 +3,50 @@ package com.absinthe.anywhere_.ui.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
-import android.view.Window
 import android.widget.ImageButton
-import com.absinthe.anywhere_.BaseActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
-import com.absinthe.anywhere_.databinding.ActivityMainBinding
 import com.absinthe.anywhere_.model.database.AnywhereEntity
 import com.absinthe.anywhere_.ui.backup.BackupActivity
 import com.absinthe.anywhere_.ui.editor.EXTRA_EDIT_MODE
 import com.absinthe.anywhere_.ui.editor.EXTRA_ENTITY
 import com.absinthe.anywhere_.ui.editor.EditorActivity
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+lateinit var entityAdapter: EntityAdapter
+lateinit var recyclerView: RecyclerView
 
-  override fun setViewBinding() = ActivityMainBinding.inflate(layoutInflater)
+class MainActivity : AppCompatActivity() {
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    setContentView(R.layout.activity_main)
 
-    window.apply {
-      requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
-      sharedElementsUseOverlay = false
+    val dataset = AnywhereApplication.sRepository.sortedEntities
+    entityAdapter = EntityAdapter(dataset)
+
+    recyclerView = findViewById(R.id.entity_recyclerview)
+    recyclerView.layoutManager = GridLayoutManager(this, 2)
+    recyclerView.adapter = entityAdapter
+
+
+    val addButton: ImageButton = findViewById(R.id.fab)
+    addButton.setOnClickListener {
+      val ae = AnywhereEntity().apply {
+        appName = "New Shell"
+      }
+      startActivityForResult(Intent(this, EditorActivity::class.java).apply {
+        putExtra(EXTRA_ENTITY, ae)
+        putExtra(EXTRA_EDIT_MODE, false)
+      }, Const.REQUEST_CODE_OPEN_EDITOR)
     }
-    setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
 
     super.onCreate(savedInstanceState)
   }
@@ -49,22 +67,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     return true
   }
 
-  override fun initView() {
-    /*setSupportActionBar(binding.toolbar)
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    binding.toolbar.title = ""*/
 
-
-    val addButton: ImageButton = findViewById(R.id.fab)
-    addButton.setOnClickListener {
-      val ae = AnywhereEntity().apply {
-        appName = "New Shell"
-      }
-      startActivityForResult(Intent(this, EditorActivity::class.java).apply {
-        putExtra(EXTRA_ENTITY, ae)
-        putExtra(EXTRA_EDIT_MODE, false)
-      }, Const.REQUEST_CODE_OPEN_EDITOR)
+  companion object {
+    fun reload() {
+      Handler(Looper.getMainLooper()).postDelayed(
+        {
+          val dataset = AnywhereApplication.sRepository.sortedEntities
+          entityAdapter = EntityAdapter(dataset)
+          recyclerView.swapAdapter(entityAdapter, true)
+        },
+        300
+      )
     }
 
+
   }
+
 }

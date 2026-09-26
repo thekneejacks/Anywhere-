@@ -14,7 +14,6 @@ import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.databinding.ActivityBackupBinding
-import com.absinthe.anywhere_.utils.AppTextUtils
 import com.absinthe.anywhere_.utils.StorageUtils
 import com.absinthe.anywhere_.utils.ToastUtil
 import com.blankj.utilcode.util.Utils
@@ -23,6 +22,9 @@ import kotlinx.coroutines.launch
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class BackupActivity : BaseActivity<ActivityBackupBinding>() {
@@ -86,7 +88,7 @@ class BackupActivity : BaseActivity<ActivityBackupBinding>() {
         setOnPreferenceClickListener {
           if (StorageUtils.isExternalStorageWritable) {
             runCatching {
-              backupResultLauncher.launch("Anywhere-Backups-" + AppTextUtils.currentFormatDate + ".awbackups")
+              backupResultLauncher.launch("Anywhere-Backups-$currentFormatDate.awbackups")
             }.onFailure {
               //Timber.e(it)
               ToastUtil.makeText(context, "Document API not working")
@@ -130,6 +132,13 @@ class BackupActivity : BaseActivity<ActivityBackupBinding>() {
 
       return recyclerView
     }
+
+    val currentFormatDate: String
+      get() {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd-HH:mm:ss", Locale.getDefault())
+        val date = Date(System.currentTimeMillis())
+        return simpleDateFormat.format(date)
+      }
 
   }
 }

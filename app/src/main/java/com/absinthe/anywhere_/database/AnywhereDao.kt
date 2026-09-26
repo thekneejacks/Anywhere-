@@ -1,6 +1,5 @@
 package com.absinthe.anywhere_.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -24,7 +23,7 @@ interface AnywhereDao {
   suspend fun delete(ae: AnywhereEntity)
 
   @get:Query("SELECT * from anywhere_table ORDER BY time_stamp DESC")
-  val allAnywhereEntitiesOrderByTimeDesc: LiveData<List<AnywhereEntity>>
+  val allAnywhereEntitiesOrderByTimeDesc: List<AnywhereEntity>
 
   @Query("SELECT param_1 from anywhere_table WHERE _id LIKE :id")
   fun getParamById(id: String): String?

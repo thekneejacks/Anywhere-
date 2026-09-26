@@ -1,15 +1,16 @@
 package com.absinthe.anywhere_.ui.shortcuts
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.model.database.AnywhereEntity
-import com.absinthe.anywhere_.utils.AppUtils
 import com.absinthe.anywhere_.utils.ShortcutsUtils
 import com.absinthe.anywhere_.utils.UxUtils
 import com.absinthe.anywhere_.view.app.AnywhereDialogBuilder
@@ -32,7 +33,7 @@ class CreateShortcutDialogFragment : AnywhereDialogFragment() {
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(mBuilder.ivIcon)
         }*/
-        AppUtils.takePersistableUriPermission(requireContext(), it, Intent())
+        takePersistableUriPermission(requireContext(), it, Intent())
 
       }
 
@@ -63,6 +64,15 @@ class CreateShortcutDialogFragment : AnywhereDialogFragment() {
       }
       .setNegativeButton(android.R.string.cancel, null)
       .create()
+  }
+
+  @SuppressLint("WrongConstant")
+  fun takePersistableUriPermission(context: Context, uri: Uri, intent: Intent) {
+    val takeFlags = (intent.flags
+      and (Intent.FLAG_GRANT_READ_URI_PERMISSION
+      or Intent.FLAG_GRANT_WRITE_URI_PERMISSION))
+    // Check for the freshest data.
+    context.contentResolver.takePersistableUriPermission(uri, takeFlags)
   }
 
   companion object {

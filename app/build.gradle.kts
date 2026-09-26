@@ -188,7 +188,7 @@ dependencies {
 
   implementation("com.google.code.gson:gson:2.9.0")
   implementation("com.blankj:utilcodex:1.31.1")
-  implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11")
+  //implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11")
 
 
   val shizukuVersion = "12.2.0"

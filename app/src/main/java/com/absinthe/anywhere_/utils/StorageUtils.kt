@@ -24,7 +24,7 @@ object StorageUtils {
    * @return json string
    */
   fun exportAnywhereEntityJsonString(): String? {
-    val anywhereList = AnywhereApplication.sRepository.allAnywhereEntities.value
+    val anywhereList = AnywhereApplication.sRepository.sortedEntities
     val finalList = mutableListOf<AnywhereEntity>()
 
     return if (anywhereList == null) {
