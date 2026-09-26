@@ -5,10 +5,7 @@
 
   <style name="Platform.Theme.Anywhere" parent="Platform.V23.Theme.Anywhere" />
 
-  <style name="Base.AppTheme" parent="Platform.Theme.Anywhere">
-    <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
-    <item name="dropDownListViewStyle">@style/Widget.Aw.PopupMenu</item>
-  </style>
+  <style name="Base.AppTheme" parent="Platform.Theme.Anywhere"/>
 
   <style name="Theme" parent="Base.AppTheme" />
 
