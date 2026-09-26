@@ -2,6 +2,7 @@ package com.absinthe.anywhere_.utils
 
 import android.content.Context
 import android.os.Environment
+import android.util.Log
 import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.model.BackupBean
@@ -25,15 +26,15 @@ object StorageUtils {
    */
   fun exportAnywhereEntityJsonString(): String? {
     val anywhereList = AnywhereApplication.sRepository.sortedEntities
-    val finalList = mutableListOf<AnywhereEntity>()
+    //val finalList = mutableListOf<AnywhereEntity>()
 
     return if (anywhereList == null) {
       null
     } else {
-      for (ae in anywhereList) {
+      /*for (ae in anywhereList) {
         finalList.add(ae)
-      }
-      val backupBean = BackupBean(finalList)
+      }*/
+      val backupBean = BackupBean(anywhereList)
       Gson().toJson(backupBean)
     }
   }
@@ -57,21 +58,10 @@ object StorageUtils {
           ToastUtil.makeText(context.getString(R.string.toast_restore_success))
         }
       }
-    } catch (_: Exception) {
-      //Timber.e(e)
-
-      try {
-        val entity = Gson().fromJson(content, AnywhereEntity::class.java)
-
-        AnywhereApplication.sRepository.insert(entity)
-
-        withContext(Dispatchers.Main) {
-          ToastUtil.makeText(context.getString(R.string.toast_restore_success))
-        }
-      } catch (_: Exception) {
+    } catch (e: Exception) {
         //Timber.e(e)
         withContext(Dispatchers.Main) {
-          ToastUtil.makeText(R.string.toast_backup_file_error)
+          ToastUtil.makeText("$e")
         }
       }
     }
@@ -112,4 +102,4 @@ object StorageUtils {
       }
     }
   }*/
-}
+
